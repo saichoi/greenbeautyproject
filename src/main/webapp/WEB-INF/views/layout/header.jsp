@@ -24,7 +24,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
-<body>
+<body style="max-width: 80%; height:auto; margin: 0 auto; overflow: hidden;">
 
 <!-- 헤더 시작 -->
 <header>
