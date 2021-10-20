@@ -1,3 +1,20 @@
 *{margin: 0; padding: 0;}
 ul,li{list-style: none;}
 a{text-decoration: none; color: black;}
+
+header,section,footer{
+    max-width: 80%;
+    height:auto;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.ham-wrap{
+    width: 450px;
+    height: 1000px;
+    /* background-color: pink; */
+    position: fixed;
+    right: 10%;
+    z-index: 9;
+    overflow: hidden;
+}
