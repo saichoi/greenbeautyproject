@@ -75,4 +75,32 @@ $(document).ready(function () {
     });
   });
 
+  // 로그인 
+  loadProfile();
+
+  function getLocalProfile(callback) {
+    var profileReAuthEmail = localStorage.getItem("PROFILE_REAUTH_EMAIL");
+
+    if (profileReAuthEmail !== null) {
+      callback(profileReAuthEmail);
+    }
+  }
+
+  function loadProfile() {
+    if (!supportsHTML5Storage()) { return false; }
+    getLocalProfile(function (profileImgSrc, profileName, profileReAuthEmail) {
+      $("#reauth-email").html(profileReAuthEmail);
+      $("#inputEmail").hide();
+      $("#remember").hide();
+    });
+  }
+
+  function supportsHTML5Storage() {
+    try {
+      return 'localStorage' in window && window['localStorage'] !== null;
+    } catch (e) {
+      return false;
+    }
+  }
+
 }); // end of document ready

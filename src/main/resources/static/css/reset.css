@@ -9,6 +9,11 @@ header,section,footer{
     overflow: hidden;
 }
 
+.login-section{
+	height:800px;
+	/* background-color: lightblue; */
+}
+
 .ham-wrap{
     width: 450px;
     height: 1000px;
