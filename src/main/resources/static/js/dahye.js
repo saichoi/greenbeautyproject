@@ -66,25 +66,31 @@ $(document).ready(function () {
     }
   });
 
-  // 말풍선 이벤트
-  $('.bi-person-fill').mouseenter(function () {
+// 말풍선 이벤트
+  $('header .bi-person-fill').mouseenter(function () {
     $('.balloon').css({
       display: 'block'
     });
   });
 
-  $('.balloon').mouseover(function () {
+  $('header .balloon').mouseover(function () {
     $('.balloon').css({
       display: 'block'
     });
   });
 
-  $('#balloon-wrap').mouseout(function () {
+  $('header #balloon-wrap').mouseout(function () {
     $('.balloon').css({
       display: 'none'
     });
   });
 
+  $('.bi-heart-fill, .ham-btn').mouseenter(function(){
+    $('.balloon').css({
+      display: 'none'
+    });
+  });
+  
   // 로그인 
   loadProfile();
 
