@@ -102,5 +102,29 @@ $(document).ready(function () {
       return false;
     }
   }
+  
+  //회원가입 피부톤 팔레트
+
+  function init() {
+    //2차원 배열 파레트 데이터
+    var pallet = ["#f3e077", "#dfc899", "#d8b17e", "#cca77b", "#bd9c8d"];
+    var palletText = ['매우밝은', '밝은<br>(21호)', '중간밝은<br>(22호)', '차분한<br>(23호)', '매우차분한'];
+    var tag = "";
+    for (i = 0; i < pallet.length; i++) {
+      tag += "<div id="
+        + pallet[i]
+        + " class='colorBox text-center' style='line-height:40px;' onclick=''>"
+        + palletText[i]
+        + "</div>";
+    }
+    //파레트 파싱
+    document.getElementById("palletBox").innerHTML = tag;
+
+    //색상 입히기
+    var colorBox = document.getElementsByClassName("colorBox");
+    for (i = 0; i < colorBox.length; i++) {
+      colorBox[i].style.background = colorBox[i].id;
+    }
+  }
 
 }); // end of document ready

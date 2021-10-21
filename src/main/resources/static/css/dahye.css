@@ -12,7 +12,7 @@
   transition-duration: 0.5s;
 }
 
-.login-con .bi-search{
+.ham-wrap .bi-search{
   font-size:35px;
   line-height: 35px;
   color: #505050;
@@ -88,6 +88,15 @@
 
 
   /* 햄버거 메뉴 디자인 */
+.ham-wrap{
+    width: 450px;
+    height: 1000px;
+    position: fixed;
+    right: 10%;
+    z-index: 9;
+    overflow: hidden;
+}
+
 .ham-con{
   width: 450px;
   height: 100%;
@@ -210,13 +219,8 @@
  }
 
 
-/***************** 로그인 페이지 스타일 *****************/
-.login-con .card-container.card {
-  max-width: 350px;
-  padding: 40px 40px;
-}
-
-.login-con .btn {
+/***************** 로그인 회원가입 페이지 공통 스타일 *****************/
+.login-con .btn, .join-con .btn {
   font-weight: 700;
   height: 36px;
   -moz-user-select: none;
@@ -226,12 +230,12 @@
 }
 
 
-.login-con .card {
+.login-section .card, .join-section .card {
   background-color: #F7F7F7;
   /* just in case there no content*/
   padding: 20px 25px 30px;
   margin: 0 auto 25px;
-  margin-top: 120px;
+  margin-top: 50px;
   /* shadows and rounded borders */
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
@@ -241,22 +245,41 @@
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
-.profile-img-card {
-  width: 96px;
-  height: 96px;
-  margin: 0 auto 10px;
-  display: block;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
+.login-con .btn.btn-signin, .join-con .btn.btn-signin{
+  /*background-color: #4d90fe; */
+  background-color: rgb(104, 145, 162);
+  /* background-color: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));*/
+  padding: 0px;
+  font-weight: 700;
+  font-size: 14px;
+  height: 36px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  border: none;
+  -o-transition: all 0.218s;
+  -moz-transition: all 0.218s;
+  -webkit-transition: all 0.218s;
+  transition: all 0.218s;
 }
 
-.profile-name-card {
-  font-size: 16px;
-  font-weight: bold;
-  text-align: center;
-  margin: 10px 0 0;
-  min-height: 1em;
+.login-con .btn.btn-signin:hover,
+.login-con .btn.btn-signin:active,
+.login-con .btn.btn-signin:focus, 
+.join-con .btn.btn-signin:hover,
+.join-con .btn.btn-signin:active,
+.join-con .btn.btn-signin:focus {
+  background-color: rgb(12, 97, 33);
+}
+
+/***************** 로그인 페이지 스타일 *****************/
+.login-section{
+	height:600px;
+}
+
+.login-con .card-container.card{
+  max-width: 350px;
+  padding: 40px 40px;
 }
 
 .reauth-email {
@@ -302,29 +325,7 @@
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
 }
 
-.login-con .btn.btn-signin {
-  /*background-color: #4d90fe; */
-  background-color: rgb(104, 145, 162);
-  /* background-color: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));*/
-  padding: 0px;
-  font-weight: 700;
-  font-size: 14px;
-  height: 36px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-  border: none;
-  -o-transition: all 0.218s;
-  -moz-transition: all 0.218s;
-  -webkit-transition: all 0.218s;
-  transition: all 0.218s;
-}
 
-.login-con .btn.btn-signin:hover,
-.login-con .btn.btn-signin:active,
-.login-con .btn.btn-signin:focus {
-  background-color: rgb(12, 97, 33);
-}
 
 .get-join {
   color: rgb(104, 145, 162);
@@ -339,4 +340,60 @@
 .login-person .bi-person-circle{
   font-size: 100px;
   color:  rgb(104, 145, 162);
+}
+
+
+/***************** 회원가입 페이지 스타일 *****************/
+.join-section{
+	height:1300px;
+}
+
+.join-con .card-container.card{
+  max-width: 600px;
+  padding: 40px 40px;
+}
+
+.join-con label{
+   width: 30%;
+   font-weight: 700;
+}
+
+.color-con{
+  margin-left: 30%;
+}
+
+.join-value{
+  margin-bottom: 20px;
+}
+
+.join-con h2{
+  width: 100%;
+  height: 100%;
+  /* background-color: pink; */
+  margin: 10px auto 30px;
+  text-align: center;
+}
+
+.checkboxs input{
+  margin-left:4px ;
+}
+
+/* 피부톤 팔레트 디자인*/
+.color-con{
+  width: 295px;
+  height: 200px;
+}
+
+.pallet{
+  width: 295px;
+  height: 100px;
+
+}
+
+.colorBox{
+  width:90px;
+  height:90px;
+  float: left;
+  margin: 1px 1px 0px 0px;
+  cursor: pointer;
 }
