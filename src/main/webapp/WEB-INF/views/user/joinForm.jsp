@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 <!-- 회원가입 컨테이너 시작 -->
-<section class="join-section">
+<section class="join-section" >
     <div class="join-con container ">
         <div class="card card-container ">
             <h2>회원가입</h2>
