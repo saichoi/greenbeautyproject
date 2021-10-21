@@ -86,24 +86,17 @@
   transform: translateY(-10px) rotate(45deg);
 }
 
-  /* 햄버거 메뉴 디자인 */
-.ham-wrap{
-    width: 450px;
-    height: 1000px;
-    position: fixed;
-    right: 10%;
-    z-index: 9;
-    overflow: hidden;
-}
-
+ /* 햄버거 메뉴 디자인 */
 .ham-con{
-  width: 450px;
-  height: 100%;
+  width: 30%;
+  height: 1000px;
   background-color: #E0E0E0;
-  position: relative;
-  top:0px;
-  left:450px;
+  position: fixed;
+  top:82px;
+  right:-20%;
   color:#505050;
+  z-index: 99;
+  opacity: 0;
 }
 
 .ham-con a{
@@ -494,7 +487,6 @@
 .card-left{
   width: 70%;
   height: 100%;
-  /* background-color: sandybrown; */
 }
 
 .card-right{

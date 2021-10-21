@@ -12,20 +12,32 @@ $(document).ready(function () {
     })
   });
 
-  var i = 0;
+ var h = 0;
 
   $(burger).on("click", function () {
-    if (i == 0) {
+    if (h == 0) {
       $('.ham-con').animate({
-        left: '0',
+        right:'10%',
+        opacity: 1
       }, 500);
-      i++;
-    } else if (i == 1) {
+      $(this).addClass('active-1');
+      h++;
+    } else if (h == 1) {
       $('.ham-con').animate({
-        left: '500px',
+        right :'-20%',
+        opacity: 0
       }, 500);
-      i--;
+      $(this).removeClass('active-1');
+      h--;
     }
+    $(window).scroll(function(){
+      $('.ham-con').css({
+        opacity: 0,
+        right :'-20%'
+      }, 500);
+      $(burger).removeClass('active-1');
+      h=0;
+    });
   })
 
   // 햄버거 메뉴 내부 - 상위 메뉴 클릭 시 하위메뉴 슬라이드 다운하게 만들기
