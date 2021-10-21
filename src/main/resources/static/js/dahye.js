@@ -19,13 +19,11 @@ $(document).ready(function () {
       $('.ham-con').animate({
         left: '0',
       }, 500);
-      $('.ham-btn a').addClass('active-1');
       i++;
     } else if (i == 1) {
       $('.ham-con').animate({
         left: '500px',
       }, 500);
-      $('.ham-btn a').removeClass('active-1');
       i--;
     }
   })
@@ -88,7 +86,7 @@ $(document).ready(function () {
 
   function loadProfile() {
     if (!supportsHTML5Storage()) { return false; }
-    getLocalProfile(function (profileImgSrc, profileName, profileReAuthEmail) {
+    getLocalProfile(function (profileReAuthEmail) {
       $("#reauth-email").html(profileReAuthEmail);
       $("#inputEmail").hide();
       $("#remember").hide();
@@ -102,7 +100,7 @@ $(document).ready(function () {
       return false;
     }
   }
-  
+
   //회원가입 피부톤 팔레트
 
   function init() {
@@ -126,5 +124,7 @@ $(document).ready(function () {
       colorBox[i].style.background = colorBox[i].id;
     }
   }
+
+  init();
 
 }); // end of document ready
