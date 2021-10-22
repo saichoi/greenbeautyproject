@@ -60,7 +60,14 @@
                     </div>
                 </div>
             </div>
-
+            
+           <div id="section-title">
+                <div class="form-group">
+                    <input type="text" name="title" class="form-control"
+                        placeholder="제목을 입력해주세요">
+                </div>
+            </div>
+            
             <div id="section-texteditor">
                 텍스트에디터자리
             </div>
