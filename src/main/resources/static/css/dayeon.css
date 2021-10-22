@@ -102,7 +102,7 @@ aside-2 {
     color: rgb(100, 175, 241);
 }
 
-.text {
+#maincontainer .text {
     text-align: center;
     line-height: 30px;
     font-size: 30px;
@@ -132,6 +132,7 @@ aside-2 {
     line-height: 50px;
     font-size: 23px;
     font-weight: 900;
+    color: #505050;
 }
 
 .sub_menu {
@@ -141,6 +142,15 @@ aside-2 {
     font-size: 16px;
     font-weight: 500;
     line-height: 38px;
+}
+
+.sub_menu a:hover {
+	text-decoration: none;
+	color: rgb(119, 119, 119);
+}
+
+.sub_menu a{
+	color: #505050;
 }
 
 .bi {
@@ -195,6 +205,12 @@ aside-2 {
     font-size: 20px;
     font-weight: 900;
     margin-left: 20%;
+    color: rgb(119, 119, 119);
+}
+
+#product-move:hover {
+	text-decoration: none;
+	color: rgb(119, 119, 119);
 }
 
 #empty {
@@ -205,19 +221,19 @@ aside-2 {
     margin-bottom: 2%;
 }
 
-#item-image {
+.card #item-image {
     border-bottom: 1px solid rgb(219, 219, 219);
     width: auto;
     height: 150px;
 }
 
-#rating {
+.card-body #rating {
     display: flex;
     justify-content: flex-end;
     font-size: 14px;
 }
 
-#rating-1 {
+.card-body #rating-1 {
     margin-right: 5%;
 }
 
@@ -231,4 +247,95 @@ aside-2 {
     justify-content: flex-end;
     font-size: 16px;
     margin-top: 5%;
+}
+
+
+#section-content {
+    display: flex;
+    justify-content: center;
+}
+
+#section-category {
+    margin-top: 5%;
+}
+
+#section-item {
+    display: flex;
+}
+
+#section-item-sub-1 {
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+#section-item-sub-1 .card {
+    border: 1px solid rgb(219, 219, 219);
+    width: 220px;
+    height: 220px;
+}
+
+#section-item-sub-2 {
+    flex-grow: 1;
+    flex-basis: 0;
+    margin-right: 20%;
+}
+
+#section-item-sub-2 #text {
+    margin-top: 10%;
+}
+
+
+#section-rating #rating {
+    display: flex;
+    margin-top: 3%;
+}
+
+#section-rating #rating-1 {
+    font-size: 20px;
+    margin-top: 2%;
+}
+
+#section-rating #rating-2 {
+    margin-left: 3%;
+}
+
+#section-texteditor {
+    width: 100%;
+    height: 550px;
+    margin-top: 3%;
+    border: 1px solid rgb(219, 219, 219);
+}
+
+#section-date {
+    margin-top: 3%;
+}
+
+#section-button {
+    display: flex;
+    margin-top: 3%;
+    justify-content: end;
+}
+
+.star {
+    position: relative;
+    font-size: 2rem;
+    color: #ddd;
+}
+
+.star input {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.star span {
+    width: 0;
+    position: absolute;
+    left: 0;
+    color: red;
+    overflow: hidden;
+    pointer-events: none;
 }
