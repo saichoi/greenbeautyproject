@@ -1,3 +1,7 @@
+const drawStar = (target) => {
+    document.querySelector(`.star span`).style.width = `${target.value * 10}%`;
+}
+
 $(document).ready(function () {
     $(function () {
         var count0 = count1 = count2 = 0;
