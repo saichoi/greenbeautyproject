@@ -12,7 +12,7 @@
   transition-duration: 0.5s;
 }
 
-.login-con .bi-search{
+.ham-wrap .bi-search{
   font-size:35px;
   line-height: 35px;
   color: #505050;
@@ -86,16 +86,17 @@
   transform: translateY(-10px) rotate(45deg);
 }
 
-
-  /* 햄버거 메뉴 디자인 */
+ /* 햄버거 메뉴 디자인 */
 .ham-con{
-  width: 450px;
-  height: 100%;
+  width: 30%;
+  height: 1000px;
   background-color: #E0E0E0;
-  position: relative;
-  top:0px;
-  left:450px;
+  position: fixed;
+  top:82px;
+  right:-20%;
   color:#505050;
+  z-index: 99;
+  opacity: 0;
 }
 
 .ham-con a{
@@ -188,6 +189,7 @@
   border-radius: 20px;
   text-align: center;
   display: none;
+  padding: 0;
  }
 
  .balloon:after { 
@@ -201,22 +203,17 @@
   left:100px;  
  }
 
- .balloon li{
+.balloon li{
    padding :10px;
- }
+}
 
  .balloon li:hover a{ 
   text-decoration: underline;
  }
 
 
-/***************** 로그인 페이지 스타일 *****************/
-.login-con .card-container.card {
-  max-width: 350px;
-  padding: 40px 40px;
-}
-
-.login-con .btn {
+/***************** 로그인 회원가입 페이지 공통 스타일 *****************/
+.login-con .btn, .join-con .btn {
   font-weight: 700;
   height: 36px;
   -moz-user-select: none;
@@ -226,12 +223,12 @@
 }
 
 
-.login-con .card {
+.login-section .card, .join-section .card {
   background-color: #F7F7F7;
   /* just in case there no content*/
   padding: 20px 25px 30px;
   margin: 0 auto 25px;
-  margin-top: 120px;
+  margin-top: 50px;
   /* shadows and rounded borders */
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
@@ -241,68 +238,7 @@
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
-.profile-img-card {
-  width: 96px;
-  height: 96px;
-  margin: 0 auto 10px;
-  display: block;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
-}
-
-.profile-name-card {
-  font-size: 16px;
-  font-weight: bold;
-  text-align: center;
-  margin: 10px 0 0;
-  min-height: 1em;
-}
-
-.reauth-email {
-  display: block;
-  color: #404040;
-  line-height: 2;
-  margin-bottom: 10px;
-  font-size: 14px;
-  text-align: center;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-.form-signin #inputEmail,
-.form-signin #inputPassword {
-  direction: ltr;
-  height: 44px;
-  font-size: 16px;
-}
-
-.form-signin input[type=email],
-.form-signin input[type=password],
-.form-signin input[type=text],
-.form-signin button {
-  width: 100%;
-  display: block;
-  margin-bottom: 10px;
-  z-index: 1;
-  position: relative;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-.form-signin .form-control:focus {
-  border-color: rgb(104, 145, 162);
-  outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
-}
-
-.login-con .btn.btn-signin {
+.login-con .btn.btn-signin, .join-con .btn.btn-signin{
   /*background-color: #4d90fe; */
   background-color: rgb(104, 145, 162);
   /* background-color: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));*/
@@ -322,8 +258,64 @@
 
 .login-con .btn.btn-signin:hover,
 .login-con .btn.btn-signin:active,
-.login-con .btn.btn-signin:focus {
+.login-con .btn.btn-signin:focus, 
+.join-con .btn.btn-signin:hover,
+.join-con .btn.btn-signin:active,
+.join-con .btn.btn-signin:focus {
   background-color: rgb(12, 97, 33);
+}
+
+/***************** 로그인 페이지 스타일 *****************/
+.login-section{
+	height:600px;
+}
+
+.login-con .card-container.card{
+  max-width: 350px;
+  padding: 40px 40px;
+}
+
+.login-con .reauth-email {
+  display: block;
+  color: #404040;
+  line-height: 2;
+  margin-bottom: 10px;
+  font-size: 14px;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.login-con .form-signin #inputEmail,
+.login-con .form-signin #inputPassword {
+  direction: ltr;
+  height: 44px;
+  font-size: 16px;
+}
+
+.login-con .form-signin input[type=email],
+.login-con .form-signin input[type=password],
+.login-con .form-signin input[type=text],
+.login-con .form-signin button {
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+  z-index: 1;
+  position: relative;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.login-con .form-signin .form-control:focus {
+  border-color: rgb(104, 145, 162);
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
 }
 
 .get-join {
@@ -339,4 +331,178 @@
 .login-person .bi-person-circle{
   font-size: 100px;
   color:  rgb(104, 145, 162);
+}
+
+/***************** 회원가입 및 회원수정 페이지 스타일 *****************/
+.join-section{
+	height:1300px;
+}
+
+.join-con .card-container.card{
+  max-width: 600px;
+  padding: 40px 40px;
+}
+
+.join-con label{
+   width: 30%;
+   font-weight: 700;
+}
+
+.color-con{
+  margin-left: 30%;
+}
+
+.join-value{
+  margin-bottom: 20px;
+}
+
+.join-con h2{
+  width: 100%;
+  height: 100%;
+  /* background-color: pink; */
+  margin: 10px auto 30px;
+  text-align: center;
+}
+
+.checkboxs input{
+  margin-left:4px ;
+}
+
+/* 피부톤 팔레트 디자인*/
+.color-con{
+  width: 295px;
+  height: 200px;
+}
+
+.pallet{
+  width: 295px;
+  height: 100px;
+
+}
+
+.colorBox{
+  width:90px;
+  height:90px;
+  float: left;
+  margin: 1px 1px 0px 0px;
+  cursor: pointer;
+}
+
+.update-btn button{
+  margin: 30px auto 10px;
+}
+
+.join-con .btn-danger{
+  /*background-color: #4d90fe; */
+  /* background-color: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));*/
+  padding: 0px;
+  font-weight: 700;
+  font-size: 14px;
+  height: 36px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  border: none;
+  -o-transition: all 0.218s;
+  -moz-transition: all 0.218s;
+  -webkit-transition: all 0.218s;
+  transition: all 0.218s;
+}
+
+
+/***************** 마이페이지 스타일 *****************/
+
+/* 회원정보 컨테이너  */
+.userinfo-container{
+  width: 100%;
+  height: 400px;
+  /* background-color: salmon; */
+}
+
+.userinfo-con{
+  width: 50%;
+  height: 250px;
+  /* background-color: lightblue; */
+}
+
+.left-info-con{
+  width: 40%;
+  height: 100%;
+  /* background-color: gold; */
+}
+
+.left-info-con .bi-person-circle{
+  font-size: 180px;
+  line-height: 250px;
+  text-align: center;
+  color: rgb(119, 119, 119);
+}
+
+.right-info-con{
+  width: 76%;
+  height: 100%;
+  /* background-color: olive; */
+  padding-top: 80px;
+}
+
+.nickname-box{
+  width: 100%;
+  height: 40px;
+  /* background-color: orange; */
+}
+
+.nickname-box h3{
+  /* background-color: green; */
+  line-height: 40px;
+  margin-right: 10px;
+}
+
+.bi-gear-fill{
+  font-size: 20px;
+  line-height: 40px;
+}
+
+.cnt-box li{
+  width: 150px;
+  height: 30px;
+  font-size: 20px;
+  text-align: center;
+  line-height: 30px;
+  /* background-color: firebrick; */
+  color: rgb(119, 119, 119);
+}
+
+/* 탭 디자인 */
+.bi-person-fill, .bi-pencil-fill, .bi-heart-fill{
+  color: rgb(119, 119, 119);
+  font-size: 30px;
+  line-height: 30px;
+}
+
+/* 리뷰리스트 디자인 */
+.tab-pane{
+  padding-top: 100px;
+}
+
+.card-left{
+  width: 70%;
+  height: 100%;
+}
+
+.card-right{
+  width: 30%;
+  height:100%;
+  /* background-color: salmon; */
+}
+
+.pagination a{
+  color: #505050;
+}
+
+.col-md-4{
+  border-right: 1px solid rgb(219, 219, 219);
+}
+
+.tab-content{
+  margin-bottom: 100px;
 }
