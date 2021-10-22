@@ -134,7 +134,7 @@ $(document).ready(function () {
         + "</div>";
     }
     //파레트 파싱
-    document.getElementById("palletBox").innerHTML = tag;
+    $("#palletBox").append(tag);
 
     //색상 입히기
     var colorBox = document.getElementsByClassName("colorBox");

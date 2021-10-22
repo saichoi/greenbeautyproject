@@ -12,7 +12,7 @@
   transition-duration: 0.5s;
 }
 
-.ham-wrap .bi-search{
+.ham-con .bi-search{
   font-size:35px;
   line-height: 35px;
   color: #505050;
@@ -506,3 +506,161 @@
 .tab-content{
   margin-bottom: 100px;
 }
+
+
+/***************** 제품 상세보기 스타일 *****************/
+.item-detail-section{
+  width: 100%;
+  height: auto;
+  /* background-color: orange; */
+}
+
+.item-con{
+  width: 100%;
+  /* background-color: olive; */
+  height: 600px;
+}
+
+
+.detail-route{
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  font-size: 18px;
+  /* background-color: cadetblue; */
+}
+
+.detail-con{
+  width: 100%;
+  height: 400px;
+  /* background-color: pink; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.detail-left{
+  width: 45%;
+  height: 400px;
+  overflow: hidden;
+  /* background-color: purple; */
+} 
+
+.detail-left img{
+  width: 100%;
+  height: 400px;
+}
+
+.detail-right{
+  width: 50%;
+  height: 400px;
+  /* background-color: #dfdf36; */
+}
+
+.detail-brand-name{
+  width: 100%;
+  height: 50px;
+  /* background-color: cornflowerblue; */
+  font-size: 20px;
+  line-height: 50px;
+}
+
+.detail-item-name{
+  width: 100%;
+  height: 70px;
+  /* background-color: cyan; */
+}
+
+.detail-price{
+  width: 80%;
+  height: 50px;
+  font-size: 19px;
+  text-align: right;
+  line-height: 50px;
+  /* background-color: yellowgreen; */
+}
+
+.item-content{
+  width: 100%;
+  height: 150px;
+  /* background-color: darkkhaki; */
+}
+
+.button-con{
+  width: 40%;
+  height: 60px;
+  /* background-color: #dfdf36; */
+  margin-left:60%;
+}
+
+.button-con .bi-hand-thumbs-up{
+  font-size: 20px;
+  line-height: 20px;
+  /* background-color: chocolate; */
+}
+
+.related-con{
+  height: 1000px;
+  /* background-color: salmon; */
+}
+
+.related-con h2{
+  width:100%;
+  height: 100%;
+  display: inline-block;
+  position: relative;
+  /* background-color: #dfdf36; */
+  color: #000;
+}
+
+.related-con h2:after{
+  width: 80%;
+  height: 2px;
+  display: block;
+  content: "";
+  position: absolute;
+  top: 20px;
+  right :0%;
+  background: #000;
+}
+
+.related-list{
+  width: 50%;
+  height: auto;
+  /* background-color: cyan; */
+}
+
+/* 만족도  디자인*/
+.item-detail-section .rating {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 14px;
+}
+
+.item-detail-section .rating-box{
+  margin-left: 3%;
+}
+
+.star {
+  position: relative;
+  font-size: 1rem;
+  color: #ddd;
+}
+
+.star input {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.star span {
+  width: 0;
+  position: absolute;
+  left: 0;
+  color: crimson;
+  overflow: hidden;
+  pointer-events: none;
+}
+
