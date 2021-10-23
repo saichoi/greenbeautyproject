@@ -22,8 +22,7 @@
                         <div class="rating-box">
                             <span class="star">
                                 ★★★★★
-                                <span style="width:70%;">★★★★★</span>
-                                <p>(62건)</p>
+                                <span style="width:70%;">★★★★★</span> (62건)
                                 <input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
                             </span>
                         </div>
