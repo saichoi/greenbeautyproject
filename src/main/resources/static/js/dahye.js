@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-  // 햄버거 버튼 클릭 이벤트 
+ // 햄버거 버튼 클릭 이벤트 
   var burger = $('.menu-trigger');
 
   burger.each(function (index) {
@@ -12,7 +12,7 @@ $(document).ready(function () {
     })
   });
 
- var h = 0;
+  var h = 0;
 
   $(burger).on("click", function () {
     if (h == 0) {
@@ -31,39 +31,29 @@ $(document).ready(function () {
       h--;
     }
     $(window).scroll(function(){
-      $('.ham-con').css({
-        opacity: 0,
-        right :'-20%'
-      }, 500);
-      $(burger).removeClass('active-1');
-      h=0;
+      sct = $(window).scrollTop();
+      if(sct>30){
+        $('.ham-con').css({
+          opacity: 0,
+          right :'-20%'
+        }, 500);
+        $(burger).removeClass('active-1');
+        h=0;
+      }
     });
   })
 
   // 햄버거 메뉴 내부 - 상위 메뉴 클릭 시 하위메뉴 슬라이드 다운하게 만들기
-  var j = 0;
-  $('.ham-clicktoggle').each(function (index) {
-    $(this).attr('data-index', index)
-  }).click(function () {
-    var index = $(this).attr('data-index');
-    if (j == 0) {
-      $('.ham-menu i').eq(index).removeClass('.ham-menu bi-caret-down-fill');
-      $('.ham-menu i').eq(index).addClass('.ham-menu bi-caret-up-fill');
-      $('.ham-top-menu').eq(index).animate({
-        height: '300px',
-      });
-      $('.ham-sub-menu').eq(index).slideDown(100);
-      j++;
-    } else if (j == 1) {
-      $('.ham-menu i').eq(index).removeClass('.ham-menu bi-caret-up-fill');
-      $('.ham-menu i').eq(index).addClass('.ham-menu bi-caret-down-fill');
-      $('.ham-top-menu').eq(index).animate({
-        height: 50,
-      });
-      $('.ham-sub-menu').eq(index).slideUp(100);
+  $(".ham-menu ul.ham-top-menu li").each(function (index) {
+    $(this).attr('data-index', index);
+  });
+  $(".ham-menu ul.ham-sub-menu").hide();
+  $(".ham-menu ul.ham-top-menu li").click(function () {
+    var index = $(this).attr('data-index', index);
 
-      j--;
-    }
+      $("ul", this).slideToggle("fast");
+      $("i",$(this)).toggleClass("bi-caret-down-fill bi-caret-up-fill");
+      
   });
 
 // 말풍선 이벤트
@@ -122,7 +112,7 @@ $(document).ready(function () {
   //회원가입 피부톤 팔레트
 
   function init() {
-    //2차원 배열 파레트 데이터
+	
     var pallet = ["#f3e077", "#dfc899", "#d8b17e", "#cca77b", "#bd9c8d"];
     var palletText = ['매우밝은', '밝은<br>(21호)', '중간밝은<br>(22호)', '차분한<br>(23호)', '매우차분한'];
     var tag = "";
@@ -133,6 +123,7 @@ $(document).ready(function () {
         + palletText[i]
         + "</div>";
     }
+    
     //파레트 파싱
     $("#palletBox").append(tag);
 

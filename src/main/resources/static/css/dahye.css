@@ -13,8 +13,10 @@
 }
 
 .ham-con .bi-search{
-  font-size:35px;
+  width:50px;
+  font-size:25px;
   line-height: 35px;
+  text-align:center;
   color: #505050;
   background-color: whitesmoke;
   padding: 5px;
@@ -86,7 +88,7 @@
   transform: translateY(-10px) rotate(45deg);
 }
 
- /* 햄버거 메뉴 디자인 */
+  /* 햄버거 메뉴 디자인 */
 .ham-con{
   width: 30%;
   height: 1000px;
@@ -119,51 +121,47 @@
   line-height: 50px;
 }
 
-#ham-menu-wrap{
-  width:100%;
-  height: 100%;
-  margin: 50px auto;
-  position: relative;
-}
-
-.ham-top-menu{
-  background-color: #fff;
-}
-
-.ham-con li{
+.ham-menu ul {
   width: 100%;
-  height: 50px;
-  margin: 0 auto;
+  margin: 0;
+  padding: 0;
 }
 
-.ham-con a:hover{
-  color: rgb(119, 119, 119);
+.ham-menu ul.ham-top-menu li {
+  position: relative;
+  float: left;
+  width: 100%;
+  list-style-type: none;
+  font-size: 18px;
+}
+
+.ham-menu ul.ham-top-menu li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  line-height: 50px;
+  text-indent: 20px;
+  color: #000;
+  background-color: #fff;
   text-decoration: none;
-} 
-
-
-.ham-top-menu{
-    width: 100%;
-    height: 50px;
-    position: relative;
-    line-height: 50px;
-    font-size: 22px;
-    text-align: center;
 }
 
-.ham-sub-menu{
-    width: 80%;
-    height: auto;
-    margin: 0 auto;
-    display: none;
-    font-size: 18px;
-    text-align: left;
+.ham-menu ul.ham-top-menu li a:hover {
+  background: #eee;
 }
 
-.ham-sub-menu li {
-    width: 100%;
-    height: 60px;
-    line-height: 60px;
+.ham-menu ul.ham-top-menu li .ham-sub-menu a {
+  position: relative;
+  float: left;
+  display: block;
+  width: 100%;
+  z-index: 99;
+  background: #F7F7F7;
+}
+
+.ham-menu ul.ham-top-menu li .ham-sub-menu a:hover {
+  background: #444;
+  color: #fff;
 }
 
 /* 말풍선 디자인 */
