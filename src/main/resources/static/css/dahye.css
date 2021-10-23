@@ -1,5 +1,10 @@
 /***************** 헤더 스타일 *****************/
 /* 헤더 아이콘 스타일 */
+.header{
+	height:70px;
+	border-bottom:1px solid rgb(222, 226, 230);
+}
+
 .bi-heart-fill{
   font-size: 25px;
   line-height: 25px;
@@ -20,6 +25,13 @@
   color: #505050;
   background-color: whitesmoke;
   padding: 5px;
+  border:1px solid #444;
+  border-left:0px;
+  
+}
+
+.ham-con .bi-caret-up-fill, .ham-con .bi-caret-down-fill{
+	color:#444;
 }
 
 /* 햄버거 버튼  스타일*/
@@ -94,7 +106,7 @@
   height: 1000px;
   background-color: #E0E0E0;
   position: fixed;
-  top:82px;
+  top:70px;
   right:-20%;
   color:#505050;
   z-index: 99;
@@ -525,6 +537,7 @@
   height: 50px;
   line-height: 50px;
   font-size: 18px;
+  color:#444;
   /* background-color: cadetblue; */
 }
 
@@ -584,10 +597,15 @@
 }
 
 .button-con{
-  width: 40%;
-  height: 60px;
+  width: 100%;
+  height: 40px;
   /* background-color: #dfdf36; */
-  margin-left:60%;
+  display:flex;
+  justify-content: flex-end; 
+}
+
+.button-con button{
+	margin: 0 5px;
 }
 
 .button-con .bi-hand-thumbs-up{
@@ -607,18 +625,18 @@
   display: inline-block;
   position: relative;
   /* background-color: #dfdf36; */
-  color: #000;
+  color: #444;
 }
 
 .related-con h2:after{
-  width: 80%;
+  width: 85%;
   height: 2px;
   display: block;
   content: "";
   position: absolute;
   top: 20px;
   right :0%;
-  background: #000;
+  background: #444;
 }
 
 .related-list{
@@ -638,13 +656,14 @@
   margin-left: 3%;
 }
 
-.star {
+.rating {
+  width:30%;
   position: relative;
   font-size: 1rem;
-  color: #ddd;
+  color: #444;
 }
 
-.star input {
+.rating input {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -653,7 +672,7 @@
   cursor: pointer;
 }
 
-.star span {
+.rating span {
   width: 0;
   position: absolute;
   left: 0;

@@ -23,13 +23,12 @@
 	rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<body style="max-width: 80%; height: auto; margin: 0 auto;">
-
+<body>
 
 <!-- 헤더 시작 -->
 <header>
     <!-- 네브바 시작 -->
-    <nav class="header navbar navbar-expand-lg navbar-light bg-light d-flex">
+    <nav class="header navbar navbar-expand-lg navbar-light d-flex">
 
         <!-- 왼쪽 메뉴 -->
 

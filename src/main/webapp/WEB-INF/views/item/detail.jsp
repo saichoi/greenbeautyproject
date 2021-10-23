@@ -6,7 +6,7 @@
     <div class="item-con container">
         <p class="detail-route">
             <i class="bi bi-house-door-fill"></i>
-            &gt;카테고리
+            &gt; 카테고리
         </p>
         <div class="detail-con">
             <div class="detail-left  card shadow">
@@ -20,9 +20,8 @@
                     </div>
                     <div class="rating-con">
                         <div class="rating-box">
-                            <span class="star">
-                                ★★★★★
-                                <span style="width:70%;">★★★★★</span> (62건)
+                            <span class="rating">
+                                <span style="width:70%;">★★★★★</span> 5.0점 (62건)
                                 <input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
                             </span>
                         </div>

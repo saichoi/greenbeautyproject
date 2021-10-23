@@ -17,7 +17,7 @@ $(document).ready(function () {
   $(burger).on("click", function () {
     if (h == 0) {
       $('.ham-con').animate({
-        right:'10%',
+        right:'0',
         opacity: 1
       }, 500);
       $(this).addClass('active-1');
