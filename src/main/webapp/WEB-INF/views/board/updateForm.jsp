@@ -18,11 +18,11 @@
     <script src="/js/dayeon.js"></script>
 </head>
 
-<body style="max-width:80%; margin:0 auto;">
+<body>
     <!-- 헤더자리 -->
 <%@ include file="../layout/header.jsp"%> 
 
-    <div id="section-content">
+    <div id="section-content" style="max-width:80%; margin:0 auto;">
         <section style="max-width: 60%;">
             <div id="section-category">
                 <p id="category"><small class="text-muted">
@@ -68,9 +68,9 @@
                 </div>
             </div>
             
-            <div id="section-texteditor">
-                텍스트에디터자리
-            </div>
+           	<div id="section-texteditor">
+				<textarea id="summernote" class="form-control" name="content"></textarea>
+			</div>
 
             <div id="section-date">
                 2021.10.09
@@ -82,8 +82,8 @@
                     <button type="button" class="btn btn-primary">수정</button>
                 </div>
             </div>
-    </div>
     </section>
+    </div>
 
 <%@ include file="../layout/footer.jsp"%>
 </body>
