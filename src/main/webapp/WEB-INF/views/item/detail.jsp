@@ -46,7 +46,7 @@
             <h2>Related</h2>
         </div>
         <!-- 연관리스트 컨테이너 시작 -->
-        <div class="related-list container mt-5">
+        <div class="related-list container mt-5 w-75">
 
             <div class="card mb-3 shadow">
                 <div class="row g-0">
