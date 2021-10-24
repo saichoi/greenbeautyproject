@@ -9,9 +9,9 @@
             <div class="login-person d-flex justify-content-center"><i class="bi bi-person-circle"></i></div>
             <form class="form-signin">
                 <span id="reauth-email" class="reauth-email"></span>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required
+                <input type="email" id="inputEmail" class="form-control" placeholder="이메일 주소" required
                     autofocus>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <input type="password" id="inputPassword" class="form-control" placeholder="비밀번호" required>
                 <div id="remember" class="checkbox">
                     <label>
                         <input type="checkbox" value="remember-me"> 아이디 저장

@@ -14,7 +14,7 @@
 
                 <div class="join-value">
                     <label for="password">비밀번호</label>
-                    <input type="password" id="password"  class="form-control" size="30" >
+                    <input placeholder="비밀번호를 입력하세요" type="password" id="password"  class="form-control" size="30" >
                 </div>
 
                 <div class="join-value">
@@ -29,7 +29,7 @@
 
                 <div class="join-value">
                     <label for="email">이메일</label>
-                    <input required type="email" id="email"  class="form-control" size="30" > <!-- required 필수로 입력 -->
+                    <input placeholder="이메일을 입력하세요" required type="email" id="email"  class="form-control" size="30" > <!-- required 필수로 입력 -->
                 </div>
 
                 <div class="join-value">

@@ -1,10 +1,44 @@
+/*
+컬러1 : #444 / rgb(86,86,86) 글자색, 버튼 호버색 
+컬러2 : #777 / rgb(119, 119, 119) 박스색, 이모티콘 색  
+컬러3 : #eee /rgb(238, 238, 238) 메뉴 호버색
+컬러4 : #dee2e6 / rgb(222, 226, 230) 라인색
+컬러5 : #f7f7f7 / rgb(247, 247, 247) 서브메뉴 색 
+*/
+
+.bg-444{
+	background-color:#444;	
+}
+.bg-777{
+	background-color:#777;	
+}
+.bg-eee{
+	background-color:#eee;	
+}
+.bg-dee{
+	background-color:#dee;	
+}
+
+.ft-444{
+	color:#444;	
+}
+.ft-777{
+	color:#777;	
+}
+.ft-eee{
+	color:#eee;	
+}
+.ft-dee{
+	color:#dee;	
+}
+
 /***************** 헤더 스타일 *****************/
-/* 헤더 아이콘 스타일 */
 .header{
 	height:70px;
 	border-bottom:1px solid rgb(222, 226, 230);
 }
 
+/* 헤더 아이콘 스타일 */
 .bi-heart-fill{
   font-size: 25px;
   line-height: 25px;
@@ -17,12 +51,16 @@
   transition-duration: 0.5s;
 }
 
+.bi-person-fill:hover, .bi-heart-fill:hover{
+	color:#444;
+}
+
 .ham-con .bi-search{
   width:50px;
   font-size:25px;
   line-height: 35px;
   text-align:center;
-  color: #505050;
+  color: #777;
   background-color: whitesmoke;
   padding: 5px;
   border:1px solid #444;
@@ -40,15 +78,15 @@
 }
 
 .menu-trigger:hover span:nth-of-type(1) {
-  background-color: #505050;
+  background-color: #444;
 }
 
 .menu-trigger:hover span:nth-of-type(2) {
-  background-color: #505050;
+  background-color: #444;
 }
 
 .menu-trigger:hover span:nth-of-type(3) {
-  background-color: #505050;
+  background-color: #444;
 }
 
 .menu-trigger,
@@ -104,17 +142,13 @@
 .ham-con{
   width: 30%;
   height: 1000px;
-  background-color: #E0E0E0;
+  background-color: rgba(224, 224, 224, 0.8);
   position: fixed;
   top:70px;
   right:-20%;
   color:#505050;
   z-index: 99;
   opacity: 0;
-}
-
-.ham-con a{
-  color: #505050;
 }
 
 .search-con{
@@ -182,8 +216,8 @@
   height: 100px;
   /* background-color:pink; */
   position:absolute;
-  top:80px;
-  left:75%;
+  top:75px;
+  right:3%;
   z-index: 99;
 }
 
@@ -250,7 +284,8 @@
 
 .login-con .btn.btn-signin, .join-con .btn.btn-signin{
   /*background-color: #4d90fe; */
-  background-color: rgb(104, 145, 162);
+  /* background-color: rgb(104, 145, 162); */
+  background-color: #777;
   /* background-color: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));*/
   padding: 0px;
   font-weight: 700;
@@ -272,11 +307,20 @@
 .join-con .btn.btn-signin:hover,
 .join-con .btn.btn-signin:active,
 .join-con .btn.btn-signin:focus {
-  background-color: rgb(12, 97, 33);
+  background-color: #444;
 }
+
+.login-con .form-signin .form-control:focus, .join-con .form-signin .form-control:focus {
+  border-color: #777;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(119,119,119,.075),0 0 8px rgb(86, 86, 86);
+  box-shadow: inset 0 1px 1px rgba(119,119,119,.075),0 0 8px rgb(86, 86 86);
+}
+
 
 /***************** 로그인 페이지 스타일 *****************/
 .login-section{
+	margin-top:100px;
 	height:600px;
 }
 
@@ -321,36 +365,32 @@
   box-sizing: border-box;
 }
 
-.login-con .form-signin .form-control:focus {
-  border-color: rgb(104, 145, 162);
-  outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
-}
 
 .get-join {
-  color: rgb(104, 145, 162);
+  color: #777;
 }
 
 .get-join:hover,
 .get-join:active,
 .get-join:focus{
-  color: rgb(12, 97, 33);
+  color: #444;
 }
 
 .login-person .bi-person-circle{
   font-size: 100px;
-  color:  rgb(104, 145, 162);
+  color:  #444;
 }
 
 /***************** 회원가입 및 회원수정 페이지 스타일 *****************/
 .join-section{
+	margin-top:100px;
 	height:1300px;
 }
 
 .join-con .card-container.card{
-  max-width: 600px;
+  max-width: 700px;
   padding: 40px 40px;
+  margin: 0 auto;
 }
 
 .join-con label{

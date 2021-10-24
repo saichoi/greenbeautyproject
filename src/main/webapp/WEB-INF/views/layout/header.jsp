@@ -35,7 +35,7 @@
         <div class="left-nav d-flex flex-row p2">
             <div class="logo p-2">
                 <a class="navbar-brand" href="/test/board">
-                    화장품을 분석하다
+               		뷰티모아
                 </a>
             </div>
 
@@ -97,20 +97,20 @@
                     <ul class="ham-top-menu">
                         <li><a href="#">리뷰보기<i class="bi bi-caret-down-fill"></i></a>
                             <ul class="ham-sub-menu">
-                                <li><a href="#">스킨케어</a></li>
-                                <li><a href="#">클렌징</a></li>
-                                <li><a href="#">선케어</a></li>
-                                <li><a href="#">메이크업</a></li>
+                                <li><a href="/test/board">스킨케어</a></li>
+                                <li><a href="/test/board">클렌징</a></li>
+                                <li><a href="/test/board">선케어</a></li>
+                                <li><a href="/test/board">메이크업</a></li>
                             </ul>
                         </li>
                     </ul>
                     <ul class="ham-top-menu">
                         <li><a href="#">제품보기<i class="bi bi-caret-down-fill"></i></a>
                             <ul class="ham-sub-menu">
-                                <li><a href="#">스킨케어</a></li>
-                                <li><a href="#">클렌징</a></li>
-                                <li><a href="#">선케어</a></li>
-                                <li><a href="#">메이크업</a></li>
+                                <li><a href="/test/item/list">스킨케어</a></li>
+                                <li><a href="/test/item/list">클렌징</a></li>
+                                <li><a href="/test/item/list">선케어</a></li>
+                                <li><a href="/test/item/list">메이크업</a></li>
                             </ul>
                         </li>
                     </ul>
