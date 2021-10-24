@@ -18,14 +18,14 @@
      <script src="/js/dayeon.js"></script>
 </head>
 
-<body style="max-width:80%; margin:0 auto;">
+<body>
     <!-- 헤더자리 -->
    	<%@ include file="../layout/header.jsp"%>
 
     <!-- 메인자리 -->
     <main>
         <!-- 케러셀자리 -->
-        <div id="carouselExampleIndicators" class="carousel carousel-dark slide carousel-fade" data-bs-ride="carousel">
+        <div id="carouselExampleIndicators" class="carousel carousel slide carousel-fade" data-bs-ride="carousel" style="overflow: hidden; z-index: -9">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
                     aria-current="true" aria-label="Slide 1"></button>
@@ -36,13 +36,13 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="..." class="d-block w-100" alt="">First
+                    <img src="/image/item1.jpg" class="d-block w-100" alt="">
                 </div>
                 <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="">Second
+                    <img src="/image/item2.jpg" class="d-block w-100" alt="">
                 </div>
                 <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="">Third
+                    <img src="/image/item3.jpg" class="d-block w-100" alt="">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
@@ -58,6 +58,7 @@
         </div>
     </main>
 
+	<body-2 style="max-width:90%; margin:0 auto;">
     <aside-1>
         <!-- 서브메뉴자리 -->
         <div id="main_menu">
@@ -118,7 +119,7 @@
     <section>
         <!-- 검색창자리 -->
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search">
+            <input type="text" class="form-control" placeholder="Search" style="height: 100%">
             <div class="input-group-append">
                 <button class="btn btn-secondary" type="button" >
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
@@ -586,6 +587,7 @@
         </a>
     </aside-2>
 
+	</body-2>
 	<%@ include file="../layout/footer.jsp"%>
 </body>
 

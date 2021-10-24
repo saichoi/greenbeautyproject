@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="/css/reset.css" type="text/css" rel="stylesheet">
 <link href="/css/dayeon.css" type="text/css" rel="stylesheet">
-<link
+<!-- <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
@@ -19,17 +19,15 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-	crossorigin="anonymous"></script>
+	crossorigin="anonymous"></script> -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="/js/dayeon.js"></script>
-</head>
-
-<body style="max-width: 80%; margin: 0 auto;">
+<body>
 	<!-- 헤더자리 -->
 	<%@ include file="../layout/header.jsp"%>
 
-	<div id="section-content">
+	<div id="section-content" style="max-width: 80%; margin: 0 auto;">
 		<section style="max-width: 60%;">
 			<div id="section-category">
 				<p id="category">
@@ -77,7 +75,9 @@
 				</div>
 			</div>
 
-			<div id="section-texteditor">텍스트에디터자리</div>
+			<div id="section-texteditor">
+				<textarea id="summernote" class="form-control" name="content"></textarea>
+			</div>
 
 			<div id="section-date">2021.10.09</div>
 
@@ -87,8 +87,8 @@
 					<button type="button" class="btn btn-primary">등록</button>
 				</div>
 			</div>
+		</section>
 	</div>
-	</section>
 
 	<%@ include file="../layout/footer.jsp"%>
 </body>

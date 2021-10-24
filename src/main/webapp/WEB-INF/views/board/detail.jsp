@@ -18,11 +18,11 @@
     <script src="/js/dayeon.js"></script>
 </head>
 
-<body style="max-width:80%; margin:0 auto;">
+<body>
     <!-- 헤더자리 -->
    <%@ include file="../layout/header.jsp"%>
 
-    <div id="section-content">
+    <div id="section-content" style="max-width:80%; margin:0 auto;">
         <section style="max-width: 60%;">
             <div id="section-category">
                 <p id="category"><small class="text-muted">
@@ -109,9 +109,8 @@
                     </li>
                 </ul>
             </div>
-    </div>
-    </div>
     </section>
+    </div>
 
   <%@ include file="../layout/footer.jsp"%>
 </body>

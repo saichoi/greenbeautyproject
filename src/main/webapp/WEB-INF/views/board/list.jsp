@@ -26,7 +26,7 @@
 
 </head>
 
-<body style="max-width:80%; margin:0 auto;">
+<body>
 	<!-- 헤더자리 -->
 <%@ include file="../layout/header.jsp"%> 
 
@@ -37,14 +37,7 @@
 			<div id="ci1">
 				<!-- 아이콘 -->
 				<div id="i1">
-					<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150"
-						fill="currentColor" class="bi bi-pencil-square shadow"
-						viewBox="0 0 16 16">
-                        <path
-							d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                        <path fill-rule="evenodd"
-							d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-                    </svg>
+					<img src="/image/review.png"  style="width: 60%; height: 100%">
 				</div>
 				<!-- 텍스트 -->
 				<div id="ct1">
@@ -56,12 +49,7 @@
 			<div id="ci2">
 				<!-- 아이콘 -->
 				<div id="i2">
-					<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150"
-						fill="currentColor" class="bi bi-bucket shadow"
-						viewBox="0 0 16 16">
-                        <path
-							d="M2.522 5H2a.5.5 0 0 0-.494.574l1.372 9.149A1.5 1.5 0 0 0 4.36 16h7.278a1.5 1.5 0 0 0 1.483-1.277l1.373-9.149A.5.5 0 0 0 14 5h-.522A5.5 5.5 0 0 0 2.522 5zm1.005 0a4.5 4.5 0 0 1 8.945 0H3.527zm9.892 1-1.286 8.574a.5.5 0 0 1-.494.426H4.36a.5.5 0 0 1-.494-.426L2.58 6h10.838z" />
-                    </svg>
+					<img src="/image/item.png"  style="width: 60%; height: 100%">
 				</div>
 				<!-- 텍스트 -->
 				<div id="ct2">
@@ -73,14 +61,7 @@
 			<div id="ci3">
 				<!-- 아이콘 -->
 				<div id="i3">
-					<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150"
-						fill="currentColor" class="bi bi-building shadow"
-						viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-							d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022zM6 8.694 1 10.36V15h5V8.694zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5V15z" />
-                        <path
-							d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z" />
-                    </svg>
+					<img src="/image/brand.png"  style="width: 60%; height: 100%">
 				</div>
 				<!-- 텍스트 -->
 				<div id="ct3">
@@ -92,6 +73,7 @@
 		</div>
 	</main>
 
+	<body-2 style="max-width:90%; margin:0 auto;">
 	<aside-1> <!-- 서브메뉴자리 -->
 	<div id="main_menu">
 		<div id="menu1">
@@ -191,7 +173,7 @@
 	<section>
 		<!-- 검색창자리 -->
 		<div class="input-group">
-			<input type="text" class="form-control" placeholder="Search">
+			<input type="text" class="form-control" placeholder="Search" style="height: 100%">
 			<div class="input-group-append">
 				<button class="btn btn-secondary" type="button">
 					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -229,7 +211,7 @@
 							</div>
 						</div>
 						<button id="search-container-sub2" type="submit"
-							class="btn btn-secondary">검색</button>
+							class="btn btn-secondary" style="margin-bottom: 2%; margin-top: 3%">검색</button>
 					</form>
 					</p>
 				</div>
@@ -373,8 +355,9 @@
 			</nav>
 		</div>
 	</section>
-
+	
 	<aside-2> </aside-2>
+	</body-2>
 
 	<%@ include file="../layout/footer.jsp"%>
 </body>
