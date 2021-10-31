@@ -1,6 +1,6 @@
 package com.cos.greenproject.domian.brand;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,11 +38,11 @@ public class Brand {
 	private String content;
 
 	// 등록일
-	private LocalDateTime regiDate;
+	private LocalDate regiDate;
 
 	@PrePersist
 	public void regiDate() {
-		this.regiDate = LocalDateTime.now();
+		this.regiDate = LocalDate.now();
 	}
 
 	// 제품수 (Item 테이블에서 셀렉트 mBrandItemCnt())

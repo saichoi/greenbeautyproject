@@ -74,8 +74,9 @@ public class User {
 	private int likeCnt;
 	
 	// 위시리스트 
-	@JoinColumn(name = "itemId")
-	@OneToMany
+	@JsonIgnoreProperties({"user"})
+	@OneToMany(mappedBy =  "user", fetch = FetchType.LAZY)
+	@OrderBy("id desc")
 	private List<Item> wishList;
 	
 	// 좋아요 리스트(리뷰)

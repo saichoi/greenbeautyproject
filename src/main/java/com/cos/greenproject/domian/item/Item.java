@@ -1,7 +1,6 @@
 package com.cos.greenproject.domian.item;
 
-import java.time.LocalDateTime;
-import java.util.List;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +16,7 @@ import javax.persistence.Table;
 
 import com.cos.greenproject.domian.brand.Brand;
 import com.cos.greenproject.domian.category.Category;
+import com.cos.greenproject.domian.user.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -48,11 +48,11 @@ public class Item {
 	private String image;
 
 	// 등록일
-	private LocalDateTime regiDate;
+	private LocalDate regiDate;
 
 	@PrePersist
 	public void regiDate() {
-		this.regiDate = LocalDateTime.now();
+		this.regiDate = LocalDate.now();
 	}
 
 	// 리뷰수 (Board 테이블에서 셀렉트  mItemReviewCnt())
@@ -74,5 +74,10 @@ public class Item {
 	@JoinColumn(name = "brandId")
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Brand brand;
+	
+	// 위시리스트에 추가한 사용자 정보
+	@JoinColumn(name = "userId")
+	@ManyToOne
+	private User user;
 	
 }

@@ -1,6 +1,6 @@
 package com.cos.greenproject.domian.board;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -55,11 +55,11 @@ public class Board {
 	private String image;
 	
 	// 작성일
-	private LocalDateTime createdAt;
+	private LocalDate createdAt;
 	
 	@PrePersist 
 	public void createdAt() {
-		this.createdAt = LocalDateTime.now();
+		this.createdAt = LocalDate.now();
 	}
 
 	// 만족도
