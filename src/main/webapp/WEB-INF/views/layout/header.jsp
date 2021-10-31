@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+ 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/css/reset.css" type="text/css" rel="stylesheet">
 
 <!-- Stylesheet -->
 <link href="/css/reset.css" type="text/css" rel="stylesheet">
@@ -21,21 +20,16 @@
 
 <!-- BootStrap -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
-	rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-<link
-	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"
-	rel="stylesheet">
-<script
-	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<!-- SummerNote -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
 <body>
 
 <!-- 헤더 시작 -->
@@ -68,12 +62,12 @@
         <div class="right-nav ml-auto p-2">
             <ul class="navbar-nav">
                 <li class="nav-item mr-3">
-                    <a class="nav-link" href="/test/user/mypage">
+                    <a class="nav-link" href="/test/user/mypage?key=wishlist">
                         <i class="bi bi-heart-fill"></i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/test/user/mypage">
+                    <a class="nav-link" href="/test/user/mypage?key=userinfo">
                         <i class="bi bi-person-fill"></i>
                     </a>
                 </li>
@@ -142,7 +136,7 @@
             <!-- 로그인 후 말풍선 -->
             <!-- <ul class="balloon">
             <li><a href="/logout">로그아웃</a></li>
-            <li><a href="/test/user/mypage">마이페이지</a></li>
+            <li><a href="/test/user/mypage?key=userinfo">마이페이지</a></li>
             <li><a href="/test/board/saveForm">리뷰쓰기</a></li>
         </ul> -->
         </div>

@@ -507,9 +507,13 @@
   margin-right: 10px;
 }
 
-.bi-gear-fill{
+.nickname-box .bi-gear-fill{
   font-size: 20px;
   line-height: 40px;
+}
+
+.nickname-box a:hover{
+	color:#777;
 }
 
 .cnt-box li{
