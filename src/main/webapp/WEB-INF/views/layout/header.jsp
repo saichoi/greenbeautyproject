@@ -41,7 +41,7 @@
 
         <div class="left-nav d-flex flex-row p2">
             <div class="logo p-2">
-                <a class="navbar-brand" href="/test/board">
+                <a class="navbar-brand" href="/board">
                		뷰티모아
                 </a>
             </div>
@@ -49,10 +49,10 @@
             <div class="collapse navbar-collapse p-2" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/test/board">리뷰보기</a>
+                        <a class="nav-link" href="/board">리뷰보기</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/test/item/list">제품보기</a>
+                        <a class="nav-link" href="/item/list">제품보기</a>
                     </li>
                 </ul>
             </div>
@@ -62,12 +62,12 @@
         <div class="right-nav ml-auto p-2">
             <ul class="navbar-nav">
                 <li class="nav-item mr-3">
-                    <a class="nav-link" href="/test/user/mypage?key=wishlist">
+                    <a class="nav-link" href="/api/user/{userId}/mypage?key=wishlist">
                         <i class="bi bi-heart-fill"></i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/test/user/mypage?key=userinfo">
+                    <a class="nav-link" href="/api/user/{userId}/mypage?key=userinfo">
                         <i class="bi bi-person-fill"></i>
                     </a>
                 </li>
@@ -104,20 +104,20 @@
                     <ul class="ham-top-menu">
                         <li><a href="#">리뷰보기<i class="bi bi-caret-down-fill"></i></a>
                             <ul class="ham-sub-menu">
-                                <li><a href="/test/board">스킨케어</a></li>
-                                <li><a href="/test/board">클렌징</a></li>
-                                <li><a href="/test/board">선케어</a></li>
-                                <li><a href="/test/board">메이크업</a></li>
+                                <li><a href="/board/1">스킨케어</a></li>
+                                <li><a href="/board/2">클렌징</a></li>
+                                <li><a href="/board/3">선케어</a></li>
+                                <li><a href="/board/4">메이크업</a></li>
                             </ul>
                         </li>
                     </ul>
                     <ul class="ham-top-menu">
                         <li><a href="#">제품보기<i class="bi bi-caret-down-fill"></i></a>
                             <ul class="ham-sub-menu">
-                                <li><a href="/test/item/list">스킨케어</a></li>
-                                <li><a href="/test/item/list">클렌징</a></li>
-                                <li><a href="/test/item/list">선케어</a></li>
-                                <li><a href="/test/item/list">메이크업</a></li>
+                                <li><a href="/item/category/1">스킨케어</a></li>
+                                <li><a href="/item/category/2">클렌징</a></li>
+                                <li><a href="/item/category/3">선케어</a></li>
+                                <li><a href="/item/category/3">메이크업</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -130,14 +130,14 @@
         <!-- 로그인 전 말풍선 -->
         <div id="balloon-wrap">
             <ul class="balloon">
-                <li><a href="/test/loginForm">로그인</a></li>
-                <li><a href="/test/joinForm">회원 가입</a></li>
+                <li><a href="/loginForm">로그인</a></li>
+                <li><a href="/joinForm">회원 가입</a></li>
             </ul>
             <!-- 로그인 후 말풍선 -->
             <!-- <ul class="balloon">
             <li><a href="/logout">로그아웃</a></li>
-            <li><a href="/test/user/mypage?key=userinfo">마이페이지</a></li>
-            <li><a href="/test/board/saveForm">리뷰쓰기</a></li>
+            <li><a href="/api/user/{userId}/mypage?key=userinfo">마이페이지</a></li>
+            <li><a href="/board/saveForm">리뷰쓰기</a></li>
         </ul> -->
         </div>
 
