@@ -62,17 +62,23 @@
                     <input type="checkbox" value="skinWorry">색조
                     <input type="checkbox" value="skinWorry">해당없음
                 </div>
-
+                
                 <div class="join-value">
                     <label>피부톤</label>
                     <div id="palletCon" class="color-con" >
                         <div id="palletBox" class="pallet">
+                        	<div class="colorBox text-center">매우밝은</div>
+                        	<div class="colorBox text-center">밝은<br>(21호)</div>
+                        	<div class="colorBox text-center">중간밝은<br>(22호)</div>
+                        	<div class="colorBox text-center">차분한<br>(23호)</div>
+                        	<div class="colorBox text-center">매우차분한</div>
+                        	<input type="hidden" name="selectedPallet" value="매우밝은">
                         </div>
                       </div>
                 </div>
 
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">회원가입</button>
-                
+
 
             </form>
         </div>

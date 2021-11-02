@@ -109,31 +109,21 @@ $(document).ready(function () {
     }
   }
 
-  //회원가입 피부톤 팔레트
-
-  function init() {
-	
-    var pallet = ["#f3e077", "#dfc899", "#d8b17e", "#cca77b", "#bd9c8d"];
-    var palletText = ['매우밝은', '밝은<br>(21호)', '중간밝은<br>(22호)', '차분한<br>(23호)', '매우차분한'];
-    var tag = "";
-    for (i = 0; i < pallet.length; i++) {
-      tag += "<div id="
-        + pallet[i]
-        + " class='colorBox text-center' style='line-height:40px;' onclick=''>"
-        + palletText[i]
-        + "</div>";
-    }
-    
-    //파레트 파싱
-    $("#palletBox").append(tag);
-
-    //색상 입히기
-    var colorBox = document.getElementsByClassName("colorBox");
-    for (i = 0; i < colorBox.length; i++) {
-      colorBox[i].style.background = colorBox[i].id;
-    }
-  }
-
-  init();
+    //회원가입 피부톤 팔레트
+  	var pallet = ["#f3e077", "#dfc899", "#d8b17e", "#cca77b", "#bd9c8d"];
+  	
+    $(".colorBox").each(function (index) {
+    	$(this).attr('pallet-index', index);
+    	$(this).eq(index).addClass('pallet-action');
+    	$(this).css({
+			backgroundColor:pallet[index]
+		});
+  	}).click(function(){
+	    var index = $(this).attr('pallet-index', index);
+	    $(".colorBox").removeClass('pallet-action');
+		$(this).addClass("pallet-action");
+		var selected = $(this).text();
+		$("input[name=selectedPallet]").val(selected);
+	});
 
 }); // end of document ready
