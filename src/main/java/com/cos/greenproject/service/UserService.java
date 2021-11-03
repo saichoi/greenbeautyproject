@@ -4,8 +4,10 @@ import javax.validation.Valid;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import com.cos.greenproject.domian.user.User;
 import com.cos.greenproject.handler.ex.MyNotFoundException;
 import com.cos.greenproject.web.dto.JoinReqDto;
+import com.cos.greenproject.web.dto.LoginReqDto;
 
 public interface UserService {
 	
@@ -20,7 +22,7 @@ public interface UserService {
 	public void join(@Valid JoinReqDto dto);
 	
 	// 로그인
-	public void login();
+	public User login(LoginReqDto dto);
 	
 	// 내리뷰리스트에 등록
 	public void addReviewList();

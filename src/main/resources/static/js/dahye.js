@@ -126,6 +126,4 @@ $(document).ready(function () {
 		$("input[name=selectedPallet]").val(selected);
 	});
 	
-	//$("input[name='skinType']:checked")
-
 }); // end of document ready

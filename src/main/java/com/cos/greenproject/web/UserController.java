@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.cos.greenproject.domian.user.User;
 import com.cos.greenproject.service.UserService;
 import com.cos.greenproject.util.Script;
 import com.cos.greenproject.web.dto.JoinReqDto;
+import com.cos.greenproject.web.dto.LoginReqDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -39,8 +41,24 @@ public class UserController {
 	
 	// 로그인
 	@PostMapping("/login")
-	public void login() {
-
+	public @ResponseBody String login(@Valid LoginReqDto dto, BindingResult bindingResult) {
+		
+		 // 실패했을 때
+	    if (bindingResult.hasErrors()) {
+	      Map<String, String> errorMap = new HashMap<>();
+	      for (FieldError error : bindingResult.getFieldErrors()) {
+	        errorMap.put(error.getField(), error.getDefaultMessage());
+	      }
+	      return Script.back(errorMap.toString());
+	    }
+	    User userEntity = userService.login(dto);
+	    if (userEntity == null) { 
+	      return Script.back("아이디 혹은 비밀번호를 잘못 입력하였습니다.");
+	    } else {
+	      session.setAttribute("principal", userEntity);
+	      return Script.href("/", "로그인 성공");
+	    }
+	    
 	}
 	
 	// 회원가입

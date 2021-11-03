@@ -3,11 +3,13 @@ package com.cos.greenproject.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.cos.greenproject.domian.user.User;
 import com.cos.greenproject.domian.user.UserRepository;
 import com.cos.greenproject.handler.ex.MyNotFoundException;
 import com.cos.greenproject.util.MyAlgorithm;
 import com.cos.greenproject.util.SHA;
 import com.cos.greenproject.web.dto.JoinReqDto;
+import com.cos.greenproject.web.dto.LoginReqDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -33,8 +35,8 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	// 로그인
-	public void login() {
-		
+	public User login(LoginReqDto dto) {
+		 return userRepository.mLogin(dto.getUsername(), SHA.encrypt(dto.getPassword(), MyAlgorithm.SHA256));
 	}
 	
 	// 내리뷰리스트에 등록

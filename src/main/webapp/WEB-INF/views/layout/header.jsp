@@ -127,18 +127,20 @@
         </div>
         <!-- 햄버거 메뉴 끝 -->
 
-        <!-- 로그인 전 말풍선 -->
         <div id="balloon-wrap">
             <ul class="balloon">
-                <li><a href="/loginForm">로그인</a></li>
-                <li><a href="/joinForm">회원 가입</a></li>
-            </ul>
-            <!-- 로그인 후 말풍선 -->
-            <!-- <ul class="balloon">
-            <li><a href="/logout">로그아웃</a></li>
-            <li><a href="/api/user/{userId}/mypage?key=userinfo">마이페이지</a></li>
-            <li><a href="/board/saveForm">리뷰쓰기</a></li>
-        </ul> -->
+            	<c:choose>
+			        <c:when test="${empty sessionScope.principal}">
+		                <li><a href="/loginForm">로그인</a></li>
+		                <li><a href="/joinForm">회원 가입</a></li>
+	                </c:when>
+	    	        <c:otherwise>
+			            <li><a href="/logout">로그아웃</a></li>
+			            <li><a href="/api/user/{userId}/mypage?key=userinfo">마이페이지</a></li>
+			            <li><a href="/board/saveForm">리뷰쓰기</a></li>
+		            </c:otherwise>
+	            </c:choose>
+        	</ul> 
         </div>
 
 </header>
