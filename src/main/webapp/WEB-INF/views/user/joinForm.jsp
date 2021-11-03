@@ -26,8 +26,8 @@
                 </div>
 
                 <div class="join-value">
-                    <label for="nikcname">닉네임</label>
-                    <input placeholder="닉네임을 입력하세요" autofocus type="text" id="nickname"  class="form-control" name="nickname" value="사이" size="30" >
+                    <label for="nickname">닉네임</label>
+                    <input placeholder="닉네임을 입력하세요" type="text" id="nickname"  class="form-control" name="nickname" value="파란머리연어" size="30" >
                 </div>
 
                 <div class="join-value">
@@ -58,12 +58,12 @@
 
                 <div class="join-value checkboxs">
                     <label>피부고민</label>
-                    <input type="radio"  name="skinTrouble" value="여드름" checked>여드름
-                    <input type="radio"  name="skinTrouble" value="민감성">민감성
-                    <input type="radio"  name="skinTrouble" value="흉터">흉터
-                    <input type="radio"  name="skinTrouble" value="혈관">혈관
-                    <input type="radio"  name="skinTrouble" value="색조">색조
-                    <input type="radio"  name="skinTrouble" value="해당없음">해당없음
+                    <input type="radio" name="skinTrouble" value="여드름" checked>여드름
+                    <input type="radio" name="skinTrouble" value="민감성">민감성
+                    <input type="radio" name="skinTrouble" value="흉터">흉터
+                    <input type="radio" name="skinTrouble" value="혈관">혈관
+                    <input type="radio" name="skinTrouble" value="색조">색조
+                    <input type="radio" name="skinTrouble" value="해당없음">해당없음
                 </div>
                 
                 <div class="join-value">

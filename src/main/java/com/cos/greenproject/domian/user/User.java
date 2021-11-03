@@ -46,6 +46,10 @@ public class User {
 	@Column(nullable = false, length = 70)
 	private String name;
 	
+	// 닉네임
+	@Column(nullable = false, length = 70)
+	private String nickname;
+	
 	// 이메일
 	@Column(nullable = false, length = 50)
 	private String email;

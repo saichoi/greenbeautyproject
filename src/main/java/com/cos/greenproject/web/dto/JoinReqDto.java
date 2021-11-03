@@ -14,6 +14,7 @@ public class JoinReqDto {
 	private String username;
 	private String password;
 	private String name;
+	private String nickname;
 	private String email;
 	private String birthday;
 	private String gender;
@@ -27,6 +28,7 @@ public class JoinReqDto {
 	         .username(username)
 	         .password(password)
 	         .name(name)
+	         .nickname(nickname)
 	         .email(email)
 	         .birthday(birthday)
 	         .gender(gender)
