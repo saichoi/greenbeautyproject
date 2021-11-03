@@ -1,6 +1,11 @@
 package com.cos.greenproject.service;
 
+import javax.validation.Valid;
+
 import org.springframework.transaction.annotation.Transactional;
+
+import com.cos.greenproject.handler.ex.MyNotFoundException;
+import com.cos.greenproject.web.dto.JoinReqDto;
 
 public interface UserService {
 	
@@ -11,8 +16,8 @@ public interface UserService {
 	public void updateInfo();
 	
 	// 회원가입
-	@Transactional 
-	public void join();
+	@Transactional(rollbackFor = MyNotFoundException.class) 
+	public void join(@Valid JoinReqDto dto);
 	
 	// 로그인
 	public void login();
@@ -28,5 +33,5 @@ public interface UserService {
 	
 	// 위시리스트에서 삭제
 	public void removeWishlist();
-	
+
 }

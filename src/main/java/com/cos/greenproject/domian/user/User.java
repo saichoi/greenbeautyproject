@@ -1,6 +1,5 @@
 package com.cos.greenproject.domian.user;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -9,7 +8,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
@@ -53,9 +51,11 @@ public class User {
 	private String email;
 	
 	// 생일
-	private LocalDateTime birthday;
+	@Column(nullable = false, length = 10)
+	private String birthday;
 	
 	// 성별
+	@Column(nullable = false, length = 10)
 	private String gender;
 	
 	// 피부타입
@@ -65,6 +65,7 @@ public class User {
 	private String skinTrouble;
 	
 	// 피부톤
+	@Column(nullable = false, length = 30)
 	private String skinTone;
 	
 	// 리뷰수 (Board 테이블에서 셀렉트 mReviewCnt())
@@ -72,7 +73,7 @@ public class User {
 	
 	// 좋아요수 (Board 테이블에서 셀렉트 mBoardLikeCnt())
 	private int likeCnt;
-	
+
 	// 위시리스트 
 	@JsonIgnoreProperties({"user"})
 	@OneToMany(mappedBy =  "user", fetch = FetchType.LAZY)

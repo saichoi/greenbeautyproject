@@ -1,15 +1,24 @@
 package com.cos.greenproject.web;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cos.greenproject.service.UserService;
+import com.cos.greenproject.util.Script;
+import com.cos.greenproject.web.dto.JoinReqDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -36,8 +45,17 @@ public class UserController {
 	
 	// 회원가입
 	@PostMapping("/join")
-	public void join() {
-
+	public @ResponseBody String join(@Valid JoinReqDto dto, BindingResult bindingResult) {
+		// 실패했을 때
+	    if (bindingResult.hasErrors()) {
+	      Map<String, String> errorMap = new HashMap<>();
+	      for (FieldError error : bindingResult.getFieldErrors()) {
+	        errorMap.put(error.getField(), error.getDefaultMessage());
+	      }
+	      return Script.back(errorMap.toString());
+	    }
+	    userService.join(dto);
+	    return Script.href("/loginForm");
 	}
 
 	// 회원정보 수정

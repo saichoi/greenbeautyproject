@@ -4,6 +4,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cos.greenproject.domian.user.UserRepository;
+import com.cos.greenproject.handler.ex.MyNotFoundException;
+import com.cos.greenproject.util.MyAlgorithm;
+import com.cos.greenproject.util.SHA;
+import com.cos.greenproject.web.dto.JoinReqDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -20,9 +24,12 @@ public class UserServiceImpl implements UserService {
 	} 
 	
 	// 회원가입
-	@Transactional 
-	public void join() {
-		
+	@Transactional(rollbackFor = MyNotFoundException.class) 
+	public void join(JoinReqDto dto) {
+	    // 정상일 때
+	    String encPassword = SHA.encrypt(dto.getPassword(), MyAlgorithm.SHA256);
+	    dto.setPassword(encPassword); 
+	    userRepository.save(dto.toEntity()); 
 	}
 	
 	// 로그인
@@ -50,3 +57,4 @@ public class UserServiceImpl implements UserService {
 		
 	}
 }
+

@@ -6,40 +6,43 @@
     <div class="join-con container ">
         <div class="card card-container ">
             <h2>회원가입</h2>
-            <form class="form-signin">
+            
+            <div class="form-signin">
+            <form action="/join" method="post">
+            
                 <div class="join-value">
                     <label for="username">ID</label>
-                    <input placeholder="ID를 입력하세요" autofocus type="text" id="username"  class="form-control" size="30" >
+                    <input placeholder="ID를 입력하세요" autofocus type="text" id="username"  class="form-control" name="username" value="sai" size="30" >
                 </div>
 
                 <div class="join-value">
                     <label for="password">비밀번호</label>
-                    <input placeholder="비밀번호를 입력하세요" type="password" id="password"  class="form-control" size="30" >
+                    <input placeholder="비밀번호를 입력하세요" type="password" id="password"  class="form-control" name="password"  value="1234" size="30" >
                 </div>
 
                 <div class="join-value">
                     <label for="name">이름</label>
-                    <input placeholder="이름을 입력하세요" autofocus type="text" id="name"  class="form-control" size="30" >
+                    <input placeholder="이름을 입력하세요" autofocus type="text" id="name"  class="form-control" name="name" value="최다혜"  size="30" >
                 </div>
 
                 <div class="join-value">
                     <label for="nikcname">닉네임</label>
-                    <input placeholder="닉네임을 입력하세요" autofocus type="text" id="nickname"  class="form-control" size="30" >
+                    <input placeholder="닉네임을 입력하세요" autofocus type="text" id="nickname"  class="form-control" name="nickname" value="사이" size="30" >
                 </div>
 
                 <div class="join-value">
                     <label for="email">이메일</label>
-                    <input placeholder="이메일을 입력하세요" required type="email" id="email"  class="form-control" size="30" > <!-- required 필수로 입력 -->
+                    <input placeholder="이메일을 입력하세요" required type="email" id="email"  class="form-control" name="email" size="30"  value="sai@naver.com"> <!-- required 필수로 입력 -->
                 </div>
 
                 <div class="join-value">
-                    <label for="bithdate">생년월일</label>
-                    <input type="date" id="birthdate"   class="form-control">
+                    <label for="bithday">생년월일</label>
+                    <input type="date" id="birthday" class="form-control" name="birthday"  value="1993-04-24">
                 </div>
 
                 <div class="join-value">
                     <label for="gender">성별</label>
-                    <select id="gender"  class="form-control">
+                    <select id="gender"  class="form-control" name="gender">
                         <option value="male">남성</option>
                         <option value="female" selected>여성</option>
                     </select>
@@ -47,20 +50,20 @@
 
                 <div class="join-value checkboxs">
                     <label >피부타입</label>
-                    <input type="checkbox" value="skinType" >건성
-                    <input type="checkbox" value="skinType">중성
-                    <input type="checkbox" value="skinType">지성
-                    <input type="checkbox" value="skinType">복합성
+                    <input type="radio" name="skinType" value="건성" checked>건성
+                    <input type="radio" name="skinType" value="중성">중성
+                    <input type="radio" name="skinType" value="지성">지성
+                    <input type="radio" name="skinType" value="복합성">복합성
                 </div>
 
                 <div class="join-value checkboxs">
                     <label>피부고민</label>
-                    <input type="checkbox" value="skinWorry">여드름
-                    <input type="checkbox" value="skinWorry">민감성
-                    <input type="checkbox" value="skinWorry">흉터
-                    <input type="checkbox" value="skinWorry">혈관
-                    <input type="checkbox" value="skinWorry">색조
-                    <input type="checkbox" value="skinWorry">해당없음
+                    <input type="radio"  name="skinTrouble" value="여드름" checked>여드름
+                    <input type="radio"  name="skinTrouble" value="민감성">민감성
+                    <input type="radio"  name="skinTrouble" value="흉터">흉터
+                    <input type="radio"  name="skinTrouble" value="혈관">혈관
+                    <input type="radio"  name="skinTrouble" value="색조">색조
+                    <input type="radio"  name="skinTrouble" value="해당없음">해당없음
                 </div>
                 
                 <div class="join-value">
@@ -72,15 +75,14 @@
                         	<div class="colorBox text-center">중간밝은<br>(22호)</div>
                         	<div class="colorBox text-center">차분한<br>(23호)</div>
                         	<div class="colorBox text-center">매우차분한</div>
-                        	<input type="hidden" name="selectedPallet" value="매우밝은">
+                        	<input type="hidden" name="skinTone" value="매우밝은">
                         </div>
                       </div>
                 </div>
 
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">회원가입</button>
-
-
-            </form>
+				</form>
+            </div>
         </div>
     </div>
 </section>
