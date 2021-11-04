@@ -62,12 +62,12 @@
         <div class="right-nav ml-auto p-2">
             <ul class="navbar-nav">
                 <li class="nav-item mr-3">
-                    <a class="nav-link" href="/api/user/{userId}/mypage?key=wishlist">
+                    <a class="nav-link" href="/api/user/${sessionScope.principal.id}/mypage?key=wishlist">
                         <i class="bi bi-heart-fill"></i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/api/user/{userId}/mypage?key=userinfo">
+                    <a class="nav-link" href="/api/user/${sessionScope.principal.id}/mypage?key=userinfo">
                         <i class="bi bi-person-fill"></i>
                     </a>
                 </li>
@@ -88,7 +88,6 @@
 
 
     <!-- 햄버거 메뉴 시작 -->
-    <div class="ham-wrap">
         <div class="ham-con">
 
             <div class="navbar-nav">
@@ -136,7 +135,7 @@
 	                </c:when>
 	    	        <c:otherwise>
 			            <li><a href="/logout">로그아웃</a></li>
-			            <li><a href="/api/user/{userId}/mypage?key=userinfo">마이페이지</a></li>
+			            <li><a href="/api/user/${sessionScope.principal.id}/mypage?key=userinfo">마이페이지</a></li>
 			            <li><a href="/board/saveForm">리뷰쓰기</a></li>
 		            </c:otherwise>
 	            </c:choose>

@@ -48,17 +48,17 @@
                     </select>
                 </div>
 
-                <div class="join-value checkboxs">
+                <div class="join-value radiobox">
                     <label >피부타입</label>
-                    <input type="radio" name="skinType" value="건성" checked>건성
+                    <input type="radio" name="skinType" value="건성">건성
                     <input type="radio" name="skinType" value="중성">중성
                     <input type="radio" name="skinType" value="지성">지성
                     <input type="radio" name="skinType" value="복합성">복합성
                 </div>
 
-                <div class="join-value checkboxs">
+                <div class="join-value radiobox">
                     <label>피부고민</label>
-                    <input type="radio" name="skinTrouble" value="여드름" checked>여드름
+                    <input type="radio" name="skinTrouble" value="여드름" >여드름
                     <input type="radio" name="skinTrouble" value="민감성">민감성
                     <input type="radio" name="skinTrouble" value="흉터">흉터
                     <input type="radio" name="skinTrouble" value="혈관">혈관
@@ -75,7 +75,6 @@
                         	<div class="colorBox text-center">중간밝은<br>(22호)</div>
                         	<div class="colorBox text-center">차분한<br>(23호)</div>
                         	<div class="colorBox text-center">매우차분한</div>
-                        	<input type="hidden" name="skinTone" value="매우밝은">
                         </div>
                       </div>
                 </div>

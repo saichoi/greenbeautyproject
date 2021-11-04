@@ -113,17 +113,19 @@ $(document).ready(function () {
   	var pallet = ["#f3e077", "#dfc899", "#d8b17e", "#cca77b", "#bd9c8d"];
   	
     $(".colorBox").each(function (index) {
-    	$(this).attr('pallet-index', index);
-    	$(this).eq(index).addClass('pallet-action');
+    	$(this).attr("pallet-index", index);
+    	//$(this).eq(index).addClass("pallet-action");
     	$(this).css({
 			backgroundColor:pallet[index]
 		});
   	}).click(function(){
-	    var index = $(this).attr('pallet-index', index);
+	    //var index = $(this).attr('pallet-index', index);
 	    $(".colorBox").removeClass('pallet-action');
 		$(this).addClass("pallet-action");
 		var selected = $(this).text();
-		$("input[name=selectedPallet]").val(selected);
+		var tag = "<input type='hidden' name='skinTone' value='"+selected+"'>"
+			$('input[name=skinTone]').eq(0).remove();
+			$('#palletCon').append(tag);
 	});
 	
 }); // end of document ready

@@ -21,7 +21,7 @@
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">로그인</button>
             </form>
             </div>
-            <a href="/test/joinForm" class="get-join">
+            <a href="/joinForm" class="get-join">
                 회원가입
             </a>
         </div>
