@@ -14,13 +14,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cos.greenproject.domian.user.User;
+import com.cos.greenproject.handler.ex.MyAsyncNotFoundException;
 import com.cos.greenproject.service.UserService;
 import com.cos.greenproject.util.Script;
+import com.cos.greenproject.web.dto.CMRespDto;
 import com.cos.greenproject.web.dto.JoinReqDto;
 import com.cos.greenproject.web.dto.LoginReqDto;
+import com.cos.greenproject.web.dto.UserUpdateDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -77,9 +81,40 @@ public class UserController {
 	}
 
 	// 회원정보 수정
-	@PutMapping("/api/user/{userId}")
-	public void update(@PathVariable int userId) {
+	@PutMapping("/api/user/{id}")
+	public @ResponseBody CMRespDto<String> update(@PathVariable int id, @Valid @RequestBody UserUpdateDto dto, BindingResult bindingResult) {
 
+		//유효성검사
+	    if (bindingResult.hasErrors()) {
+	      Map<String, String> errorMap = new HashMap<>();
+	      for (FieldError error : bindingResult.getFieldErrors()) {
+	        errorMap.put(error.getField(), error.getDefaultMessage());
+	      }
+	      throw new MyAsyncNotFoundException(errorMap.toString());
+	    }
+	    
+	    User principal = (User) session.getAttribute("principal");
+	    
+	    //권한 체크
+	    if (principal.getId() != id) {
+	      throw new MyAsyncNotFoundException("회원정보를 수정할 권한이 없습니다.");
+	    }
+	   // 핵심로직 
+	    userService.updateInfo(principal, dto);
+	    
+	    // 세션 동기화 해주는 부분
+	    principal.setName(dto.getName());
+	    principal.setNickname(dto.getNickname());
+	    principal.setEmail(dto.getEmail());
+	    principal.setBirthday(dto.getBirthday());
+	    principal.setGender(dto.getGender());
+	    principal.setSkinType(dto.getSkinType());
+	    principal.setSkinTrouble(dto.getSkinTrouble());
+	    principal.setSkinTone(dto.getSkinTone());
+	    
+	    session.setAttribute("principal", principal); // 세션값 변경
+	    
+	    return new CMRespDto<String>(1,"성공",null);
 	}
 
 	// 내리뷰리스트에 등록

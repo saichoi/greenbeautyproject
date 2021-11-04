@@ -63,13 +63,15 @@ public class User {
 	private String gender;
 	
 	// 피부타입
+	@Column(nullable = false)
 	private String skinType;
 	
 	// 피부고민
+	@Column(nullable = false)
 	private String skinTrouble;
 	
 	// 피부톤
-	@Column(nullable = false, length = 30)
+	@Column(nullable = false)
 	private String skinTone;
 	
 	// 리뷰수 (Board 테이블에서 셀렉트 mReviewCnt())

@@ -62,14 +62,32 @@
         <div class="right-nav ml-auto p-2">
             <ul class="navbar-nav">
                 <li class="nav-item mr-3">
-                    <a class="nav-link" href="/api/user/${sessionScope.principal.id}/mypage?key=wishlist">
-                        <i class="bi bi-heart-fill"></i>
-                    </a>
+                <c:choose>
+			        <c:when test="${empty sessionScope.principal}">
+						<a class="nav-link" href="/loginForm">
+	                        <i class="bi bi-heart-fill"></i>
+	                    </a>	                    
+                    </c:when>
+                    <c:otherwise>
+	                    <a class="nav-link" href="/api/user/${sessionScope.principal.id}/mypage?key=wishlist">
+	                        <i class="bi bi-heart-fill"></i>
+	                    </a>
+                     </c:otherwise>
+	            </c:choose>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/api/user/${sessionScope.principal.id}/mypage?key=userinfo">
-                        <i class="bi bi-person-fill"></i>
-                    </a>
+                    <c:choose>
+				        <c:when test="${empty sessionScope.principal}">
+		                    <a class="nav-link" href="/loginForm">
+		                        <i class="bi bi-person-fill"></i>
+		                    </a>
+	                    </c:when>
+	                    <c:otherwise>
+		                    <a class="nav-link" href="/api/user/${sessionScope.principal.id}/mypage?key=userinfo">
+		                        <i class="bi bi-person-fill"></i>
+		                    </a>
+	                    </c:otherwise>
+	            	</c:choose>
                 </li>
 
                 <!-- 햄버거 버튼 -->

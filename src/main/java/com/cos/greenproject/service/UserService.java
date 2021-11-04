@@ -5,17 +5,19 @@ import javax.validation.Valid;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cos.greenproject.domian.user.User;
+import com.cos.greenproject.handler.ex.MyAsyncNotFoundException;
 import com.cos.greenproject.handler.ex.MyNotFoundException;
 import com.cos.greenproject.web.dto.JoinReqDto;
 import com.cos.greenproject.web.dto.LoginReqDto;
+import com.cos.greenproject.web.dto.UserUpdateDto;
 
 public interface UserService {
 	
 	// <----- UserController ----->
 	
 	// 회원수정
-	@Transactional 
-	public void updateInfo();
+	@Transactional(rollbackFor = MyAsyncNotFoundException.class) 
+	public void updateInfo(User principal, UserUpdateDto dto);
 	
 	// 회원가입
 	@Transactional(rollbackFor = MyNotFoundException.class) 

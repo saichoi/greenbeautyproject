@@ -15,7 +15,7 @@
 					<li>
 						<h3>${sessionScope.principal.nickname}</h3>
 					</li>
-					<li><a href="/test/user/updateForm"><i
+					<li><a href="/api/user/${sessionScope.principal.id}/updateForm"><i
 							class="bi bi-gear-fill"></i></a></li>
 				</ul>
 				<ul class="cnt-box d-flex justify-content-center">
@@ -71,53 +71,65 @@
 							</div>
 
 							<div class="join-value">
-								<label for="name">이름</label> <input
-									value="${sessionScope.principal.name}" type="text" id="name"
+								<label for="name">이름</label>
+								<input value="${sessionScope.principal.name}" type="text" id="name"
 									class="form-control" size="30">
 							</div>
 
 							<div class="join-value">
-								<label for="nikcname">닉네임</label> <input
-									value="${sessionScope.principal.nickname}" type="text"
+								<label for="nikcname">닉네임</label> 
+								<input value="${sessionScope.principal.nickname}" type="text"
 									id="nickname" class="form-control" size="30">
 							</div>
 
 							<div class="join-value">
-								<label for="email">이메일</label> <input
-									value="${sessionScope.principal.email}" type="email" id="email"
+								<label for="email">이메일</label> 
+								<input value="${sessionScope.principal.email}" type="email" id="email"
 									class="form-control" size="30">
 							</div>
 
 							<div class="join-value">
-								<label for="bithdate">생년월일</label> <input
-									value="${sessionScope.principal.birthday}" type="date"
-									id="birthdate" class="form-control">
+								<label for="bithdate">생년월일</label> 
+								<input value="${sessionScope.principal.birthday}" type="date"
+									id="birthday" class="form-control">
 							</div>
 
 							<div class="join-value">
-								<label for="gender">성별</label> <select id="gender"
-									class="form-control">
-									<option value="male">남성</option>
-									<option value="female" selected>여성</option>
-								</select>
+								<label for="gender">성별</label> 
+								<select id="gender"  class="form-control" name="gender">
+			                        <option value="남성" 
+			                        	<c:if test="${sessionScope.principal.gender eq '남성'}">selected="selected"</c:if>>남성</option>
+			                        <option value="여성" 
+			                        	<c:if test="${sessionScope.principal.gender eq '여성'}">selected="selected"</c:if>>여성</option>
+	                    		</select>
 							</div>
 
 							<div class="join-value radiobox">
 								<label>피부타입</label> 
-								<input type="radio" name="skinType" value="건성">건성 
-								<input type="radio" name="skinType" value="중성">중성 
-								<input type="radio"name="skinType" value="지성">지성 
-								<input type="radio"name="skinType" value="복합성">복합성
+								<input type="radio" name="skinType" value="건성"  
+									<c:if test="${sessionScope.principal.skinType eq '건성'}">checked="checked"</c:if>>건성 
+								<input type="radio" name="skinType" value="중성" 
+									<c:if test="${sessionScope.principal.skinType eq '중성'}">checked="checked"</c:if>>중성 
+								<input type="radio"name="skinType" value="지성" 
+									<c:if test="${sessionScope.principal.skinType eq '지성'}">checked="checked"</c:if>>지성 
+								<input type="radio"name="skinType" value="복합성" 
+									<c:if test="${sessionScope.principal.skinType eq '복합성'}">checked="checked"</c:if>>복합성
 							</div>
 
 							<div class="join-value radiobox">
 								<label>피부고민</label> 
-								<input type="radio" name="skinTrouble" value="여드름">여드름 
-									<input type="radio" name="skinTrouble" value="민감성">민감성 
-									<input type="radio" name="skinTrouble" value="흉터">흉터 
-									<input type="radio" name="skinTrouble" value="혈관">혈관 
-									<input type="radio" name="skinTrouble" value="색조">색조 
-									<input type="radio" name="skinTrouble" value="해당없음">해당없음
+								<input type="radio" name="skinTrouble" value="여드름" 
+									<c:if test="${sessionScope.principal.skinTrouble eq '여드름'}">checked="checked"</c:if>>여드름 
+								<input type="radio" name="skinTrouble" value="민감성" 
+									<c:if test="${sessionScope.principal.skinTrouble eq '민감성'}">checked="checked"</c:if>>민감성 
+								<input type="radio" name="skinTrouble" value="흉터" 
+									<c:if test="${sessionScope.principal.skinTrouble eq '흉터'}">checked="checked"</c:if>>흉터 
+								<input type="radio" name="skinTrouble" value="혈관" 
+									<c:if test="${sessionScope.principal.skinTrouble eq '혈관'}">checked="checked"</c:if>>혈관 
+								<input type="radio" name="skinTrouble" value="색조" 
+									<c:if test="${sessionScope.principal.skinTrouble eq '색조'}">checked="checked"</c:if>>색조 
+								<input type="radio" name="skinTrouble" value="해당없음" 
+									<c:if test="${sessionScope.principal.skinTrouble eq '해당없음'}">checked="checked"</c:if>>해당없음
 							</div>
 
 							<div class="join-value">
@@ -437,7 +449,7 @@
 	}
 	
 	// 마이페이지 피부타입 데이터 바인딩
-	var pSkinType ="${sessionScope.principal.skinType}";
+	/* var pSkinType ="${sessionScope.principal.skinType}";
 	if(pSkinType=="건성"){
 		$("input:radio[name='skinType']:radio[value='건성']").prop('checked', true); 
 	}else if(pSkinType=="중성"){
@@ -446,10 +458,10 @@
 		$("input:radio[name='skinType']:radio[value='지성']").prop('checked', true); 
 	}else if(pSkinType=="복합성"){
 		$("input:radio[name='skinType']:radio[value='복합성']").prop('checked', true); 
-	}
+	} */
 	
 	// 마이페이지 피부고민 데이터 바인딩
-	var pSkinTrouble ="${sessionScope.principal.skinTrouble}";
+/* 	var pSkinTrouble ="${sessionScope.principal.skinTrouble}";
 	if(pSkinTrouble=="여드름"){
 		$("input:radio[name='skinTrouble']:radio[value='여드름']").prop('checked', true); 
 	}else if(pSkinTrouble=="민감성"){
@@ -462,7 +474,7 @@
 		$("input:radio[name='skinTrouble']:radio[value='색조']").prop('checked', true); 
 	}else if(pSkinTrouble=="해당없음"){
 		$("input:radio[name='skinTrouble']:radio[value='해당없음']").prop('checked', true); 
-	}
+	} */
 	
 	// 마이페이지 피부톤 팔레트 데이터 바인딩
 	var pSkinTone ="${sessionScope.principal.skinTone}";

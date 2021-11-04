@@ -123,7 +123,7 @@ $(document).ready(function () {
 	    $(".colorBox").removeClass('pallet-action');
 		$(this).addClass("pallet-action");
 		var selected = $(this).text();
-		var tag = "<input type='hidden' name='skinTone' value='"+selected+"'>"
+		var tag = "<input type='hidden' name='skinTone' id='skinTone' value='"+selected+"'>"
 			$('input[name=skinTone]').eq(0).remove();
 			$('#palletCon').append(tag);
 	});
