@@ -30,10 +30,11 @@ def scraping(engine, browser, url, brand_list, id, categoryId):
             # 한 페이지당 아이템 개수 가져오기
             l_count = browser.find_elements_by_css_selector(".list_product > ul > li")
             l_input = 0
+            l_image_input = 0
             # 한 페이지당 아이템 개수 만큼 반복문 돌리기
             for i in l_count:
                 item_storage = []
-                image = browser.find_elements_by_css_selector(".list_product .visual_section img")[l_input].get_attribute("src")
+                image = browser.find_elements_by_css_selector(".list_product .visual_section img")[l_image_input].get_attribute("src")
                 item_storage.append(image)
 
                 item = browser.find_elements_by_css_selector(".list_product .info_section .txt_summary")[l_input]
@@ -52,6 +53,7 @@ def scraping(engine, browser, url, brand_list, id, categoryId):
                 item_storage.append(categoryId) # 해당 서브카테고리 넣기
 
                 item_list.append(item_storage)
+                l_image_input = l_image_input + 2
                 l_input = l_input + 1
             print("한 페이지당 가져온 아이템 개수: ", l_input)
 

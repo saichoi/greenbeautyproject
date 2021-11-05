@@ -56,19 +56,19 @@ public class Item {
 	}
 
 	// 리뷰수 (Board 테이블에서 셀렉트  mItemReviewCnt())
-	private int reviewCnt;
+	private Integer reviewCnt;
 	
 	// 위시리스트 등록수 
-	private int wishCnt;
+	private Integer wishCnt;
 	
 	// 만족도 (Board 테이블에서 셀렉트  mItemRating())
-	private double rating;
+	private Double rating;
 
 	// Foreign Keys
 	// 카테고리 정보
 	@JoinColumn(name = "categoryId")
 	@ManyToOne(fetch = FetchType.EAGER)
-	private Category categroy;
+	private Category category;
 
 	// 브랜드 정보
 	@JoinColumn(name = "brandId")

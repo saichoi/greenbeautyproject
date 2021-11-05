@@ -1,10 +1,16 @@
 package com.cos.greenproject.domian.item;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 public interface ItemRepository extends JpaRepository<Item, Integer> {
 
+	// 카테고리별 제품 목록보기
+	@Query(value = "SELECT * FROM item where categoryId = :categoryId", nativeQuery = true)
+	Page<Item> mItemCategoryList(int categoryId, Pageable paging);
+		
 	// Brand 테이블의 제품수(itemCnt)
 	@Query(value = "SELECT count(id) FROM item where brandId = :barndId", nativeQuery = true)
 	int mBrandItemCnt();

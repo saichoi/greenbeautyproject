@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.cos.greenproject.service.BoardService;
+import com.cos.greenproject.service.ItemService;
 import com.cos.greenproject.service.UserService;
 
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,7 @@ public class PageController {
 	// DI
 	private final UserService userService;
 	private final BoardService boardService;
+	private final ItemService itemService;
 	private final HttpSession session;
 	
 	// <----- Board ----->
@@ -57,19 +59,22 @@ public class PageController {
 	
 	// 제품 목록 페이지 이동
 	@GetMapping("/item/list")
-	public String itemList() {
+	public String itemList(Model model, int page) {
+		model.addAttribute("itemsEntity", itemService.itemList(page));
 		return "item/list";
-	}
+	} 
 
 	// 제품 카테고리 페이지 이동
 	@GetMapping("/item/category/{categoryId}")
-	public String itemCategoryList(@PathVariable int categoryId) {
-		return "item/list";
+	public String itemCategoryList(@PathVariable int categoryId, Model model, int page) {
+		model.addAttribute("itemsEntity", itemService.itemCategoryList(categoryId, page));
+		return "item/category";
 	}
 
 	// 제품 상세페이지 이동
 	@GetMapping("/item/{id}/detail")
-	public String itemDeital() {
+	public String itemDetaill(@PathVariable int itemId, Model model, int page) {
+//		model.addAttribute("itemsEntity", itemService.itemDetail(itemId, page));
 		return "item/detail";
 	}
 	
