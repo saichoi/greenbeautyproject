@@ -1,16 +1,27 @@
 package com.cos.greenproject.web;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.cos.greenproject.domian.user.User;
 import com.cos.greenproject.service.BoardService;
 import com.cos.greenproject.service.CommentService;
+import com.cos.greenproject.util.Script;
+import com.cos.greenproject.web.dto.BoardSaveDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -25,8 +36,27 @@ public class BoardController {
 
 	// 리뷰 등록하기
 	@PostMapping("/api/board")
-	public void save() {
-
+	public @ResponseBody String save(@Valid BoardSaveDto dto, BindingResult bindingResult, Model model, int page) {
+		User principal = (User) session.getAttribute("principal");
+		System.out.println(dto);
+		if (bindingResult.hasErrors()) { // 에러가 터졌을 때
+			Map<String, String> errorMap = new HashMap<>();
+			for (FieldError error : bindingResult.getFieldErrors()) {
+				errorMap.put(error.getField(), error.getDefaultMessage());
+			}
+			return Script.back(errorMap.toString());
+		}
+		
+		dto.setContent(dto.getContent().replaceAll("<p>", ""));
+		dto.setContent(dto.getContent().replaceAll("</p>", "")); // p태그 날리기
+		
+		boardService.insertBoard(dto, principal);
+		
+//		model.addAttribute("itemId", dto.getItemId());
+//		model.addAttribute("boardId", dto.getItemId());
+		model.addAttribute("page", page);
+		System.out.println(page);
+		return Script.href("/", "글쓰기 완료");
 	}
 
 	// 리뷰 수정하기

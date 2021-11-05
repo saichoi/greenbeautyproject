@@ -12,26 +12,33 @@
 
 	<div id="section-content">
 		<section style="max-width: 60%;">
+		<form action="/api/board"  method="post">
+			<input type="hidden" name="image" value="${itemEntity.image }" />
+			<input type="hidden" name="categoryId" value="${itemEntity.category.id }" />
+			<input type="hidden" name="brandId" value="${itemEntity.brand.id }" />
+			<input type="hidden" name="itemId" value="${itemEntity.id }" />
+			<input type="hidden" name="page" value="${page }" />
 			<div id="section-category">
 				<p class="detail-route">
-					<i class="bi bi-house-door-fill"></i> &gt; 카테고리
+					<i class="bi bi-house-door-fill"></i> &gt; ${itemEntity.category.parent } &gt; ${itemEntity.category.cname }
 				</p>
 			</div>
 
 			<div id="section-item">
 				<div id="section-item-sub-1">
 					<div class="card shadow">
-						<img src="..." class="img-fluid rounded-start" alt="이미지자리">
+						<img src="${itemEntity.image }" class="img-fluid rounded-start"
+							alt="이미지자리">
 					</div>
 				</div>
 				<div id="section-item-sub-2">
 					<div id="text">
-						<p>브랜드</p>
-						<h2>제품명</h2>
+						<p>${itemEntity.brand.bname }</p>
+						<h2>${itemEntity.iname }</h2>
 					</div>
 				</div>
 			</div>
-
+			
 			<div id="section-rating">
 				<div id="rating">
 					<div id="rating-1">만족도</div>
@@ -55,18 +62,24 @@
 				<textarea id="summernote" class="form-control" name="content"></textarea>
 			</div>
 
-			<div id="section-date">2021.10.09</div>
+			<div id="section-date">${date }</div>
 
 			<div id="section-button">
 				<div id="button">
-					<button type="button" class="btn btn-danger">취소</button>
-					<button type="button" class="btn btn-primary">등록</button>
+					<button id="cancel" type="button" class="btn btn-danger">취소</button>
+					<button type="submit" class="btn btn-primary">등록</button>
 				</div>
 			</div>
+			</form>
 		</section>
 	</div>
 
 	<%@ include file="../layout/footer.jsp"%>
 </body>
-
+<script>
+	$("#cancel").click(()=>{
+		alert("취소 되었습니다.");
+		history.back();
+	});
+</script>
 </html>

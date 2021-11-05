@@ -1,6 +1,8 @@
 package com.cos.greenproject.service;
 
 import org.springframework.data.domain.Page;
+import org.springframework.ui.Model;
+
 import com.cos.greenproject.domian.item.Item;
 
 public interface ItemService {
@@ -15,6 +17,9 @@ public interface ItemService {
 	
 	// 제품 상세페이지 보기
 	public Item itemDetail(int id);
+	
+	// 리뷰 작성 페이지 보기
+	public Item saveForm(int itemId);
 		
 	// 제품 검색하기
 	public void searchItemList();

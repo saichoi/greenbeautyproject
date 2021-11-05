@@ -1,8 +1,12 @@
 package com.cos.greenproject.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.cos.greenproject.domian.board.BoardRepository;
+import com.cos.greenproject.domian.user.User;
+import com.cos.greenproject.handler.ex.MyNotFoundException;
+import com.cos.greenproject.web.dto.BoardSaveDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -32,8 +36,9 @@ public class BoardServiceImpl implements BoardService {
 	// <----- BoardController ----->
 	
 	// 게시글 등록
-	public void insertBoard() {
-
+	@Transactional(rollbackFor = MyNotFoundException.class)
+	public void insertBoard(BoardSaveDto dto, User principal) {
+		boardRepository.save(dto.toEntity(principal));
 	}
 	
 	// 게시글 수정

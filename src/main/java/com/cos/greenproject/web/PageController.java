@@ -1,5 +1,7 @@
 package com.cos.greenproject.web;
 
+import java.time.LocalDate;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -7,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.cos.greenproject.domian.item.Item;
 import com.cos.greenproject.service.BoardService;
 import com.cos.greenproject.service.ItemService;
 import com.cos.greenproject.service.UserService;
@@ -45,7 +48,10 @@ public class PageController {
 
 	// 리뷰 작성 페이지 이동
 	@GetMapping("/board/saveForm")
-	public String saveForm() {
+	public String saveForm(int itemId, Model model, int page) {
+		model.addAttribute("itemEntity",  itemService.saveForm(itemId));
+		model.addAttribute("page", page);
+		model.addAttribute("date", LocalDate.now());
 		return "board/saveForm";
 	}
 

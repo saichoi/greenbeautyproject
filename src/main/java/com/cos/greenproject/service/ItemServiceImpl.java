@@ -5,6 +5,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import com.cos.greenproject.domian.item.Item;
 import com.cos.greenproject.domian.item.ItemRepository;
@@ -38,7 +40,13 @@ public class ItemServiceImpl implements ItemService{
 	public Item itemDetail(int id) {
 		Item itemEntity = itemRepository.findById(id)
 				.orElseThrow(() -> new MyNotFoundException(id + "를 찾을 수 없습니다"));
-		System.out.println(itemEntity);
+		return itemEntity;
+	}
+	
+	// 리뷰 작성 페이지 보기
+	public Item saveForm(int itemId) {
+		Item itemEntity = itemRepository.findById(itemId)
+				.orElseThrow(() -> new MyNotFoundException(itemId + "를 찾을 수 없습니다"));
 		return itemEntity;
 	}
 	
