@@ -5,9 +5,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import com.cos.greenproject.domian.item.Item;
 import com.cos.greenproject.domian.item.ItemRepository;
+import com.cos.greenproject.handler.ex.MyNotFoundException;
 
 import lombok.RequiredArgsConstructor;
 
@@ -34,9 +37,17 @@ public class ItemServiceImpl implements ItemService{
 	}
 
 	// 제품 상세페이지 보기
-	public String itemDetaill(int itemId, int page) {
-		
-		return "item/detail";
+	public Item itemDetail(int id) {
+		Item itemEntity = itemRepository.findById(id)
+				.orElseThrow(() -> new MyNotFoundException(id + "를 찾을 수 없습니다"));
+		return itemEntity;
+	}
+	
+	// 리뷰 작성 페이지 보기
+	public Item saveForm(int itemId) {
+		Item itemEntity = itemRepository.findById(itemId)
+				.orElseThrow(() -> new MyNotFoundException(itemId + "를 찾을 수 없습니다"));
+		return itemEntity;
 	}
 	
 	// 제품 검색하기

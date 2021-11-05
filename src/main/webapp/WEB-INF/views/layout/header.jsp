@@ -52,7 +52,7 @@
                         <a class="nav-link" href="/board">리뷰보기</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/item/list">제품보기</a>
+                        <a class="nav-link" href="/item/list?page=0">제품보기</a>
                     </li>
                 </ul>
             </div>

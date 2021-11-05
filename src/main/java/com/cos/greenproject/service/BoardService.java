@@ -1,5 +1,8 @@
 package com.cos.greenproject.service;
 
+import com.cos.greenproject.domian.user.User;
+import com.cos.greenproject.web.dto.BoardSaveDto;
+
 public interface BoardService {
 
 	// <----- PageController ----->
@@ -16,7 +19,7 @@ public interface BoardService {
 	// <----- BoardController ----->
 	
 	// 게시글 등록
-	public void insertBoard();
+	public void insertBoard(BoardSaveDto dto, User principal);
 	
 	// 게시글 수정
 	public void updateBoard();

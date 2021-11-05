@@ -75,7 +75,7 @@ public class Board {
 	// 카테고리 정보
 	@JoinColumn(name = "categoryId") 
 	@ManyToOne(fetch = FetchType.EAGER)
-	private Category categroy;
+	private Category category;
 	
 	// 브랜드 정보
 	@JoinColumn(name = "brandId") 

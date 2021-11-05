@@ -2,6 +2,10 @@ const drawStar = (target) => {
 	document.querySelector(`.star span`).style.width = `${target.value * 10}%`;
 }
 
+function selectById(id){
+	location.href = "/item/" + id + "/detail?page=0";
+}
+
 $(document).ready(function() {
 	$(function() {
 
