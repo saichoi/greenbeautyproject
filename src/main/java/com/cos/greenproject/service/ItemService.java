@@ -1,10 +1,6 @@
 package com.cos.greenproject.service;
 
 import org.springframework.data.domain.Page;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-
 import com.cos.greenproject.domian.item.Item;
 
 public interface ItemService {
@@ -18,7 +14,7 @@ public interface ItemService {
 	public Page<Item> itemCategoryList(int categoryId, int page);
 	
 	// 제품 상세페이지 보기
-	public String itemDetaill(int itemId, int page);
+	public Item itemDetail(int id);
 		
 	// 제품 검색하기
 	public void searchItemList();

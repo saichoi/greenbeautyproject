@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.cos.greenproject.domian.item.Item;
 import com.cos.greenproject.domian.item.ItemRepository;
+import com.cos.greenproject.handler.ex.MyNotFoundException;
 
 import lombok.RequiredArgsConstructor;
 
@@ -34,9 +35,11 @@ public class ItemServiceImpl implements ItemService{
 	}
 
 	// 제품 상세페이지 보기
-	public String itemDetaill(int itemId, int page) {
-		
-		return "item/detail";
+	public Item itemDetail(int id) {
+		Item itemEntity = itemRepository.findById(id)
+				.orElseThrow(() -> new MyNotFoundException(id + "를 찾을 수 없습니다"));
+		System.out.println(itemEntity);
+		return itemEntity;
 	}
 	
 	// 제품 검색하기

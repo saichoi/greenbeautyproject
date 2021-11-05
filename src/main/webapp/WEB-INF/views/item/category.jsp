@@ -87,11 +87,11 @@
 			<div class="row w-100 row-cols-1 row-cols-md-4 g-3">
 				<c:forEach var="item" items="${itemsEntity.content }">
 					<div class="col">
-						<div class="card h-100 shadow">
+						<div class="card h-100 shadow" onClick="selectById(${item.id})">
 							<div id="item-image">
-								<img src="${item.image }" class="card-img-top" alt="제품이미지">
+								<img id="img-select" src="${item.image }" class="card-img-top" alt="제품이미지">
 							</div>
-							<div class="card-body"
+							<div id="card-body-select" class="card-body"
 								style="padding: 5%; display: flex; flex-direction: column;">
 								<div id="rating">
 									<div id="rating-1">

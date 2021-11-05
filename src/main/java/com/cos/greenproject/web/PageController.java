@@ -73,8 +73,9 @@ public class PageController {
 
 	// 제품 상세페이지 이동
 	@GetMapping("/item/{id}/detail")
-	public String itemDetaill(@PathVariable int itemId, Model model, int page) {
-//		model.addAttribute("itemsEntity", itemService.itemDetail(itemId, page));
+	public String itemDetaill(@PathVariable int id, Model model, int page) {
+		model.addAttribute("itemEntity", itemService.itemDetail(id));
+		model.addAttribute("page", page);
 		return "item/detail";
 	}
 	
