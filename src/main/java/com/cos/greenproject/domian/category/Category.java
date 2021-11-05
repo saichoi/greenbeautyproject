@@ -34,7 +34,7 @@ public class Category {
 	private int itemCnt;
 	
 	// 리뷰수
-	private int reviewCnt;
+	private Integer reviewCnt;
 	
 	
 }
