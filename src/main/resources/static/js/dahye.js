@@ -18,7 +18,7 @@ async function updateByBoardId(boardId) {
 	let parseResponse = await response.text();
 	console.log(parseResponse);
 
-	if (parseResponse == "ok") {
+	if (parseResponse.code == 1) {
 		alert("수정 성공");
 		location.href = "/";
 	} else {

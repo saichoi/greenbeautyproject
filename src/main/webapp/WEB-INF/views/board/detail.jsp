@@ -69,37 +69,54 @@
 				</div>
 				</c:if>
 			</div>
-
+	
+			<!-- 댓글 쓰기 시작 -->
+			<form action="/api/board/${boardEntity.id }/comment" method="post">
 			<div class="card shadow" style="margin-top: 3%;">
 				<div id="section-comment">
 					<i class="bi bi-person-circle"
 						style="font-size: 70px; margin-left: 8%; color: rgb(119, 119, 119);"></i>
 					<div id="section-comment-sub-1">
 						<div id="section-comment-sub-2">
+						
 							<div class="form-group" style="flex-grow: 1; margin: 0;">
-								<textarea class="form-control" rows="1" placeholder="댓글을 남겨주세요"></textarea>
+								<textarea name="content" id="ta-content" class="form-control" rows="1" placeholder="댓글을 남겨주세요"></textarea>
 							</div>
-							<button type="button" class="btn btn-primary">등록</button>
+							<button type="submit" class="btn btn-primary">등록</button>
 						</div>
 					</div>
 				</div>
 			</div>
+			</form>
+			<!-- 댓글 쓰기 끝 -->
 
+			<!-- 댓글 리스트 시작 -->
 			<div id="section-comment-list">
 				<ul class="list-group shadow" style="margin-bottom: 10%;">
-					<li class="list-group-item d-flex justify-content-between">
-						<div>안녕하세요~!!!</div>
+				<c:forEach var="comment" items="${boardEntity.comments }">
+					<li  id="reply-${comment.id }" class="list-group-item d-flex justify-content-between">
+						<div>${comment.content }</div>
 						<div class="d-flex">
-							<div class="font-italic">작성자&nbsp;</div>
-							<button class="badge btn-secondary">삭제</button>
+							<div class="font-italic">작성자:${comment.user.username }&nbsp;&nbsp;</div>
+							<button class="badge btn-secondary" onClick="deleteCommentById(${comment.id})">삭제</button>
 						</div>
 					</li>
+				</c:forEach>
 				</ul>
 			</div>
+			<!-- 댓글 리스트 끝 -->
 		</section>
 	</div>
 
 	<%@ include file="../layout/footer.jsp"%>
 </body>
-
+<script>  
+	$("#ta-content").click(()=>{
+		if(globalUserId == ""){
+			alert("로그인을 먼저 진행해주세요");
+			location.href = "/loginForm";
+		}
+		
+	});
+</script> 
 </html>

@@ -31,7 +31,9 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
 <body>
-
+<script>
+		let globalUserId = "${sessionScope.principal.id}";
+</script>
 <!-- 헤더 시작 -->
 <header>
     <!-- 네브바 시작 -->

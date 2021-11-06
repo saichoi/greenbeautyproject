@@ -25,6 +25,7 @@ import com.cos.greenproject.service.CommentService;
 import com.cos.greenproject.util.Script;
 import com.cos.greenproject.web.dto.BoardSaveDto;
 import com.cos.greenproject.web.dto.CMRespDto;
+import com.cos.greenproject.web.dto.CommentSaveDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -111,8 +112,12 @@ public class BoardController {
 	
 	// 댓글달기
 	@PostMapping("/api/board/{boardId}/comment")
-	public void commentSave(@PathVariable int boardId) {
+	public String commentSave(@PathVariable int boardId, CommentSaveDto dto) {
+		User principal = (User) session.getAttribute("principal");
+
+		commentService.insComment(boardId, dto, principal);
 		
+		return "redirect:/board/" + boardId + "/detail";
 	}
 	 
 }
