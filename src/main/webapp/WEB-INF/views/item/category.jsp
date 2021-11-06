@@ -53,7 +53,7 @@
 	<body-2 style="max-width:90%; margin:0 auto;"> 
 	<aside-1>
 	<!-- 서브메뉴자리 -->
-	<%@ include file="../layout/sidebar.jsp"%>
+	<%@ include file="../layout/itemSidebar.jsp"%>
 	</aside-1>
 
 	<section>

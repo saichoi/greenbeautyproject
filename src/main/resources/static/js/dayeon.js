@@ -6,6 +6,14 @@ function selectById(id){
 	location.href = "/item/" + id + "/detail?page=0";
 }
 
+function toWrite(id){
+	location.href = "/board/saveForm?itemId=" + id + "&page=0";
+}
+
+function toList(id, page){
+	location.href = "/item/category/" + id + "?page=" + page;
+}
+
 $(document).ready(function() {
 	$(function() {
 

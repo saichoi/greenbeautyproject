@@ -36,8 +36,8 @@
             <button type="button" class="btn btn-secondary"><i class="bi bi-hand-thumbs-up"></i></button>
             <!-- 좋아요 버튼 누른 후-->
             <!-- <button type="button" class="btn btn-secondary"><i class="bi bi-hand-thumbs-up-fill"></i></button> -->
-            <a href="/board/saveForm?itemId=${itemEntity.id }&page=0" type="button" class="btn btn-secondary" style="margin-right:0.5%">리뷰쓰기</a>
-            <a href="/item/category/${itemEntity.category.id}?page=${page}" type="button" class="btn btn-secondary">목록으로</a>
+            <button type="button" class="btn btn-secondary" onClick="toWrite(${itemEntity.id})"  style="margin-right:0.5%">리뷰쓰기</button>
+            <button type="button" onClick="toList(${itemEntity.category.id}, ${page })"  class="btn btn-secondary">목록으로</button>
         </div>
     </div>
     <div class="related-con container" style="width:75%;">

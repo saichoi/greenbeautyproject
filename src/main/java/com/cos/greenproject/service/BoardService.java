@@ -13,6 +13,9 @@ public interface BoardService {
 	
 	// 리뷰 목록 보기
 	public Page<Board> boardList(int page);
+	
+	// 리뷰 카테고리 목록보기
+	public Page<Board> boardCategoryList(int categoryId, int page);
 
 	// 리뷰 상세보기
 	public Board boardDetail(int boardId, Model model);

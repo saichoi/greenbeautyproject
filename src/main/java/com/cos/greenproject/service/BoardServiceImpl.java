@@ -2,6 +2,7 @@ package com.cos.greenproject.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,7 @@ import org.springframework.ui.Model;
 
 import com.cos.greenproject.domian.board.Board;
 import com.cos.greenproject.domian.board.BoardRepository;
+import com.cos.greenproject.domian.item.Item;
 import com.cos.greenproject.domian.user.User;
 import com.cos.greenproject.handler.ex.MyAsyncNotFoundException;
 import com.cos.greenproject.handler.ex.MyNotFoundException;
@@ -30,6 +32,14 @@ public class BoardServiceImpl implements BoardService {
 	    PageRequest pageRequest = PageRequest.of(page, 4, Sort.by(Direction.DESC, "id"));
 	    Page<Board> boardsEntity = boardRepository.findAll(pageRequest); 
 	    return boardsEntity;
+	}
+	
+	// 게시글 카테고리 목록보기
+	public Page<Board> boardCategoryList(int categoryId, int page) {
+		Pageable pageRequest = PageRequest.of(page, 12, Sort.by(Sort.Direction.ASC, "id"));
+		Page<Board> boardsEntity = boardRepository.mBoardCategoryList(categoryId, pageRequest);
+		
+		return boardsEntity;
 	}
 
 	// 게시글 상세보기

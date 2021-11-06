@@ -55,10 +55,7 @@ public class BoardController {
 		
 		boardService.insertBoard(dto, principal);
 		
-//		model.addAttribute("itemId", dto.getItemId());
-//		model.addAttribute("boardId", dto.getItemId());
 		model.addAttribute("page", page);
-		System.out.println(page);
 		return Script.href("/", "글쓰기 완료");
 	}
 
