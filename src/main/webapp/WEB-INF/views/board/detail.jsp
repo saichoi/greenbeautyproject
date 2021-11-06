@@ -62,7 +62,7 @@
 					<!--<i class="bi bi-hand-thumbs-up-fill"></i>-->
 					123
 				</div>
-				<button type="button" class="btn btn-primary">수정하기</button>
+				<button type="button" class="btn btn-primary" onclick="moveBoardUpdate(${boardEntity.id})">수정하기</button>
 			</div>
 
 			<div class="card shadow" style="margin-top: 3%;">

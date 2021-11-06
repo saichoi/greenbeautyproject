@@ -59,6 +59,7 @@ public class PageController {
 	// 리뷰 수정하기 페이지 이동
 	@GetMapping("/api/board/{boardId}/updateForm")
 	public String boardUpdateForm(@PathVariable int boardId, Model model) {
+	    model.addAttribute("boardEntity", boardService.moveUpdateForm(boardId, model));
 		return "board/updateForm";
 	}
 	

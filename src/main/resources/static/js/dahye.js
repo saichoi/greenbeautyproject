@@ -1,10 +1,14 @@
-	
-	// 리뷰 상세보기 페이지 이동
-	function selectByBoardId(boardid){
-		location.href = "/board/" + boardid + "/detail?page=0";
-	}
-	
 
+// 리뷰 상세보기 페이지 이동
+function moveBoardDetail(boardId){
+	location.href = "/board/" + boardId + "/detail?page=0";
+}
+
+// 리뷰 수정하기 페이지 이동
+function moveBoardUpdate(boardId){
+	location.href = "/api/board/" + boardId + "/updateForm";
+}
+	
 $(document).ready(function () {
 
  // 햄버거 버튼 클릭 이벤트 
@@ -134,5 +138,5 @@ $(document).ready(function () {
 			$('input[name=skinTone]').eq(0).remove();
 			$('#palletCon').append(tag);
 	});
-	
+		
 }); // end of document ready

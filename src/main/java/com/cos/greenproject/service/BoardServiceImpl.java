@@ -38,8 +38,10 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	// 게시글 수정페이지 이동
-	public void moveUpdateForm() {
-
+	public Board moveUpdateForm(int boardId, Model model) {
+	    Board boardEntity = boardRepository.findById(boardId)
+	            .orElseThrow(() -> new MyNotFoundException(boardId + "번의 게시글을 찾을 수 없습니다."));
+	        return boardEntity;
 	}
 
 	// <----- BoardController ----->

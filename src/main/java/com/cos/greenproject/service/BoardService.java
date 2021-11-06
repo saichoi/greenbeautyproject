@@ -11,24 +11,24 @@ public interface BoardService {
 
 	// <----- PageController ----->
 	
-	// 게시글 목록 보기
+	// 리뷰 목록 보기
 	public Page<Board> boardList(int page);
 
-	// 게시글 상세보기
-	public Board boardDetail(int id, Model model);
+	// 리뷰 상세보기
+	public Board boardDetail(int boardId, Model model);
 
-	// 게시글 수정페이지 이동
-	public void moveUpdateForm();
+	// 리뷰 수정페이지 이동
+	public Board moveUpdateForm(int boardId, Model model);
 	
 	// <----- BoardController ----->
 	
-	// 게시글 등록
+	// 리뷰 등록
 	public void insertBoard(BoardSaveDto dto, User principal);
 	
-	// 게시글 수정
+	// 리뷰 수정
 	public void updateBoard();
 
-	// 게시글 삭제
+	// 리뷰 삭제
 	public void deleteBoard();
 
 	// 리뷰 검색하기

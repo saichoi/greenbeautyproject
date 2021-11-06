@@ -17,21 +17,21 @@
 			<div id="section-category">
 				<p class="detail-route">
 					<i class="bi bi-house-door-fill"></i>
-           				 &gt; 카테고리
+           				&gt; ${boardEntity.category.parent} &gt; ${boardEntity.category.cname}
       		  	</p>
             </div>
 
             <div id="section-item">
                 <div id="section-item-sub-1">
                     <div class="card shadow">
-                        <img src="..." class="img-fluid rounded-start"
+                        <img src="${boardEntity.image}" class="img-fluid rounded-start"
 							alt="이미지자리">
                     </div>
                 </div>
                 <div id="section-item-sub-2">
                     <div id="text">
-                        <p>브랜드</p>
-                        <h2>제품명</h2>
+                        <p>${boardEntity.brand.bname}</p>
+                        <h2>${boardEntity.item.iname}</h2>
                     </div>
                 </div>
             </div>
@@ -53,16 +53,16 @@
            <div id="section-title">
                 <div class="form-group">
                     <input type="text" name="title" class="form-control"
-						placeholder="제목을 입력해주세요">
+						placeholder="${boardEntity.title}">
                 </div>
             </div>
             
            	<div id="section-texteditor">
-				<textarea id="summernote" class="form-control" name="content"></textarea>
+				<textarea id="summernote" class="form-control" name="content">${boardEntity.content}</textarea>
 			</div>
 
             <div id="section-date">
-                2021.10.09
+                ${boardEntity.createdAt}
             </div>
 
             <div id="section-button">

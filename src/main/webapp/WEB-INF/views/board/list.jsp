@@ -210,7 +210,7 @@
 		<div id="section2">
 			<!-- 리뷰리스트자리 -->
 			<c:forEach var="board" items="${boardsEntity.content}">
-			<div id="board-card" class="card mb-3 shadow" onclick="selectByBoardId(${board.id})" style="width:100%; ">
+			<div id="board-card" class="card mb-3 shadow" onclick="moveBoardDetail(${board.id})" style="width:100%; ">
 				<div class="row g-0">
 					<div class="img-card col-md-3" style="border-right: 1px solid rgb(219, 219, 219);">
 						<img src="${board.image}" class="img-fluid rounded-start" alt="상품이미지">
