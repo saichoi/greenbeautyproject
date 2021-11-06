@@ -68,7 +68,7 @@
             <div id="section-button">
                 <div id="button">
                     <button type="button" class="btn btn-danger">취소</button>
-                    <button type="button" class="btn btn-primary">수정</button>
+                    <button type="button" class="btn btn-primary" onClick="updateByBoardId(${board.id})">수정</button>
                 </div>
             </div>
     </section>

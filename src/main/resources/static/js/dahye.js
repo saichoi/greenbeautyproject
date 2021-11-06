@@ -8,6 +8,25 @@ function moveBoardDetail(boardId){
 function moveBoardUpdate(boardId){
 	location.href = "/api/board/" + boardId + "/updateForm";
 }
+
+// 리뷰 수정하기 
+async function updateByBoardId(boardId) {
+	let response = await fetch("http://localhost:8080/api/board/" + boardId , {
+		method: "PUT"
+	});
+
+	let parseResponse = await response.text();
+	console.log(parseResponse);
+
+	if (parseResponse == "ok") {
+		alert("수정 성공");
+		location.href = "/";
+	} else {
+		alert("수정 실패");
+		location.href = "/";
+	}
+
+}
 	
 $(document).ready(function () {
 
@@ -27,22 +46,22 @@ $(document).ready(function () {
 
   $(burger).on("click", function () {
     if (h == 0) {
-      $('.ham-con').animate({
-        right:'0',
-        opacity: 1
-      }, 500);
-      $(this).addClass('active-1');
-      h++;
-    } else if (h == 1) {
-      $('.ham-con').animate({
-        right :'-20%',
-        opacity: 0
-      }, 500);
-      $(this).removeClass('active-1');
-      h--;
-    }
-    $(window).scroll(function(){
-      sct = $(window).scrollTop();
+		  $('.ham-con').animate({
+			  right: '0',
+			  opacity: 1
+		  }, 500);
+		  $(this).addClass('active-1');
+		  h++;
+	  } else if (h == 1) {
+		  $('.ham-con').animate({
+			  right: '-20%',
+			  opacity: 0
+		  }, 500);
+		  $(this).removeClass('active-1');
+		  h--;
+	  }
+	  $(window).scroll(function() {
+		  sct = $(window).scrollTop();
       if(sct>30){
         $('.ham-con').css({
           opacity: 0,
@@ -138,5 +157,7 @@ $(document).ready(function () {
 			$('input[name=skinTone]').eq(0).remove();
 			$('#palletCon').append(tag);
 	});
+	
+	
 		
 }); // end of document ready

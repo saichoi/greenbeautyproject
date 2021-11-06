@@ -26,7 +26,7 @@ public interface BoardService {
 	public void insertBoard(BoardSaveDto dto, User principal);
 	
 	// 리뷰 수정
-	public void updateBoard();
+	public void updateBoard(int id, User principal, BoardSaveDto dto);
 
 	// 리뷰 삭제
 	public void deleteBoard();

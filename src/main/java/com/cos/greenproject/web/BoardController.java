@@ -14,14 +14,17 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cos.greenproject.domian.user.User;
+import com.cos.greenproject.handler.ex.MyAsyncNotFoundException;
 import com.cos.greenproject.service.BoardService;
 import com.cos.greenproject.service.CommentService;
 import com.cos.greenproject.util.Script;
 import com.cos.greenproject.web.dto.BoardSaveDto;
+import com.cos.greenproject.web.dto.CMRespDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -61,8 +64,22 @@ public class BoardController {
 
 	// 리뷰 수정하기
 	@PutMapping("/api/board/{boardId}")
-	public void update(@PathVariable int boardId) {
-
+	public @ResponseBody CMRespDto<String>update(@PathVariable int boardId, 
+		      @RequestBody @Valid BoardSaveDto dto, BindingResult bindingResult) {
+	    //유효성검사
+	    if (bindingResult.hasErrors()) {
+	      Map<String, String> errorMap = new HashMap<>();
+	      for (FieldError error : bindingResult.getFieldErrors()) {
+	        errorMap.put(error.getField(), error.getDefaultMessage());
+	      }
+	      throw new MyAsyncNotFoundException(errorMap.toString());
+	    }
+	    
+	    User principal = (User) session.getAttribute("principal");
+	    
+	    boardService.updateBoard(boardId, principal, dto);
+	    
+	    return new CMRespDto<String>(1, "업데이트 성공",null);
 	}
 
 	// 리뷰 삭제하기
