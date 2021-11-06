@@ -14,6 +14,7 @@
 
 	<div id="section-content">
 		<section style="max-width: 60%;">
+		<form onsubmit="updateByBoardId(event, ${boardEntity.id})">
 			<div id="section-category">
 				<p class="detail-route">
 					<i class="bi bi-house-door-fill"></i>
@@ -24,7 +25,7 @@
             <div id="section-item">
                 <div id="section-item-sub-1">
                     <div class="card shadow">
-                        <img src="${boardEntity.image}" class="img-fluid rounded-start"
+                        <img src="${boardEntity.image}" class="img-fluid rounded-start" id="image"
 							alt="이미지자리">
                     </div>
                 </div>
@@ -52,13 +53,15 @@
             
            <div id="section-title">
                 <div class="form-group">
-                    <input type="text" name="title" class="form-control"
-						placeholder="${boardEntity.title}">
+                    <input type="text" name="title" class="form-control" id="title"
+						value="${boardEntity.title}">
                 </div>
             </div>
             
            	<div id="section-texteditor">
-				<textarea id="summernote" class="form-control" name="content">${boardEntity.content}</textarea>
+				<textarea id="up-content" class="board-content form-control" name="content">
+					${boardEntity.content}
+				</textarea>
 			</div>
 
             <div id="section-date">
@@ -68,13 +71,43 @@
             <div id="section-button">
                 <div id="button">
                     <button type="button" class="btn btn-danger">취소</button>
-                    <button type="button" class="btn btn-primary" onClick="updateByBoardId(${board.id})">수정</button>
+                    <button type="submit" class="btn btn-primary">완료</button>
                 </div>
             </div>
+            </form>
     </section>
     </div>
 
 <%@ include file="../layout/footer.jsp"%>
 </body>
+<script>
+//리뷰 수정하기 
+async function updateByBoardId(event, boardId) {
+	event.preventDefault();
+	let boardUpdateDto = {
+		title: $("#title").val(),
+		content: $("#up-content").val(),
+		//image: $("#image").attr(src)
+	};
 
+	let response = await fetch("http://localhost:8080/api/board/" + boardId, {
+		method: "PUT",
+		body: JSON.stringify(boardUpdateDto),
+		headers: {
+			"Content-Type": "application/json; charset=utf-8"
+		}
+	});
+
+	let parseResponse = await response.json();
+
+	console.log(parseResponse);
+
+	if (parseResponse.code == 1) {
+		alert("업데이트 성공");
+		location.href = "/api/board/" + boardId;
+	} else {
+		alert("업데이트 실패"+parseResponse.msg);
+	}
+}
+</script>
 </html>

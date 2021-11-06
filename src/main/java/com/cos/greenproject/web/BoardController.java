@@ -24,6 +24,7 @@ import com.cos.greenproject.service.BoardService;
 import com.cos.greenproject.service.CommentService;
 import com.cos.greenproject.util.Script;
 import com.cos.greenproject.web.dto.BoardSaveDto;
+import com.cos.greenproject.web.dto.BoardUpdateDto;
 import com.cos.greenproject.web.dto.CMRespDto;
 import com.cos.greenproject.web.dto.CommentSaveDto;
 
@@ -63,7 +64,8 @@ public class BoardController {
 	// 리뷰 수정하기
 	@PutMapping("/api/board/{boardId}")
 	public @ResponseBody CMRespDto<String>update(@PathVariable int boardId, 
-		      @RequestBody @Valid BoardSaveDto dto, BindingResult bindingResult) {
+		      @RequestBody @Valid BoardUpdateDto dto, BindingResult bindingResult) {
+		System.out.println("수정하기 컨트롤러 실행됨??");
 	    //유효성검사
 	    if (bindingResult.hasErrors()) {
 	      Map<String, String> errorMap = new HashMap<>();
@@ -76,7 +78,6 @@ public class BoardController {
 	    User principal = (User) session.getAttribute("principal");
 	    
 	    boardService.updateBoard(boardId, principal, dto);
-	    
 	    return new CMRespDto<String>(1, "업데이트 성공",null);
 	}
 

@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import com.cos.greenproject.domian.board.Board;
 import com.cos.greenproject.domian.user.User;
 import com.cos.greenproject.web.dto.BoardSaveDto;
+import com.cos.greenproject.web.dto.BoardUpdateDto;
 
 public interface BoardService {
 
@@ -29,7 +30,7 @@ public interface BoardService {
 	public void insertBoard(BoardSaveDto dto, User principal);
 	
 	// 리뷰 수정
-	public void updateBoard(int id, User principal, BoardSaveDto dto);
+	public void updateBoard(int boardId, User principal, BoardUpdateDto dto);
 
 	// 리뷰 삭제
 	public void deleteBoard(int id, User principal);

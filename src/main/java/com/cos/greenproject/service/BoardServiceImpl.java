@@ -11,11 +11,11 @@ import org.springframework.ui.Model;
 
 import com.cos.greenproject.domian.board.Board;
 import com.cos.greenproject.domian.board.BoardRepository;
-import com.cos.greenproject.domian.item.Item;
 import com.cos.greenproject.domian.user.User;
 import com.cos.greenproject.handler.ex.MyAsyncNotFoundException;
 import com.cos.greenproject.handler.ex.MyNotFoundException;
 import com.cos.greenproject.web.dto.BoardSaveDto;
+import com.cos.greenproject.web.dto.BoardUpdateDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -64,20 +64,24 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	// 게시글 수정
-	public void updateBoard(int id, User principal, BoardSaveDto dto) {
+	@Transactional(rollbackFor = MyAsyncNotFoundException.class) 
+	public void updateBoard(int boardId, User principal, BoardUpdateDto dto) {
 		
-	    Board boardEntity = boardRepository.findById(id)
+	    Board boardEntity = boardRepository.findById(boardId)
 	        .orElseThrow(() -> new MyAsyncNotFoundException("해당 게시글을 찾을 수 없습니다."));
 	    
 	    if (principal.getId() != boardEntity.getUser().getId()) {
 	      throw new MyAsyncNotFoundException("해당 게시글을 수정할 권한이 없습니다.");
 	    }
-	    
+	    System.out.println("게시글 수정 서비스 실행됨??");
 	    boardEntity.setTitle(dto.getTitle());
 	    boardEntity.setContent(dto.getContent());
+	    //boardEntity.setImage(dto.getImage());
+	    System.out.println(boardEntity);
 	}
 
 	// 게시글 삭제
+	@Transactional(rollbackFor = MyAsyncNotFoundException.class)
 	public void deleteBoard(int id, User principal) {
 		// 권한이 있는 사람만 함수 접근 가능(principal.id == {id})
 		Board boardEntity = boardRepository.findById(id)

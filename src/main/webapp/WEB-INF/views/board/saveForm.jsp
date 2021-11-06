@@ -59,7 +59,7 @@
 			</div>
 
 			<div id="section-texteditor">
-				<textarea id="summernote" class="form-control" name="content"></textarea>
+				<textarea id="sa-content" class="board-content  form-control" name="content"></textarea>
 			</div>
 
 			<div id="section-date">${date }</div>

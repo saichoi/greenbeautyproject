@@ -8,25 +8,6 @@ function moveBoardDetail(boardId){
 function moveBoardUpdate(boardId){
 	location.href = "/api/board/" + boardId + "/updateForm";
 }
-
-// 리뷰 수정하기 
-async function updateByBoardId(boardId) {
-	let response = await fetch("http://localhost:8080/api/board/" + boardId , {
-		method: "PUT"
-	});
-
-	let parseResponse = await response.text();
-	console.log(parseResponse);
-
-	if (parseResponse.code == 1) {
-		alert("수정 성공");
-		location.href = "/";
-	} else {
-		alert("수정 실패");
-		location.href = "/";
-	}
-
-}
 	
 $(document).ready(function () {
 

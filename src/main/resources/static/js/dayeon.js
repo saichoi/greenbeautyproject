@@ -33,7 +33,7 @@ async function deleteBoardById(id){
 }
 
 async function deleteCommentById(commentId){
-	let response = await fetch("http://localhost:8080/comment/" + commentId, {
+	let response = await fetch("http://localhost:8080/api/comment/" + commentId, {
 		method:"delete"
 	});
 	let parseResponse = await response.json();
@@ -175,7 +175,7 @@ $(document).ready(function() {
 		}
 	});
 	
-	$('#summernote').summernote({
+	$('.board-content').summernote({
 		height: 450
 	});
 });
