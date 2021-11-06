@@ -62,7 +62,12 @@
 					<!--<i class="bi bi-hand-thumbs-up-fill"></i>-->
 					123
 				</div>
-				<button type="button" class="btn btn-primary" onclick="moveBoardUpdate(${boardEntity.id})">수정하기</button>
+				<c:if test="${sessionScope.principal.id == boardEntity.user.id }">
+				<div id="button">
+					<button id="cancel" type="button" class="btn btn-danger" onclick="deleteBoardById(${boardEntity.id})">삭제</button>
+					<button type="submit" class="btn btn-primary" onclick="moveBoardUpdate(${boardEntity.id})">수정</button>
+				</div>
+				</c:if>
 			</div>
 
 			<div class="card shadow" style="margin-top: 3%;">

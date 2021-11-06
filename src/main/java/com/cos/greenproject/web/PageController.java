@@ -36,7 +36,8 @@ public class PageController {
 
 	// 리뷰 카테고리 페이지 이동
 	@GetMapping("/board/category/{categoryId}")
-	public String boardCategoryList(@PathVariable int categoryId, Model model) {
+	public String boardCategoryList(@PathVariable int categoryId, Model model, int page) {
+		model.addAttribute("boardsEntity", boardService.boardCategoryList(categoryId, page));
 		return "board/category";
 	}
 

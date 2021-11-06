@@ -13,6 +13,9 @@ public interface BoardService {
 	
 	// 리뷰 목록 보기
 	public Page<Board> boardList(int page);
+	
+	// 리뷰 카테고리 목록보기
+	public Page<Board> boardCategoryList(int categoryId, int page);
 
 	// 리뷰 상세보기
 	public Board boardDetail(int boardId, Model model);
@@ -29,7 +32,7 @@ public interface BoardService {
 	public void updateBoard(int id, User principal, BoardSaveDto dto);
 
 	// 리뷰 삭제
-	public void deleteBoard();
+	public void deleteBoard(int id, User principal);
 
 	// 리뷰 검색하기
 	public void searchBoardList();

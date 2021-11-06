@@ -51,59 +51,7 @@
 	<body-2 style="max-width:90%; margin:0 auto;">
     <aside-1>
         <!-- 서브메뉴자리 -->
-        <div id="main_menu">
-            <div id="menu1">
-                <div class="top_menu">
-                    <span id="clicktoggle1">스킨케어<i class="bi bi-caret-down-fill"></i></span>
-                    <div class="sub_menu">
-                        <div class="select-menu"><a href="#">스킨/토너</a></div>
-                        <div class="select-menu"><a href="#">로션/에멀젼</a></div>
-                        <div class="select-menu"><a href="#">에센스/세럼</a></div>
-                        <div class="select-menu"><a href="#">크림</a></div>
-                        <div class="select-menu"><a href="#">미스트</a></div>
-                        <div class="select-menu"><a href="#">마스크/팩</a></div>
-                        <div class="select-menu"><a href="#">페이스오일</a></div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="menu2">
-                <div class="top_menu">
-                    <span id="clicktoggle2">클렌징<i class="bi bi-caret-down-fill"></i></span>
-                    <div class="sub_menu">
-                        <div class="select-menu"><a href="#">클렌징폼</a></div>
-                        <div class="select-menu"><a href="#">클렌징워터</a></div>
-                        <div class="select-menu"><a href="#">클렌징오일</a></div>
-                        <div class="select-menu"><a href="#">클렌징티슈</a></div>
-                        <div class="select-menu"><a href="#">메이크업리무버</a></div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="menu3">
-                <div class="top_menu">
-                    <span id="clicktoggle3">선케어<i class="bi bi-caret-down-fill"></i></span>
-                    <div class="sub_menu">
-                        <div class="select-menu"><a href="#">선블럭</a></div>
-                        <div class="select-menu"><a href="#">선스프레이</a></div>
-                        <div class="select-menu"><a href="#">선스틱</a></div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="menu4">
-                <div class="top_menu">
-                    <span id="clicktoggle4">메이크업<i class="bi bi-caret-down-fill"></i></span>
-                    <div class="sub_menu">
-                        <div class="select-menu"><a href="#">페이스</a></div>
-                        <div class="select-menu"><a href="#">립</a></div>
-                        <div class="select-menu"><a href="#">아이</a></div>
-                        <div class="select-menu"><a href="#">치크</a></div>
-                        <div class="select-menu"><a href="#">네일</a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+		<%@ include file="../layout/boardSidebar.jsp"%>
     </aside-1>
 
     <section>
@@ -168,105 +116,36 @@
 
         <div id="section2">
             <!-- 리뷰리스트자리 -->
-            <div class="card mb-3 shadow" style="width: 100%;">
-                <div class="row g-0">
-                    <div class="col-md-4" style="border-right: 1px solid rgb(219, 219, 219);">
-                        <img src="..." class="img-fluid rounded-start" alt="이미지자리">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <p id="category"><small class="text-muted">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                        class="bi bi-house-door-fill" viewBox="0 1 16 16">
+          <!-- 리뷰리스트자리 -->
+			<c:forEach var="board" items="${boardsEntity.content}">
+			<div id="board-card" class="card mb-3 shadow" onclick="moveBoardDetail(${board.id})" style="width:100%; ">
+				<div class="row g-0">
+					<div class="img-card col-md-3" style="border-right: 1px solid rgb(219, 219, 219);">
+						<img src="${board.image}" class="img-fluid rounded-start" alt="상품이미지">
+					</div>
+					<div class="col-md-8">
+						<div class="card-body">
+							<p id="category">
+								<small class="text-muted"> <svg
+										xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+										fill="currentColor" class="bi bi-house-door-fill"
+										viewBox="0 1 16 16">
                                         <path
-                                            d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z" />
-                                    </svg>
-                                    카테고리</small></p>
-                            <h4 id="title">Title</h4>
-                            <p id="writer">작성자</p>
-                            <div id="card-sub">
-                                <p id="skin-type">피부타입</p>
-                                <p id="date">2021.10.9</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card mb-3 shadow" style="width: 100%;">
-                <div class="row g-0">
-                    <div class="col-md-4" style="border-right: 1px solid rgb(219, 219, 219);">
-                        <img src="..." class="img-fluid rounded-start" alt="이미지자리">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <p id="category"><small class="text-muted">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                        class="bi bi-house-door-fill" viewBox="0 1 16 16">
-                                        <path
-                                            d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z" />
-                                    </svg>
-                                    카테고리</small></p>
-                            <h4 id="title">Title</h4>
-                            <p id="writer">작성자</p>
-                            <div id="card-sub">
-                                <p id="skin-type">피부타입</p>
-                                <p id="date">2021.10.9</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card mb-3 shadow" style="width: 100%;">
-                <div class="row g-0">
-                    <div class="col-md-4" style="border-right: 1px solid rgb(219, 219, 219);">
-                        <img src="..." class="img-fluid rounded-start" alt="이미지자리">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <p id="category"><small class="text-muted">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                        class="bi bi-house-door-fill" viewBox="0 1 16 16">
-                                        <path
-                                            d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z" />
-                                    </svg>
-                                    카테고리</small></p>
-                            <h4 id="title">Title</h4>
-                            <p id="writer">작성자</p>
-                            <div id="card-sub">
-                                <p id="skin-type">피부타입</p>
-                                <p id="date">2021.10.9</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card mb-3 shadow" style="width: 100%;">
-                <div class="row g-0">
-                    <div class="col-md-4" style="border-right: 1px solid rgb(219, 219, 219);">
-                        <img src="..." class="img-fluid rounded-start" alt="이미지자리">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <p id="category"><small class="text-muted">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                        class="bi bi-house-door-fill" viewBox="0 1 16 16">
-                                        <path
-                                            d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z" />
-                                    </svg>
-                                    카테고리</small></p>
-                            <h4 id="title">Title</h4>
-                            <p id="writer">작성자</p>
-                            <div id="card-sub">
-                                <p id="skin-type">피부타입</p>
-                                <p id="date">2021.10.9</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+											d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z" />
+                                    </svg>  &gt; ${board.category.parent} &gt; ${board.category.cname}
+								</small>
+							</p>
+							<h4 id="title">${board.title}</h4>
+							<p id="writer">작성자 : ${board.user.nickname} </p>
+							<div id="card-sub">
+								<p id="skin-type">작성자의 피부타입 : ${board.user.skinType} / ${board.user.skinTrouble} / ${board.user.skinTone}</p>
+								<p id="date">${board.createdAt}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			</c:forEach>
 
             <!-- 페이지네이션자리 -->
             <nav aria-label="Page navigation example">
