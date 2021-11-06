@@ -16,20 +16,20 @@
 		<section style="max-width: 60%;">
 			<div id="section-category">
 				<p class="detail-route">
-					<i class="bi bi-house-door-fill"></i> &gt; 카테고리
+					<i class="bi bi-house-door-fill"></i> &gt; ${boardEntity.category.parent} &gt; ${boardEntity.category.cname}
 				</p>
 			</div>
 
 			<div id="section-item">
 				<div id="section-item-sub-1">
 					<div class="card shadow">
-						<img src="..." class="img-fluid rounded-start" alt="이미지자리">
+						<img src="${boardEntity.image}" class="img-fluid rounded-start" alt="이미지자리">
 					</div>
 				</div>
 				<div id="section-item-sub-2">
 					<div id="text">
-						<p>브랜드</p>
-						<h2>제품명</h2>
+						<p>${boardEntity.brand.bname}</p>
+						<h2>${boardEntity.item.iname}</h2>
 					</div>
 				</div>
 			</div>
@@ -44,18 +44,17 @@
 			</div>
 
 			<div id="section-date" style="display: flex; justify-content: end;">
-				2021.10.09</div>
+				${boardEntity.createdAt}</div>
 
 			<div id="section-title">
-				<h2>글 제목</h2>
+				<h2>${boardEntity.title}</h2>
 			</div>
 
 			<div id="section-texteditor">
-				<div class="card shadow" style="width: 100%; height: 100%">글
-					내용</div>
+				<div class="card shadow" style="width: 100%; height: 100%">${boardEntity.content}</div>
 			</div>
 
-			<div id="writer">작성자</div>
+			<div id="writer">${boardEntity.user.nickname}</div>
 
 			<div id="section-button-like">
 				<div id="section-button-sub">

@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.cos.greenproject.domian.item.Item;
 import com.cos.greenproject.service.BoardService;
 import com.cos.greenproject.service.ItemService;
 import com.cos.greenproject.service.UserService;
@@ -44,6 +43,7 @@ public class PageController {
 	// 리뷰 상세 페이지 이동
 	@GetMapping("/board/{boardId}/detail")
 	public String detail(@PathVariable int boardId, Model model) {
+	    model.addAttribute("boardEntity", boardService.boardDetail(boardId, model));
 		return "board/detail";
 	}
 

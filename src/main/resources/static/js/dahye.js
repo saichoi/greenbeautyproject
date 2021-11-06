@@ -1,3 +1,10 @@
+	
+	// 리뷰 상세보기 페이지 이동
+	function selectByBoardId(boardid){
+		location.href = "/board/" + boardid + "/detail?page=0";
+	}
+	
+
 $(document).ready(function () {
 
  // 햄버거 버튼 클릭 이벤트 

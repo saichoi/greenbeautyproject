@@ -1,6 +1,7 @@
 package com.cos.greenproject.service;
 
 import org.springframework.data.domain.Page;
+import org.springframework.ui.Model;
 
 import com.cos.greenproject.domian.board.Board;
 import com.cos.greenproject.domian.user.User;
@@ -14,7 +15,7 @@ public interface BoardService {
 	public Page<Board> boardList(int page);
 
 	// 게시글 상세보기
-	public void boardDetail();
+	public Board boardDetail(int id, Model model);
 
 	// 게시글 수정페이지 이동
 	public void moveUpdateForm();

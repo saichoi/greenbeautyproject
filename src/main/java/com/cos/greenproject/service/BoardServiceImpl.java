@@ -6,6 +6,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 
 import com.cos.greenproject.domian.board.Board;
 import com.cos.greenproject.domian.board.BoardRepository;
@@ -31,8 +32,9 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	// 게시글 상세보기
-	public void boardDetail() {
-
+	public Board boardDetail(int boardId, Model model) {
+	    Board boardEntity = boardRepository.findById(boardId).orElseThrow(() -> new MyNotFoundException(boardId + "를 못 찾았어요."));
+	    return boardEntity;
 	}
 
 	// 게시글 수정페이지 이동
