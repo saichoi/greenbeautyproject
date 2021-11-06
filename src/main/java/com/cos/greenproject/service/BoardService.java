@@ -1,5 +1,8 @@
 package com.cos.greenproject.service;
 
+import org.springframework.data.domain.Page;
+
+import com.cos.greenproject.domian.board.Board;
 import com.cos.greenproject.domian.user.User;
 import com.cos.greenproject.web.dto.BoardSaveDto;
 
@@ -8,7 +11,7 @@ public interface BoardService {
 	// <----- PageController ----->
 	
 	// 게시글 목록 보기
-	public void boardList();
+	public Page<Board> boardList(int page);
 
 	// 게시글 상세보기
 	public void boardDetail();

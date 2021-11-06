@@ -41,7 +41,7 @@
 
         <div class="left-nav d-flex flex-row p2">
             <div class="logo p-2">
-                <a class="navbar-brand" href="/board">
+                <a class="navbar-brand" href="/board?page=0">
                		뷰티모아
                 </a>
             </div>
@@ -49,7 +49,7 @@
             <div class="collapse navbar-collapse p-2" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/board">리뷰보기</a>
+                        <a class="nav-link" href="/board?page=0">리뷰보기</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/item/list?page=0">제품보기</a>

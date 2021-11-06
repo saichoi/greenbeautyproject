@@ -1,8 +1,13 @@
 package com.cos.greenproject.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.cos.greenproject.domian.board.Board;
 import com.cos.greenproject.domian.board.BoardRepository;
 import com.cos.greenproject.domian.user.User;
 import com.cos.greenproject.handler.ex.MyNotFoundException;
@@ -19,8 +24,10 @@ public class BoardServiceImpl implements BoardService {
 	// <----- PageController ----->
 	
 	// 게시글 목록 보기
-	public void boardList() {
-
+	public Page<Board> boardList(int page) {
+	    PageRequest pageRequest = PageRequest.of(page, 4, Sort.by(Direction.DESC, "id"));
+	    Page<Board> boardsEntity = boardRepository.findAll(pageRequest); 
+	    return boardsEntity;
 	}
 
 	// 게시글 상세보기

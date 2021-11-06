@@ -30,7 +30,8 @@ public class PageController {
 
 	// 리뷰 목록 페이지 이동 (메인페이지)
 	@GetMapping("/board")
-	public String home() {
+	public String home(Model model, int page) {
+	    model.addAttribute("boardsEntity", boardService.boardList(page));
 		return "board/list";
 	}
 
