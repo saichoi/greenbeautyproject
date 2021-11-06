@@ -32,7 +32,7 @@ public interface BoardService {
 	public void updateBoard(int id, User principal, BoardSaveDto dto);
 
 	// 리뷰 삭제
-	public void deleteBoard();
+	public void deleteBoard(int id, User principal);
 
 	// 리뷰 검색하기
 	public void searchBoardList();

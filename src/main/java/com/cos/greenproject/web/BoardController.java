@@ -81,8 +81,12 @@ public class BoardController {
 
 	// 리뷰 삭제하기
 	@DeleteMapping("/api/board/{boardId}")
-	public void deleteById(@PathVariable int baordId) {
-
+	public @ResponseBody CMRespDto<String> deleteById(@PathVariable int boardId) {
+		User principal = (User) session.getAttribute("principal");
+		
+		boardService.deleteBoard(boardId, principal);
+		
+		return new CMRespDto<String>(1, "성공", null); // 데이터리턴 String -> text/plain
 	}
 	
 	// 리뷰 검색하기

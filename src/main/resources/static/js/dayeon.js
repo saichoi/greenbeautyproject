@@ -14,6 +14,24 @@ function toList(id, page){
 	location.href = "/item/category/" + id + "?page=" + page;
 }
 
+async function deleteBoardById(id){
+	let response = await fetch("http://localhost:8080/api/board/"+id,{
+		method: "delete"
+	}) 
+	let parseResponse = await response.json();
+	console.log(parseResponse);
+
+	if(parseResponse.code == 1){
+		alert("삭제 성공");
+		location.href = "/";
+	} else{
+		alert(parseResponse.msg);
+		location.href = "/";
+	}
+	
+	return parseResponse;
+}
+
 $(document).ready(function() {
 	$(function() {
 
