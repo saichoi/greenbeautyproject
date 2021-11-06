@@ -32,6 +32,20 @@ async function deleteBoardById(id){
 	return parseResponse;
 }
 
+async function deleteCommentById(commentId){
+	let response = await fetch("http://localhost:8080/comment/" + commentId, {
+		method:"delete"
+	});
+	let parseResponse = await response.json();
+	if(parseResponse.code == 1){
+		alert("댓글 삭제 완료");
+		// location.reload();
+		$("#reply-" + commentId).remove(); 
+	}else{
+		alert("댓글 삭제에 실패하였습니다" + parseResponse.msg);
+	}
+}
+
 $(document).ready(function() {
 	$(function() {
 
