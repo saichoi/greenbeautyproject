@@ -23,7 +23,7 @@
 			<div id="section-item">
 				<div id="section-item-sub-1">
 					<div class="card shadow">
-						<img src="${boardEntity.image}" class="img-fluid rounded-start" alt="이미지자리">
+						<a href="/item/${boardEntity.item.id}/detail?page=0"><img src="${boardEntity.image}" class="img-fluid rounded-start" alt="이미지자리"></a>
 					</div>
 				</div>
 				<div id="section-item-sub-2">

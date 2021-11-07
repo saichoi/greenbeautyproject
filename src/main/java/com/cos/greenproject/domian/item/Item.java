@@ -1,6 +1,7 @@
 package com.cos.greenproject.domian.item;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,12 +12,17 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
+import com.cos.greenproject.domian.board.Board;
 import com.cos.greenproject.domian.brand.Brand;
 import com.cos.greenproject.domian.category.Category;
+import com.cos.greenproject.domian.comment.Comment;
 import com.cos.greenproject.domian.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

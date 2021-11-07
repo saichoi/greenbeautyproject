@@ -32,14 +32,13 @@ public class ItemServiceImpl implements ItemService{
 	public Page<Item> itemCategoryList(int categoryId, int page) {
 		Pageable pageRequest = PageRequest.of(page, 12, Sort.by(Sort.Direction.ASC, "id"));
 		Page<Item> itemsEntity = itemRepository.mItemCategoryList(categoryId, pageRequest);
-		
 		return itemsEntity;
 	}
 
 	// 제품 상세페이지 보기
 	public Item itemDetail(int id) {
 		Item itemEntity = itemRepository.findById(id)
-				.orElseThrow(() -> new MyNotFoundException(id + "를 찾을 수 없습니다"));
+				.orElseThrow(() -> new MyNotFoundException(id + "를 찾을 수 없습니다"));	
 		return itemEntity;
 	}
 	
