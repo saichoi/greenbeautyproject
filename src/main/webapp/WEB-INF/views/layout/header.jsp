@@ -123,20 +123,20 @@
                     <ul class="ham-top-menu">
                         <li><a href="#">리뷰보기<i class="bi bi-caret-down-fill"></i></a>
                             <ul class="ham-sub-menu">
-                                <li><a href="/board/1">스킨케어</a></li>
-                                <li><a href="/board/2">클렌징</a></li>
-                                <li><a href="/board/3">선케어</a></li>
-                                <li><a href="/board/4">메이크업</a></li>
+                                <li><a href="/board/category/1?page=0">스킨케어</a></li>
+                                <li><a href="/board/category/8?page=0">클렌징</a></li>
+                                <li><a href="/board/category/13?page=0">선케어</a></li>
+                                <li><a href="/board/category/15?page=0">메이크업</a></li>
                             </ul>
                         </li>
                     </ul>
                     <ul class="ham-top-menu">
                         <li><a href="#">제품보기<i class="bi bi-caret-down-fill"></i></a>
                             <ul class="ham-sub-menu">
-                                <li><a href="/item/category/1">스킨케어</a></li>
-                                <li><a href="/item/category/2">클렌징</a></li>
-                                <li><a href="/item/category/3">선케어</a></li>
-                                <li><a href="/item/category/3">메이크업</a></li>
+                                <li><a href="/item/category/1?page=0">스킨케어</a></li>
+                                <li><a href="/item/category/8?page=0">클렌징</a></li>
+                                <li><a href="/item/category/13?page=0">선케어</a></li>
+                                <li><a href="/item/category/15?page=0">메이크업</a></li>
                             </ul>
                         </li>
                     </ul>
