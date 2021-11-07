@@ -2,7 +2,7 @@ const drawStar = (target) => {
 	document.querySelector(`.star span`).style.width = `${target.value * 10}%`;
 }
 
-function selectById(id){
+function moveItemDetail(id){
 	location.href = "/item/" + id + "/detail?page=0";
 }
 
@@ -10,7 +10,11 @@ function toWrite(id){
 	location.href = "/board/saveForm?itemId=" + id + "&page=0";
 }
 
-function toList(id, page){
+function toBoardList(id, page){
+	location.href = "/board/category/" + id + "?page=" + page;
+}
+
+function toItemList(id, page){
 	location.href = "/item/category/" + id + "?page=" + page;
 }
 

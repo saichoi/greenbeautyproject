@@ -62,12 +62,14 @@
 					<!--<i class="bi bi-hand-thumbs-up-fill"></i>-->
 					123
 				</div>
-				<c:if test="${sessionScope.principal.id == boardEntity.user.id }">
+				
 				<div id="button">
+					<button type="button" onClick="toBoardList(${boardEntity.category.id}, ${page })"  class="btn btn-secondary">목록으로</button>
+					<c:if test="${sessionScope.principal.id == boardEntity.user.id }">
 					<button id="cancel" type="button" class="btn btn-danger" onclick="deleteBoardById(${boardEntity.id})">삭제</button>
 					<button type="submit" class="btn btn-primary" onclick="moveBoardUpdate(${boardEntity.id})">수정</button>
+					</c:if>
 				</div>
-				</c:if>
 			</div>
 	
 			<!-- 댓글 쓰기 시작 -->
