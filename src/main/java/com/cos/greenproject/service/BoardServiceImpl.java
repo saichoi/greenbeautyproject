@@ -73,7 +73,7 @@ public class BoardServiceImpl implements BoardService {
 	    if (principal.getId() != boardEntity.getUser().getId()) {
 	      throw new MyAsyncNotFoundException("해당 게시글을 수정할 권한이 없습니다.");
 	    }
-	    System.out.println("게시글 수정 서비스 실행됨??");
+//	    System.out.println("게시글 수정 서비스 실행됨??");
 	    boardEntity.setTitle(dto.getTitle());
 	    boardEntity.setContent(dto.getContent());
 	    //boardEntity.setImage(dto.getImage());
