@@ -43,8 +43,9 @@ public class PageController {
 
 	// 리뷰 상세 페이지 이동
 	@GetMapping("/board/{boardId}/detail")
-	public String detail(@PathVariable int boardId, Model model) {
+	public String detail(@PathVariable int boardId, Model model, int page) {
 	    model.addAttribute("boardEntity", boardService.boardDetail(boardId, model));
+		model.addAttribute("page", page);
 		return "board/detail";
 	}
 

@@ -92,7 +92,7 @@
 			<div class="row w-100 row-cols-1 row-cols-md-4 g-3">
 				<c:forEach var="item" items="${itemsEntity.content }">
 					<div class="col">
-						<div class="card h-100 shadow" onClick="selectById(${item.id})" style="overflow: hidden;">
+						<div class="card h-100 shadow" onClick="moveItemDetail(${item.id})" style="overflow: hidden;">
 							<div id="item-image">
 								<img id="img-select" src="${item.image }" class="card-img-top" alt="제품이미지">
 							</div>

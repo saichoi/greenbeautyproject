@@ -37,7 +37,7 @@
             <!-- 좋아요 버튼 누른 후-->
             <!-- <button type="button" class="btn btn-secondary"><i class="bi bi-heart-fill"></i></button> -->
             <button type="button" class="btn btn-secondary" onClick="toWrite(${itemEntity.id})"  style="margin-right:0.5%">리뷰쓰기</button>
-            <button type="button" onClick="toList(${itemEntity.category.id}, ${page })"  class="btn btn-secondary">목록으로</button>
+            <button type="button" onClick="toItemList(${itemEntity.category.id}, ${page })"  class="btn btn-secondary">목록으로</button>
         </div>
     </div>
     <div class="related-con container" style="width:75%;">
