@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
 	// 회원가입
 	@Transactional(rollbackFor = MyNotFoundException.class) 
 	public void join(JoinReqDto dto) {
-		System.out.println("서비스 실행됨?");
+//		System.out.println("서비스 실행됨?");
 	    // 정상일 때
 	    String encPassword = SHA.encrypt(dto.getPassword(), MyAlgorithm.SHA256);
 	    dto.setPassword(encPassword); 

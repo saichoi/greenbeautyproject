@@ -86,4 +86,9 @@ public class Item {
 	@ManyToOne
 	private User user;
 	
+	// 리뷰 리스트
+	@JsonIgnoreProperties({"item"})
+	@OneToMany(mappedBy =  "item", fetch = FetchType.LAZY)
+	@OrderBy("id desc")
+	private List<Board> boards;
 }

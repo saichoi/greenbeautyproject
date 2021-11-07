@@ -45,7 +45,8 @@
             <h2>Related Review</h2>
         </div>
         <!-- 연관리스트 컨테이너 시작 -->
-        <div class="related-list container mt-5 w-75">
+        <c:forEach var="board" items="${itemEntity.boards }" begin="0" end="3">
+        	<div class="related-list container mt-3" style="width:80%">
         
 			<div id="board-card" class="card mb-3 shadow" onclick="moveBoardDetail(${board.id})" style="width:100%; ">
 				<div class="row g-0">
@@ -61,105 +62,21 @@
 										viewBox="0 1 16 16">
                                         <path
 											d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z" />
-                                    </svg>  &gt; 부모카테 &gt; 카테
+                                    </svg> &gt; ${board.category.parent} &gt; ${board.category.cname}
 								</small>
 							</p>
-							<h4 id="title">제목</h4>
-							<p id="writer">작성자 : </p>
+							<h4 id="title">${board.title}</h4>
+							<p id="writer">작성자 : ${board.user.nickname}</p>
 							<div id="card-sub">
-								<p id="skin-type">작성자의 피부타입 :  /  / </p>
-								<p id="date">날짜</p>
+								<p id="skin-type">작성자의 피부타입 :  ${board.user.skinType} / ${board.user.skinTrouble} / ${board.user.skinTone} </p>
+								<p id="date">${board.createdAt}</p>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			
-			<div id="board-card" class="card mb-3 shadow" onclick="moveBoardDetail(${board.id})" style="width:100%; ">
-				<div class="row g-0">
-					<div class="img-card col-md-3" style="border-right: 1px solid rgb(219, 219, 219);">
-						<img src="${board.image}" class="img-fluid rounded-start" alt="상품이미지">
-					</div>
-					<div class="col-md-8">
-						<div class="card-body">
-							<p id="category">
-								<small class="text-muted"> <svg
-										xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-										fill="currentColor" class="bi bi-house-door-fill"
-										viewBox="0 1 16 16">
-                                        <path
-											d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z" />
-                                    </svg>  &gt; 부모카테 &gt; 카테
-								</small>
-							</p>
-							<h4 id="title">제목</h4>
-							<p id="writer">작성자 : </p>
-							<div id="card-sub">
-								<p id="skin-type">작성자의 피부타입 :  /  / </p>
-								<p id="date">날짜</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-			<div id="board-card" class="card mb-3 shadow" onclick="moveBoardDetail(${board.id})" style="width:100%; ">
-				<div class="row g-0">
-					<div class="img-card col-md-3" style="border-right: 1px solid rgb(219, 219, 219);">
-						<img src="${board.image}" class="img-fluid rounded-start" alt="상품이미지">
-					</div>
-					<div class="col-md-8">
-						<div class="card-body">
-							<p id="category">
-								<small class="text-muted"> <svg
-										xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-										fill="currentColor" class="bi bi-house-door-fill"
-										viewBox="0 1 16 16">
-                                        <path
-											d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z" />
-                                    </svg>  &gt; 부모카테 &gt; 카테
-								</small>
-							</p>
-							<h4 id="title">제목</h4>
-							<p id="writer">작성자 : </p>
-							<div id="card-sub">
-								<p id="skin-type">작성자의 피부타입 :  /  / </p>
-								<p id="date">날짜</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-			<div id="board-card" class="card mb-3 shadow" onclick="moveBoardDetail(${board.id})" style="width:100%; ">
-				<div class="row g-0">
-					<div class="img-card col-md-3" style="border-right: 1px solid rgb(219, 219, 219);">
-						<img src="${board.image}" class="img-fluid rounded-start" alt="상품이미지">
-					</div>
-					<div class="col-md-8">
-						<div class="card-body">
-							<p id="category">
-								<small class="text-muted"> <svg
-										xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-										fill="currentColor" class="bi bi-house-door-fill"
-										viewBox="0 1 16 16">
-                                        <path
-											d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z" />
-                                    </svg>  &gt; 부모카테 &gt; 카테
-								</small>
-							</p>
-							<h4 id="title">제목</h4>
-							<p id="writer">작성자 : </p>
-							<div id="card-sub">
-								<p id="skin-type">작성자의 피부타입 :  /  / </p>
-								<p id="date">날짜</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-            	
-        </div>
+				</div>   	
+     	 	   </div>
+			</c:forEach>
         <!-- 연관리스트 컨테이너 끝 -->
     </div>
 </section>

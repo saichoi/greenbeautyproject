@@ -43,7 +43,7 @@ public class BoardController {
 	@PostMapping("/api/board")
 	public @ResponseBody String save(@Valid BoardSaveDto dto, BindingResult bindingResult, Model model, int page) {
 		User principal = (User) session.getAttribute("principal");
-		System.out.println(dto);
+//		System.out.println(dto);
 		if (bindingResult.hasErrors()) { // 에러가 터졌을 때
 			Map<String, String> errorMap = new HashMap<>();
 			for (FieldError error : bindingResult.getFieldErrors()) {
@@ -65,7 +65,7 @@ public class BoardController {
 	@PutMapping("/api/board/{boardId}")
 	public @ResponseBody CMRespDto<String>update(@PathVariable int boardId, 
 		      @RequestBody @Valid BoardUpdateDto dto, BindingResult bindingResult) {
-		System.out.println("수정하기 컨트롤러 실행됨??");
+//		System.out.println("수정하기 컨트롤러 실행됨??");
 	    //유효성검사
 	    if (bindingResult.hasErrors()) {
 	      Map<String, String> errorMap = new HashMap<>();
