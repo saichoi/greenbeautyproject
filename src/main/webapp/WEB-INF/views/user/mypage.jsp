@@ -65,7 +65,7 @@
 						<form class="form-signin">
 							<div class="join-value">
 								<label for="username">ID</label> <input
-									value="${sessionScope.principal.username}" autofocus
+									value="${sessionScope.principal.username}"
 									type="text" id="username" class="form-control" size="30"
 									readonly>
 							</div>

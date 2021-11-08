@@ -40,7 +40,7 @@ public class PageController {
 	// 리뷰 목록 페이지 이동 (메인페이지)
 	@GetMapping("/board")
 	public String home(Model model, int page) {
-		PageRequest pageRequest = PageRequest.of(page, 3, Sort.by(Direction.DESC, "id"));
+		PageRequest pageRequest = PageRequest.of(page, 4, Sort.by(Direction.DESC, "id"));
 		Page<Board> boardsEntity = boardRepository.findAll(pageRequest);
 		int startPage = Math.max(1, boardsEntity.getPageable().getPageNumber() - 4);
 		int endPage = Math.min(boardsEntity.getTotalPages(), boardsEntity.getPageable().getPageNumber() + 4);
@@ -49,13 +49,15 @@ public class PageController {
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("nowPage", nowPage);
 		model.addAttribute("boardsEntity", boardService.boardList(page));
+		System.out.println(nowPage);
+		System.out.println(endPage);
 		return "board/list";
 	}
 
 	// 리뷰 카테고리 페이지 이동
 	@GetMapping("/board/category/{categoryId}")
 	public String boardCategoryList(@PathVariable int categoryId, Model model, int page) {
-		PageRequest pageRequest = PageRequest.of(page, 3, Sort.by(Direction.DESC, "id"));
+		PageRequest pageRequest = PageRequest.of(page, 4, Sort.by(Direction.DESC, "id"));
 		Page<Board> boardsEntity = boardRepository.mBoardCategoryList(categoryId, pageRequest);
 		int startPage = Math.max(1, boardsEntity.getPageable().getPageNumber() - 4);
 		int endPage = Math.min(boardsEntity.getTotalPages(), boardsEntity.getPageable().getPageNumber() + 4);
@@ -63,6 +65,7 @@ public class PageController {
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("categoryId",categoryId);
 		model.addAttribute("boardsEntity", boardService.boardCategoryList(categoryId, page));
 		return "board/category";
 	}
@@ -96,7 +99,7 @@ public class PageController {
 	// 제품 목록 페이지 이동
 	@GetMapping("/item/list")
 	public String itemList(Model model, int page) {
-		PageRequest pageRequest = PageRequest.of(page, 3, Sort.by(Direction.DESC, "id"));
+		PageRequest pageRequest = PageRequest.of(page, 4, Sort.by(Direction.DESC, "id"));
 		Page<Item> itemsEntity = itemRepository.findAll(pageRequest);
 		int startPage = Math.max(1, itemsEntity.getPageable().getPageNumber() - 4);
 		int endPage = Math.min(itemsEntity.getTotalPages(), itemsEntity.getPageable().getPageNumber() + 4);
@@ -111,7 +114,7 @@ public class PageController {
 	// 제품 카테고리 페이지 이동
 	@GetMapping("/item/category/{categoryId}")
 	public String itemCategoryList(@PathVariable int categoryId, Model model, int page) {
-		PageRequest pageRequest = PageRequest.of(page, 3, Sort.by(Direction.DESC, "id"));
+		PageRequest pageRequest = PageRequest.of(page, 4, Sort.by(Direction.DESC, "id"));
 		Page<Item> itemsEntity = itemRepository.mItemCategoryList(categoryId, pageRequest);
 		int startPage = Math.max(1, itemsEntity.getPageable().getPageNumber() - 4);
 		int endPage = Math.min(itemsEntity.getTotalPages(), itemsEntity.getPageable().getPageNumber() + 4);
@@ -119,6 +122,7 @@ public class PageController {
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("categoryId",categoryId);
 		model.addAttribute("itemsEntity", itemService.itemCategoryList(categoryId, page));
 		System.out.println(itemsEntity);
 		return "item/category";
