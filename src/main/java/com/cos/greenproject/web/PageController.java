@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.cos.greenproject.domian.board.Board;
 import com.cos.greenproject.domian.board.BoardRepository;
+import com.cos.greenproject.domian.item.Item;
+import com.cos.greenproject.domian.item.ItemRepository;
 import com.cos.greenproject.service.BoardService;
 import com.cos.greenproject.service.ItemService;
 import com.cos.greenproject.service.UserService;
@@ -31,6 +33,7 @@ public class PageController {
 	private final ItemService itemService;
 	private final HttpSession session;
 	private final BoardRepository boardRepository;
+	private final ItemRepository itemRepository;
 	
 	// <----- Board ----->
 	
@@ -89,6 +92,12 @@ public class PageController {
 	// 제품 목록 페이지 이동
 	@GetMapping("/item/list")
 	public String itemList(Model model, int page) {
+		PageRequest pageRequest = PageRequest.of(page, 3, Sort.by(Direction.DESC, "id"));
+		Page<Item> itemsEntity = itemRepository.findAll(pageRequest);
+		int startPage = Math.max(1, itemsEntity.getPageable().getPageNumber() - 4);
+		int endPage = Math.min(itemsEntity.getTotalPages(), itemsEntity.getPageable().getPageNumber() + 4);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
 		model.addAttribute("itemsEntity", itemService.itemList(page));
 		return "item/list";
 	} 

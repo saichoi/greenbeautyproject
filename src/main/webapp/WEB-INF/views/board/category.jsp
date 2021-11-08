@@ -54,7 +54,7 @@
 		<%@ include file="../layout/boardSidebar.jsp"%>
     </aside-1>
 
-    <section>
+    <section class="mb-3">
         <!-- 검색창자리 -->
         <div class="input-group">
             <input type="text" class="form-control" placeholder="Search" style="height: 100%">
@@ -148,7 +148,7 @@
 			</c:forEach>
 
             <!-- 페이지네이션자리 -->
-			<ul class="pagination d-flex justify-content-center">
+			<ul class="pagination d-flex justify-content-center mt-5">
 				<c:choose>
 					<c:when test="${boardsEntity.first}">
 						<li class="page-item disabled"><a class="page-link"
