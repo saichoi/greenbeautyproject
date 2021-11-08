@@ -4,11 +4,17 @@ import java.time.LocalDate;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.cos.greenproject.domian.board.Board;
+import com.cos.greenproject.domian.board.BoardRepository;
 import com.cos.greenproject.service.BoardService;
 import com.cos.greenproject.service.ItemService;
 import com.cos.greenproject.service.UserService;
@@ -24,13 +30,20 @@ public class PageController {
 	private final BoardService boardService;
 	private final ItemService itemService;
 	private final HttpSession session;
+	private final BoardRepository boardRepository;
 	
 	// <----- Board ----->
 
 	// 리뷰 목록 페이지 이동 (메인페이지)
 	@GetMapping("/board")
 	public String home(Model model, int page) {
-	    model.addAttribute("boardsEntity", boardService.boardList(page));
+		PageRequest pageRequest = PageRequest.of(page, 3, Sort.by(Direction.DESC, "id"));
+		Page<Board> boardsEntity = boardRepository.findAll(pageRequest);
+		int startPage = Math.max(1, boardsEntity.getPageable().getPageNumber() - 4);
+		int endPage = Math.min(boardsEntity.getTotalPages(), boardsEntity.getPageable().getPageNumber() + 4);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
+		model.addAttribute("boardsEntity", boardsEntity);
 		return "board/list";
 	}
 
