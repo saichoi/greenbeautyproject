@@ -747,3 +747,11 @@
 	transform: scale(1.1);
 	transition: transform 1s;
 }
+
+/***************** 페이지네이션 스타일 *****************/
+.page-active{
+	background-color:#eaebef;
+	color:#345ac6;
+}
+	
+	

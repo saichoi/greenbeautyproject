@@ -139,6 +139,4 @@ $(document).ready(function () {
 			$('#palletCon').append(tag);
 	});
 	
-	
-		
 }); // end of document ready

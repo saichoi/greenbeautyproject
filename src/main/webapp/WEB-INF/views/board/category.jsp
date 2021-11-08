@@ -152,27 +152,35 @@
 				<c:choose>
 					<c:when test="${boardsEntity.first}">
 						<li class="page-item disabled"><a class="page-link"
-							href="/board?page=${boardsEntity.number - 1}">&laquo;</a></li>
+							href="/board/category/1?page=${boardsEntity.number - 1}">&laquo;</a></li>
 					</c:when>
 					<c:otherwise>
 						<li class="page-item"><a class="page-link"
-							href="/board?page=${boardsEntity.number - 1}">&laquo;</a></li>
+							href="/board/category/1?page=${boardsEntity.number - 1}">&laquo;</a></li>
 					</c:otherwise>
 				</c:choose>
-
+				
 				<c:forEach begin="${startPage}" end="${endPage}" var="idx">
-					<li class="page-item"><a class="page-link"
-						href="/board?page=${idx-1}">${idx}</a></li>
+					<c:choose>
+						<c:when test="${idx eq nowPage}">
+							<li class="page-item disabled"><a class="page-link page-active"
+								href="/board/category/1?page=${idx-1}">${idx}</a></li>
+						</c:when>
+						<c:otherwise>
+							<li class="page-item"><a class="page-link"
+									href="/board/category/1?page=${idx-1}">${idx}</a></li>
+						</c:otherwise>
+					</c:choose>
 				</c:forEach>
-
+				
 				<c:choose>
 					<c:when test="${boardsEntity.last}">
 						<li class="page-item disabled"><a class="page-link"
-							href="/board?page=${param.page + 1}">&raquo;</a></li>
+							href="/board/category/1?page=${param.page + 1}">&raquo;</a></li>
 					</c:when>
 					<c:otherwise>
 						<li class="page-item"><a class="page-link"
-							href="/board?page=${param.page + 1}">&raquo;</a></li>
+							href="/board/category/1?page=${param.page + 1}">&raquo;</a></li>
 					</c:otherwise>
 				</c:choose>
 			</ul>

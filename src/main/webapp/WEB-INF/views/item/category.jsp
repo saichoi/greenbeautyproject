@@ -72,7 +72,9 @@
 			</div>
 		</div>
 		<div id="section1">
-			<div id="item-count">${itemsEntity.totalElements }개의 <b>${itemsEntity.content[1].category.cname }</b> 제품</div>
+			<div id="item-count">${itemsEntity.totalElements }개의
+				<b>${itemsEntity.content[1].category.cname }</b> 제품
+			</div>
 
 			<!-- 콤보박스자리 -->
 			<select class="form-select" aria-label="Default select example">
@@ -87,9 +89,11 @@
 			<div class="row w-100 row-cols-1 row-cols-md-4 g-3">
 				<c:forEach var="item" items="${itemsEntity.content }">
 					<div class="col">
-						<div class="card h-100 shadow" onClick="selectById(${item.id})" style="overflow: hidden;">
+						<div class="card h-100 shadow" onClick="selectById(${item.id})"
+							style="overflow: hidden;">
 							<div id="item-image">
-								<img id="img-select" src="${item.image }" class="card-img-top" alt="제품이미지">
+								<img id="img-select" src="${item.image }" class="card-img-top"
+									alt="제품이미지">
 							</div>
 							<div id="card-body-select" class="card-body"
 								style="padding: 5%; display: flex; flex-direction: column;">
@@ -127,32 +131,41 @@
 				</c:forEach>
 			</div>
 
-		<!-- 페이지네이션자리 -->
+			<!-- 페이지네이션자리 -->
 			<ul class="pagination d-flex justify-content-center mt-5">
 				<c:choose>
 					<c:when test="${itemsEntity.first}">
 						<li class="page-item disabled"><a class="page-link"
-							href="/item/list?page=${itemsEntity.number - 1}">&laquo;</a></li>
+							href="/item/category/1?page=${itemsEntity.number - 1}">&laquo;</a></li>
 					</c:when>
 					<c:otherwise>
 						<li class="page-item"><a class="page-link"
-							href="/item/list?page=${itemsEntity.number - 1}">&laquo;</a></li>
+							href="/item/category/1?page=${itemsEntity.number - 1}">&laquo;</a></li>
 					</c:otherwise>
 				</c:choose>
 
 				<c:forEach begin="${startPage}" end="${endPage}" var="idx">
-					<li class="page-item"><a class="page-link"
-						href="/item/list?page=${idx-1}">${idx}</a></li>
+					<c:choose>
+						<c:when test="${idx eq nowPage}">
+							<li class="page-item disabled"><a class="page-link page-active"
+								href="/item/category/1?page=${idx-1}">${idx}</a></li>
+						</c:when>
+						<c:otherwise>
+							<li class="page-item"><a class="page-link"
+									href="/item/category/1?page=${idx-1}">${idx}</a></li>
+						</c:otherwise>
+					</c:choose>
 				</c:forEach>
+				
 
 				<c:choose>
 					<c:when test="${itemsEntity.last}">
 						<li class="page-item disabled"><a class="page-link"
-							href="/item/list?page=${param.page + 1}">&raquo;</a></li>
+							href="/item/category/1?page=${param.page + 1}">&raquo;</a></li>
 					</c:when>
 					<c:otherwise>
 						<li class="page-item"><a class="page-link"
-							href="/item/list?page=${param.page + 1}">&raquo;</a></li>
+							href="/item/category/1page=${param.page + 1}">&raquo;</a></li>
 					</c:otherwise>
 				</c:choose>
 			</ul>

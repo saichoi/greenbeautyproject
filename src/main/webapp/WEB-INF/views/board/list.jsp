@@ -162,8 +162,18 @@
 				</c:choose>
 				
 				<c:forEach begin="${startPage}" end="${endPage}" var="idx">
-					 	<li class="page-item"><a class="page-link" href="/board?page=${idx-1}">${idx}</a></li>
+					<c:choose>
+						<c:when test="${idx eq nowPage}">
+							<li class="page-item disabled"><a class="page-link page-active"
+								href="/board?page=${idx-1}">${idx}</a></li>
+						</c:when>
+						<c:otherwise>
+							<li class="page-item"><a class="page-link"
+									href="/board?page=${idx-1}">${idx}</a></li>
+						</c:otherwise>
+					</c:choose>
 				</c:forEach>
+				
 					 	
 				<c:choose>
 					<c:when test="${boardsEntity.last}">

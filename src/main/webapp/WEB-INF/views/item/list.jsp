@@ -147,8 +147,17 @@
 			</c:choose>
 
 			<c:forEach begin="${startPage}" end="${endPage}" var="idx">
-				<li class="page-item"><a class="page-link"
-					href="/item/list?page=${idx-1}">${idx}</a></li>
+				<c:choose>
+					<c:when test="${idx eq nowPage}">
+						<li class="page-item disabled"><a
+							class="page-link page-active"
+							href="/item/list?page=${idx-1}">${idx}</a></li>
+					</c:when>
+					<c:otherwise>
+						<li class="page-item"><a class="page-link"
+							href="/item/list?page=${idx-1}">${idx}</a></li>
+					</c:otherwise>
+				</c:choose>
 			</c:forEach>
 
 			<c:choose>

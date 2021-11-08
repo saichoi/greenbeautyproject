@@ -44,8 +44,10 @@ public class PageController {
 		Page<Board> boardsEntity = boardRepository.findAll(pageRequest);
 		int startPage = Math.max(1, boardsEntity.getPageable().getPageNumber() - 4);
 		int endPage = Math.min(boardsEntity.getTotalPages(), boardsEntity.getPageable().getPageNumber() + 4);
+		int nowPage = boardsEntity.getPageable().getPageNumber() + 1;
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
+		model.addAttribute("nowPage", nowPage);
 		model.addAttribute("boardsEntity", boardService.boardList(page));
 		return "board/list";
 	}
@@ -57,8 +59,10 @@ public class PageController {
 		Page<Board> boardsEntity = boardRepository.mBoardCategoryList(categoryId, pageRequest);
 		int startPage = Math.max(1, boardsEntity.getPageable().getPageNumber() - 4);
 		int endPage = Math.min(boardsEntity.getTotalPages(), boardsEntity.getPageable().getPageNumber() + 4);
+		int nowPage = boardsEntity.getPageable().getPageNumber() + 1;
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
+		model.addAttribute("nowPage", nowPage);
 		model.addAttribute("boardsEntity", boardService.boardCategoryList(categoryId, page));
 		return "board/category";
 	}
@@ -96,8 +100,10 @@ public class PageController {
 		Page<Item> itemsEntity = itemRepository.findAll(pageRequest);
 		int startPage = Math.max(1, itemsEntity.getPageable().getPageNumber() - 4);
 		int endPage = Math.min(itemsEntity.getTotalPages(), itemsEntity.getPageable().getPageNumber() + 4);
+		int nowPage = itemsEntity.getPageable().getPageNumber() + 1;
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
+		model.addAttribute("nowPage", nowPage);
 		model.addAttribute("itemsEntity", itemService.itemList(page));
 		return "item/list";
 	} 
@@ -109,9 +115,12 @@ public class PageController {
 		Page<Item> itemsEntity = itemRepository.mItemCategoryList(categoryId, pageRequest);
 		int startPage = Math.max(1, itemsEntity.getPageable().getPageNumber() - 4);
 		int endPage = Math.min(itemsEntity.getTotalPages(), itemsEntity.getPageable().getPageNumber() + 4);
+		int nowPage = itemsEntity.getPageable().getPageNumber() + 1;
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
+		model.addAttribute("nowPage", nowPage);
 		model.addAttribute("itemsEntity", itemService.itemCategoryList(categoryId, page));
+		System.out.println(itemsEntity);
 		return "item/category";
 	}
 
