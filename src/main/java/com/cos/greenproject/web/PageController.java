@@ -33,7 +33,7 @@ public class PageController {
 	private final BoardRepository boardRepository;
 	
 	// <----- Board ----->
-
+	
 	// 리뷰 목록 페이지 이동 (메인페이지)
 	@GetMapping("/board")
 	public String home(Model model, int page) {
@@ -43,13 +43,19 @@ public class PageController {
 		int endPage = Math.min(boardsEntity.getTotalPages(), boardsEntity.getPageable().getPageNumber() + 4);
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
-		model.addAttribute("boardsEntity", boardsEntity);
+		model.addAttribute("boardsEntity", boardService.boardList(page));
 		return "board/list";
 	}
 
 	// 리뷰 카테고리 페이지 이동
 	@GetMapping("/board/category/{categoryId}")
 	public String boardCategoryList(@PathVariable int categoryId, Model model, int page) {
+		PageRequest pageRequest = PageRequest.of(page, 3, Sort.by(Direction.DESC, "id"));
+		Page<Board> boardsEntity = boardRepository.mBoardCategoryList(categoryId, pageRequest);
+		int startPage = Math.max(1, boardsEntity.getPageable().getPageNumber() - 4);
+		int endPage = Math.min(boardsEntity.getTotalPages(), boardsEntity.getPageable().getPageNumber() + 4);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
 		model.addAttribute("boardsEntity", boardService.boardCategoryList(categoryId, page));
 		return "board/category";
 	}

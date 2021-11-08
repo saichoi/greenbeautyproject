@@ -148,24 +148,35 @@
 			</c:forEach>
 
             <!-- 페이지네이션자리 -->
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+			<ul class="pagination d-flex justify-content-center">
+				<c:choose>
+					<c:when test="${boardsEntity.first}">
+						<li class="page-item disabled"><a class="page-link"
+							href="/board?page=${boardsEntity.number - 1}">&laquo;</a></li>
+					</c:when>
+					<c:otherwise>
+						<li class="page-item"><a class="page-link"
+							href="/board?page=${boardsEntity.number - 1}">&laquo;</a></li>
+					</c:otherwise>
+				</c:choose>
+
+				<c:forEach begin="${startPage}" end="${endPage}" var="idx">
+					<li class="page-item"><a class="page-link"
+						href="/board?page=${idx-1}">${idx}</a></li>
+				</c:forEach>
+
+				<c:choose>
+					<c:when test="${boardsEntity.last}">
+						<li class="page-item disabled"><a class="page-link"
+							href="/board?page=${param.page + 1}">&raquo;</a></li>
+					</c:when>
+					<c:otherwise>
+						<li class="page-item"><a class="page-link"
+							href="/board?page=${param.page + 1}">&raquo;</a></li>
+					</c:otherwise>
+				</c:choose>
+			</ul>
+		</div>
     </section>
 
     <aside-2>
