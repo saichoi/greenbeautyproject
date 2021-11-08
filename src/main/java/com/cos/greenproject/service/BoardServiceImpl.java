@@ -98,7 +98,13 @@ public class BoardServiceImpl implements BoardService {
 		}
 
 	}
-
+	
+	// 내리뷰리스트
+	public Board myBoardList(int userId) {
+		Board boardsEntity = boardRepository.mMyReviewList(userId);
+		return boardsEntity;
+	}
+	
 	// 리뷰 검색하기
 	public void searchBoardList() {
 

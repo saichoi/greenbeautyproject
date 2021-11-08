@@ -19,8 +19,8 @@
 							class="bi bi-gear-fill"></i></a></li>
 				</ul>
 				<ul class="cnt-box d-flex justify-content-center">
-					<li class="review-cnt-box">리뷰수 30</li>
-					<li class="like-cnt-box">좋아요 1034</li>
+					<li class="review-cnt-box">리뷰수 ${sessionScope.principal.reviewCnt}</li>
+					<li class="like-cnt-box">좋아요 ${sessionScope.principal.likeCnt}</li>
 				</ul>
 			</div>
 		</div>
@@ -155,109 +155,35 @@
 				aria-labelledby="myreview-tab">
 				<h2 class="text-center mb-5">내리뷰관리</h2>
 				<!-- 내리뷰목록 시작 -->
-				<div class="card mb-3 shadow">
-					<div class="row g-0">
-						<div class="col-md-4">
-							<img src="..." class="img-fluid rounded-start" alt="이미지자리">
-						</div>
-						<div class="col-md-8">
-							<div class="card-body  d-flex align-items-center ">
-								<div class="card-left">
-									<p class="category-rout">
-										<small class="text-muted"> <i
-											class="bi bi-house-door-fill"></i> 카테고리
-										</small>
-									</p>
-									<h4 class="myreview-title">Title</h4>
-									<p class="myreview-writer">작성자</p>
-									<p class="skin-type">피부타입</p>
-								</div>
-								<div class="card-right">
-									<button type="button" class="btn btn-secondary mt-3 mb-5">수정</button>
-									<p class="date">2021.10.9</p>
+				<c:forEach var="board" items="${boardsEntity.content}">
+					<div class="card mb-3 shadow">
+						<div class="row g-0">
+							<div class="col-md-4">
+								<img src="..." class="img-fluid rounded-start" alt="이미지자리">
+							</div>
+							<div class="col-md-8">
+								<div class="card-body  d-flex align-items-center ">
+									<div class="card-left">
+										<p class="category-rout">
+											<small class="text-muted"> <i
+												class="bi bi-house-door-fill"></i> &gt;
+												${board.category.parent} &gt; ${board.category.cname}
+											</small>
+										</p>
+										<h4 class="myreview-title">${board.title}</h4>
+										<p class="myreview-writer">작성자 : ${board.user.nickname}</p>
+										<p class="skin-type">작성자의 피부타입 : ${board.user.skinType} /
+											${board.user.skinTrouble} / ${board.user.skinTone}</p>
+									</div>
+									<div class="card-right">
+										<button type="button" class="btn btn-secondary mt-3 mb-5">수정</button>
+										<p class="date">${board.createdAt}</p>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-
-				<div class="card mb-3 shadow">
-					<div class="row g-0">
-						<div class="col-md-4">
-							<img src="..." class="img-fluid rounded-start" alt="이미지자리">
-						</div>
-						<div class="col-md-8">
-							<div class="card-body  d-flex align-items-center ">
-								<div class="card-left">
-									<p class="category-rout">
-										<small class="text-muted"> <i
-											class="bi bi-house-door-fill"></i> 카테고리
-										</small>
-									</p>
-									<h4 class="myreview-title">Title</h4>
-									<p class="myreview-writer">작성자</p>
-									<p class="skin-type">피부타입</p>
-								</div>
-								<div class="card-right">
-									<button type="button" class="btn btn-secondary mt-3 mb-5">수정</button>
-									<p class="date">2021.10.9</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="card mb-3 shadow">
-					<div class="row g-0">
-						<div class="col-md-4">
-							<img src="..." class="img-fluid rounded-start" alt="이미지자리">
-						</div>
-						<div class="col-md-8">
-							<div class="card-body  d-flex align-items-center ">
-								<div class="card-left">
-									<p class="category-rout">
-										<small class="text-muted"> <i
-											class="bi bi-house-door-fill"></i> 카테고리
-										</small>
-									</p>
-									<h4 class="myreview-title">Title</h4>
-									<p class="myreview-writer">작성자</p>
-									<p class="skin-type">피부타입</p>
-								</div>
-								<div class="card-right">
-									<button type="button" class="btn btn-secondary mt-3 mb-5">수정</button>
-									<p class="date">2021.10.9</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="card mb-3 shadow">
-					<div class="row g-0">
-						<div class="col-md-4">
-							<img src="..." class="img-fluid rounded-start" alt="이미지자리">
-						</div>
-						<div class="col-md-8">
-							<div class="card-body  d-flex align-items-center ">
-								<div class="card-left">
-									<p class="category-rout">
-										<small class="text-muted"> <i
-											class="bi bi-house-door-fill"></i> 카테고리
-										</small>
-									</p>
-									<h4 class="myreview-title">Title</h4>
-									<p class="myreview-writer">작성자</p>
-									<p class="skin-type">피부타입</p>
-								</div>
-								<div class="card-right">
-									<button type="button" class="btn btn-secondary mt-3 mb-5">수정</button>
-									<p class="date">2021.10.9</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+				</c:forEach>
 				<!-- 내리뷰목록 끝 -->
 
 				<!-- 페이징 시작 -->
