@@ -56,7 +56,7 @@
 	<%@ include file="../layout/itemSidebar.jsp"%>
 	</aside-1>
 
-	<section>
+	<section class="">
 		<!-- 검색창자리 -->
 		<div class="input-group">
 			<input type="text" class="form-control" placeholder="Search"
@@ -128,19 +128,34 @@
 			</div>
 
 		<!-- 페이지네이션자리 -->
-		<nav aria-label="Page navigation example" style="margin-top: 5%; margin-left: 40%">
-			<ul class="pagination">
-				<li class="page-item"><a class="page-link" href="#"
-					aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-				</a></li>
-				<li class="page-item"><a class="page-link" href="#">1</a></li>
-				<li class="page-item"><a class="page-link" href="#">2</a></li>
-				<li class="page-item"><a class="page-link" href="#">3</a></li>
-				<li class="page-item"><a class="page-link" href="#"
-					aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-				</a></li>
+			<ul class="pagination d-flex justify-content-center mt-5">
+				<c:choose>
+					<c:when test="${itemsEntity.first}">
+						<li class="page-item disabled"><a class="page-link"
+							href="/item/list?page=${itemsEntity.number - 1}">&laquo;</a></li>
+					</c:when>
+					<c:otherwise>
+						<li class="page-item"><a class="page-link"
+							href="/item/list?page=${itemsEntity.number - 1}">&laquo;</a></li>
+					</c:otherwise>
+				</c:choose>
+
+				<c:forEach begin="${startPage}" end="${endPage}" var="idx">
+					<li class="page-item"><a class="page-link"
+						href="/item/list?page=${idx-1}">${idx}</a></li>
+				</c:forEach>
+
+				<c:choose>
+					<c:when test="${itemsEntity.last}">
+						<li class="page-item disabled"><a class="page-link"
+							href="/item/list?page=${param.page + 1}">&raquo;</a></li>
+					</c:when>
+					<c:otherwise>
+						<li class="page-item"><a class="page-link"
+							href="/item/list?page=${param.page + 1}">&raquo;</a></li>
+					</c:otherwise>
+				</c:choose>
 			</ul>
-		</nav>
 		</div>
 	</section>
 
