@@ -21,7 +21,7 @@ public class BoardSaveDto {
 	@NotBlank // 공백과 널을 막음
 	private String title;
 	private String content;
-	//	private double rating;
+	private double rating;
 	private String image;
 	private Category categoryId;
 	private Brand brandId;
@@ -31,6 +31,7 @@ public class BoardSaveDto {
 		Board board = new Board();
 		board.setTitle(title);
 		board.setContent(content);
+		board.setRating(rating);
 		board.setUser(principal);
 		board.setImage(image);
 		board.setCategory(categoryId);
