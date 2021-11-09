@@ -60,6 +60,8 @@ public class BoardServiceImpl implements BoardService {
 	@Transactional(rollbackFor = MyNotFoundException.class)
 	public void insertBoard(BoardSaveDto dto, User principal) {
 		boardRepository.save(dto.toEntity(principal));
+		// 제품 평점 동기화
+		itemRepository.mRating(dto.getItemId().getId());   
 	}
 	
 	// 게시글 수정

@@ -18,13 +18,9 @@
                     <div class="detail-item-name">
                         <h1>${itemEntity.iname }</h1>
                     </div>
-                    <div class="rating-con">
-                        <div class="rating-box">
-                            <div class="rating">
-                                <span style="width:70%;">★★★★★</span> &nbsp;5.0점 (62건)
-                                <input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
-                            </div>
-                        </div>
+                    <div>
+                        <span class="star-2"> ★★★★★ <span style="width:calc(18.9%*${itemEntity.rating })">★★★★★</span></span>
+                        <fmt:formatNumber value="${itemEntity.rating }" pattern="0.00"/> (62건)
                     </div>
                     <div class="detail-price mb-2">${itemEntity.price }원</div>
                 </div>

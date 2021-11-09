@@ -62,6 +62,7 @@ public class Item {
 	}
 
 	// 리뷰수 (Board 테이블에서 셀렉트  mItemReviewCnt())
+	@Column(columnDefinition = "Double default 0")
 	private Integer reviewCnt;
 	
 	// 위시리스트 등록수 
