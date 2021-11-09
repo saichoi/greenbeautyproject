@@ -5,8 +5,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import com.cos.greenproject.domian.item.Item;
 import com.cos.greenproject.domian.item.ItemRepository;
@@ -21,11 +19,8 @@ public class ItemServiceImpl implements ItemService{
 	private final ItemRepository itemRepository;
 
 	// 제품 목록보기
-	public Page<Item> itemList(int page) {
-		PageRequest pageRequest = PageRequest.of(page, 12, Sort.by(Sort.Direction.ASC, "id"));
-		Page<Item> itemsEntity = itemRepository.findAll(pageRequest);
-		
-		return itemsEntity;
+	public Page<Item> itemList(Pageable page, String searchText) {
+		return itemRepository.findItemByTitleOrContent(searchText, page);
 	}
 	
 	// 제품 카테고리 목록보기

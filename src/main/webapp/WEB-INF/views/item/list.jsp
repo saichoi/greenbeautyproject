@@ -63,9 +63,9 @@
 
 	<section class="mb-3">
 		<!-- 검색창자리 -->
-		<div class="input-group">
-			<input type="text" class="form-control" placeholder="Search"
-				style="height: 100%">
+		<form class="input-group">
+			<input type="text" class="form-control"  id="serachText" name="searchText"
+			  value="${params.searchText}" style="height: 100%">
 			<div class="input-group-append">
 				<button class="btn btn-secondary" type="button">
 					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -75,7 +75,7 @@
                     </svg>
 				</button>
 			</div>
-		</div>
+		</form>
 		<div id="section1">
 			<div id="item-count">${itemsEntity.totalElements }개의 제품</div>
 

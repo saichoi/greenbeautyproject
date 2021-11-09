@@ -30,7 +30,7 @@ public class BoardServiceImpl implements BoardService {
 	
 	// 게시글 목록 보기
 	public Page<Board> boardList(Pageable page, String searchText) {
-		return boardRepository.findByTitleOrContent(searchText, page);
+		return boardRepository.findBoardByTitleOrContent(searchText, page);
 	}
 	
 	// 게시글 카테고리 목록보기

@@ -1,7 +1,7 @@
 package com.cos.greenproject.service;
 
 import org.springframework.data.domain.Page;
-import org.springframework.ui.Model;
+import org.springframework.data.domain.Pageable;
 
 import com.cos.greenproject.domian.item.Item;
 
@@ -10,7 +10,7 @@ public interface ItemService {
 	// <----- ItemController ----->
 
 	// 제품 목록보기
-	public Page<Item> itemList(int page);
+	public Page<Item> itemList(Pageable page, String searchText);
 	
 	// 제품 카테고리 목록보기
 	public Page<Item> itemCategoryList(int categoryId, int page);

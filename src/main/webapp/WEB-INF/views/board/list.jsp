@@ -65,7 +65,7 @@
 		<!-- 검색창자리 -->
 		<form class="input-group">
 			<input type="text" class="form-control" id="serachText" name="searchText"
-			 placeholder="Search" value="${params.searchText}" style="height: 100%">
+			  value="${params.searchText}" style="height: 100%">
 			<div class="input-group-append">
 				<button class="btn btn-secondary" type="submit">
 					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -105,7 +105,6 @@
 						<button id="search-container-sub2" type="submit"
 							class="btn btn-secondary" style="margin-bottom: 2%; margin-top: 3%">검색</button>
 					</form>
-					</p>
 				</div>
 			</div>
 

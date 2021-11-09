@@ -10,6 +10,10 @@ public interface ItemRepository extends JpaRepository<Item, Integer> {
 	// 카테고리별 제품 목록보기
 	@Query(value = "SELECT * FROM item where categoryId = :categoryId", nativeQuery = true)
 	Page<Item> mItemCategoryList(int categoryId, Pageable paging);
+
+	// 제품 검색기능  
+	@Query(value = "SELECT * FROM item i INNER JOIN brand b ON i.brandId = b.id WHERE i.iname LIKE %:searchText% OR b.bname LIKE %:searchText%", nativeQuery = true)
+	Page<Item> findItemByTitleOrContent(String searchText, Pageable page);
 	
 	// 만족도평균내서 넣기
 	@Query(value = "UPDATE item SET rating = (SELECT AVG(rating) FROM board WHERE itemId = :itemId) WHERE id = :itemId", nativeQuery = true)
