@@ -79,7 +79,7 @@ public class PageController {
 	}
 
 	// 리뷰 작성 페이지 이동
-	@GetMapping("/board/saveForm")
+	@GetMapping("/api/board/saveForm")
 	public String saveForm(int itemId, Model model, int page) {
 		model.addAttribute("itemEntity",  itemService.saveForm(itemId));
 		model.addAttribute("page", page);

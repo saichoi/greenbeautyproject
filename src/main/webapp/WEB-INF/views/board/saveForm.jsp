@@ -48,6 +48,8 @@
 							max="10">
 						</span>
 					</div>
+					<div id="rating-3">0.0</div>
+					<input type="hidden" name="rating"  id="rating-result" value="0.0"/>
 				</div>
 			</div>
 

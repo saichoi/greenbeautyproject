@@ -38,8 +38,9 @@
 				<div id="rating">
 					<div id="rating-1">만족도</div>
 					<div id="rating-2">
-						<span class="star" style="color: red;"> ★★★★★ </span>
+						<span class="star" > ★★★★★ <span style="width:calc(20%*${boardEntity.rating})">★★★★★</span></span>
 					</div>
+					<div id="rating-3">${boardEntity.rating}</div>
 				</div>
 			</div>
 

@@ -68,6 +68,7 @@ public class Item {
 	private Integer wishCnt;
 	
 	// 만족도 (Board 테이블에서 셀렉트  mItemRating())
+	@Column(columnDefinition = "Double default 0")
 	private Double rating;
 
 	// Foreign Keys

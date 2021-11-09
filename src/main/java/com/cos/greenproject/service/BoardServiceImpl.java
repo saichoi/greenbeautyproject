@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 
 import com.cos.greenproject.domian.board.Board;
 import com.cos.greenproject.domian.board.BoardRepository;
+import com.cos.greenproject.domian.item.ItemRepository;
 import com.cos.greenproject.domian.user.User;
 import com.cos.greenproject.handler.ex.MyAsyncNotFoundException;
 import com.cos.greenproject.handler.ex.MyNotFoundException;
@@ -24,6 +25,7 @@ import lombok.RequiredArgsConstructor;
 public class BoardServiceImpl implements BoardService {
 
 	private final BoardRepository boardRepository;
+	private final ItemRepository itemRepository;
 
 	// <----- PageController ----->
 	
@@ -61,6 +63,8 @@ public class BoardServiceImpl implements BoardService {
 	@Transactional(rollbackFor = MyNotFoundException.class)
 	public void insertBoard(BoardSaveDto dto, User principal) {
 		boardRepository.save(dto.toEntity(principal));
+		// 제품 평점 동기화
+		itemRepository.mRating(dto.getItemId().getId());    
 	}
 	
 	// 게시글 수정
