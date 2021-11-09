@@ -63,10 +63,11 @@
 
 	<section class="mb-3">
 		<!-- 검색창자리 -->
-		<div class="input-group">
-			<input type="text" class="form-control" placeholder="Search" style="height: 100%">
+		<form class="input-group">
+			<input type="text" class="form-control" id="serachText" name="searchText"
+			 placeholder="Search" value="${params.searchText}" style="height: 100%">
 			<div class="input-group-append">
-				<button class="btn btn-secondary" type="button">
+				<button class="btn btn-secondary" type="submit">
 					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
 						fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                         <path
@@ -74,7 +75,7 @@
                     </svg>
 				</button>
 			</div>
-		</div>
+		</form>
 
 		<!-- 선택창자리 -->
 		<div id="section1">

@@ -1,6 +1,7 @@
 package com.cos.greenproject.service;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.ui.Model;
 
 import com.cos.greenproject.domian.board.Board;
@@ -13,7 +14,7 @@ public interface BoardService {
 	// <----- PageController ----->
 
 	// 리뷰 목록 보기
-	public Page<Board> boardList(int page);
+	public Page<Board> boardList(Pageable page, String searchText);
 
 	// 리뷰 카테고리 목록보기
 	public Page<Board> boardCategoryList(int categoryId, int page);

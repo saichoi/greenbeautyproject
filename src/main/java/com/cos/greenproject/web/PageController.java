@@ -6,12 +6,15 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cos.greenproject.domian.board.Board;
 import com.cos.greenproject.domian.board.BoardRepository;
@@ -39,18 +42,17 @@ public class PageController {
 	
 	// 리뷰 목록 페이지 이동 (메인페이지)
 	@GetMapping("/board")
-	public String home(Model model, int page) {
-		PageRequest pageRequest = PageRequest.of(page, 4, Sort.by(Direction.DESC, "id"));
-		Page<Board> boardsEntity = boardRepository.findAll(pageRequest);
+	public String home(Model model, 
+			@PageableDefault(page = 0, size = 3, sort = "id", direction = Sort.Direction.DESC) Pageable page,
+			@RequestParam(required = false, defaultValue = "") String searchText) {
+		Page<Board> boardsEntity = boardRepository.findByTitleOrContent(searchText, page);
 		int startPage = Math.max(1, boardsEntity.getPageable().getPageNumber() - 4);
 		int endPage = Math.min(boardsEntity.getTotalPages(), boardsEntity.getPageable().getPageNumber() + 4);
 		int nowPage = boardsEntity.getPageable().getPageNumber() + 1;
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("nowPage", nowPage);
-		model.addAttribute("boardsEntity", boardService.boardList(page));
-		System.out.println(nowPage);
-		System.out.println(endPage);
+		model.addAttribute("boardsEntity", boardService.boardList(page, searchText));
 		return "board/list";
 	}
 
@@ -79,7 +81,7 @@ public class PageController {
 	}
 
 	// 리뷰 작성 페이지 이동
-	@GetMapping("/api/board/saveForm")
+	@GetMapping("/board/saveForm")
 	public String saveForm(int itemId, Model model, int page) {
 		model.addAttribute("itemEntity",  itemService.saveForm(itemId));
 		model.addAttribute("page", page);

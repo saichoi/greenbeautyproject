@@ -4,7 +4,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -30,10 +29,8 @@ public class BoardServiceImpl implements BoardService {
 	// <----- PageController ----->
 	
 	// 게시글 목록 보기
-	public Page<Board> boardList(int page) {
-	    PageRequest pageRequest = PageRequest.of(page, 4, Sort.by(Direction.DESC, "id"));
-	    Page<Board> boardsEntity = boardRepository.findAll(pageRequest); 
-	    return boardsEntity;
+	public Page<Board> boardList(Pageable page, String searchText) {
+		return boardRepository.findByTitleOrContent(searchText, page);
 	}
 	
 	// 게시글 카테고리 목록보기
@@ -63,8 +60,6 @@ public class BoardServiceImpl implements BoardService {
 	@Transactional(rollbackFor = MyNotFoundException.class)
 	public void insertBoard(BoardSaveDto dto, User principal) {
 		boardRepository.save(dto.toEntity(principal));
-		// 제품 평점 동기화
-		itemRepository.mRating(dto.getItemId().getId());    
 	}
 	
 	// 게시글 수정

@@ -14,5 +14,9 @@ public interface BoardRepository extends JpaRepository<Board, Integer> {
 	// 내리뷰리스트
 	@Query(value = "SELECT * FROM board WHERE userId = :userId", nativeQuery = true)
 	Board mMyReviewList(int userId);
+	
+	// 검색기능 
+	@Query(value = "SELECT * FROM board WHERE title LIKE %:searchText% or content LIKE %:searchText%", nativeQuery = true)
+	Page<Board> findByTitleOrContent(String searchText, Pageable page);
 
 }
