@@ -131,11 +131,11 @@
 				<c:choose>
 					<c:when test="${itemsEntity.first}">
 						<li class="page-item disabled"><a class="page-link"
-							href="/item/category/1?page=${itemsEntity.number - 1}">&laquo;</a></li>
+							href="/item/category/${categoryId}?page=${itemsEntity.number - 1}">&laquo;</a></li>
 					</c:when>
 					<c:otherwise>
 						<li class="page-item"><a class="page-link"
-							href="/item/category/1?page=${itemsEntity.number - 1}">&laquo;</a></li>
+							href="/item/category/${categoryId}?page=${itemsEntity.number - 1}">&laquo;</a></li>
 					</c:otherwise>
 				</c:choose>
 
@@ -143,11 +143,11 @@
 					<c:choose>
 						<c:when test="${idx eq nowPage}">
 							<li class="page-item disabled"><a class="page-link page-active"
-								href="/item/category/1?page=${idx-1}">${idx}</a></li>
+								href="/item/category/${categoryId}?page=${idx-1}">${idx}</a></li>
 						</c:when>
 						<c:otherwise>
 							<li class="page-item"><a class="page-link"
-									href="/item/category/1?page=${idx-1}">${idx}</a></li>
+									href="/item/category/${categoryId}?page=${idx-1}">${idx}</a></li>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
@@ -156,11 +156,11 @@
 				<c:choose>
 					<c:when test="${itemsEntity.last}">
 						<li class="page-item disabled"><a class="page-link"
-							href="/item/category/1?page=${param.page + 1}">&raquo;</a></li>
+							href="/item/category/${categoryId}?page=${param.page + 1}">&raquo;</a></li>
 					</c:when>
 					<c:otherwise>
 						<li class="page-item"><a class="page-link"
-							href="/item/category/1page=${param.page + 1}">&raquo;</a></li>
+							href="/item/category/${categoryId}?page=${param.page + 1}">&raquo;</a></li>
 					</c:otherwise>
 				</c:choose>
 			</ul>
