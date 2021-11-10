@@ -76,9 +76,10 @@ public class BoardServiceImpl implements BoardService {
 	    }
 //	    System.out.println("게시글 수정 서비스 실행됨??");
 	    boardEntity.setTitle(dto.getTitle());
+	    boardEntity.setRating(dto.getRating());
 	    boardEntity.setContent(dto.getContent());
 	    //boardEntity.setImage(dto.getImage());
-	    System.out.println(boardEntity);
+//	    System.out.println(boardEntity);
 	}
 
 	// 게시글 삭제

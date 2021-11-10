@@ -111,7 +111,7 @@
 										64
 									</div>
 									<div id="rating-2">
-                                    <span class="star-3" > ★ <span style="width:calc(15%*${item.rating })">★</span></span>
+                                    <span class="star-3" > ★ <span style="width:calc(14%*${item.rating })">★</span></span>
                                     <fmt:formatNumber value="${item.rating }" pattern="0.0"/>
 									</div>
 								</div>

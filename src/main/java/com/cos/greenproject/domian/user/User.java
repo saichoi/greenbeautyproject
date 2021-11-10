@@ -88,7 +88,7 @@ public class User {
 	
 	// 좋아요 리스트(리뷰)
 	@JsonIgnoreProperties({"user"})
-	@OneToMany(mappedBy =  "user", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy =  "user", fetch = FetchType.EAGER)
 	@OrderBy("id desc")
 	private List<Board> boardList;
 	

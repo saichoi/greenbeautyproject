@@ -41,13 +41,13 @@
                 <div id="rating">
                     <div id="rating-1">만족도</div>
                     <div id="rating-2">
-                        <span class="star">
-                            ★★★★★
-                            <span>★★★★★</span>
-                            <input type="range" oninput="drawStar(this)"
-							value="1" step="1" min="0" max="10">
-                        </span>
+                 		<span class="star"> ★★★★★ <span style="width:calc(20%*${boardEntity.rating })">★★★★★</span> <input
+							type="range" oninput="drawStar(this)" value="1" step="1" min="0"
+							max="10">
+						</span>
                     </div>
+                    <div id="rating-3">${boardEntity.rating}</div>
+					<input type="hidden" name="rating"  id="rating-result" value="${boardEntity.rating}"/>
                 </div>
             </div>
             
@@ -70,7 +70,7 @@
 
             <div id="section-button">
                 <div id="button">
-                    <button type="button" class="btn btn-danger">취소</button>
+                    <button id="cancel" type="button" class="btn btn-danger">취소</button>
                     <button type="submit" class="btn btn-primary">완료</button>
                 </div>
             </div>
@@ -81,33 +81,40 @@
 <%@ include file="../layout/footer.jsp"%>
 </body>
 <script>
-//리뷰 수정하기 
-async function updateByBoardId(event, boardId) {
-	event.preventDefault();
-	let boardUpdateDto = {
-		title: $("#title").val(),
-		content: $("#up-content").val(),
-		//image: $("#image").attr(src)
-	};
-
-	let response = await fetch("http://localhost:8080/api/board/" + boardId, {
-		method: "PUT",
-		body: JSON.stringify(boardUpdateDto),
-		headers: {
-			"Content-Type": "application/json; charset=utf-8"
-		}
+	$("#cancel").click(()=>{
+		alert("취소 되었습니다.");
+		history.back();
 	});
-
-	let parseResponse = await response.json();
-
-	console.log(parseResponse);
-
-	if (parseResponse.code == 1) {
-		alert("업데이트 성공");
-		location.href = "/api/board/" + boardId;
-	} else {
-		alert("업데이트 실패"+parseResponse.msg);
+	//리뷰 수정하기 
+	async function updateByBoardId(event, boardId) {
+		event.preventDefault();
+		let boardUpdateDto = {
+			title: $("#title").val(),
+			content: $("#up-content").val(),
+			rating: $("#rating-result").val()
+			//image: $("#image").attr(src)
+		};
+	
+	//	alert(boardUpdateDto.rating);
+	
+		let response = await fetch("http://localhost:8080/api/board/" + boardId, {
+			method: "PUT",
+			body: JSON.stringify(boardUpdateDto),
+			headers: {
+				"Content-Type": "application/json; charset=utf-8"
+			}
+		});
+	
+		let parseResponse = await response.json();
+	
+		console.log(parseResponse);
+	
+		if (parseResponse.code == 1) {
+			alert("업데이트 성공");
+			location.href = "/board/"  + boardId + "/detail?page=0";
+		} else {
+			alert("업데이트 실패"+parseResponse.msg);
+		}
 	}
-}
 </script>
 </html>

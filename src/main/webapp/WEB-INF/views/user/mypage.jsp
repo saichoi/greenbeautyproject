@@ -15,11 +15,13 @@
 					<li>
 						<h3>${sessionScope.principal.nickname}</h3>
 					</li>
-					<li><a href="/api/user/${sessionScope.principal.id}/updateForm"><i
+					<li><a
+						href="/api/user/${sessionScope.principal.id}/updateForm"><i
 							class="bi bi-gear-fill"></i></a></li>
 				</ul>
 				<ul class="cnt-box d-flex justify-content-center">
-					<li class="review-cnt-box">리뷰수 ${sessionScope.principal.reviewCnt}</li>
+					<li class="review-cnt-box">리뷰수
+						${sessionScope.principal.reviewCnt}</li>
 					<li class="like-cnt-box">좋아요 ${sessionScope.principal.likeCnt}</li>
 				</ul>
 			</div>
@@ -65,70 +67,69 @@
 						<form class="form-signin">
 							<div class="join-value">
 								<label for="username">ID</label> <input
-									value="${sessionScope.principal.username}"
-									type="text" id="username" class="form-control" size="30"
-									readonly>
+									value="${sessionScope.principal.username}" type="text"
+									id="username" class="form-control" size="30" readonly>
 							</div>
 
 							<div class="join-value">
-								<label for="name">이름</label>
-								<input value="${sessionScope.principal.name}" type="text" id="name"
+								<label for="name">이름</label> <input
+									value="${sessionScope.principal.name}" type="text" id="name"
 									class="form-control" size="30">
 							</div>
 
 							<div class="join-value">
-								<label for="nikcname">닉네임</label> 
-								<input value="${sessionScope.principal.nickname}" type="text"
+								<label for="nikcname">닉네임</label> <input
+									value="${sessionScope.principal.nickname}" type="text"
 									id="nickname" class="form-control" size="30">
 							</div>
 
 							<div class="join-value">
-								<label for="email">이메일</label> 
-								<input value="${sessionScope.principal.email}" type="email" id="email"
+								<label for="email">이메일</label> <input
+									value="${sessionScope.principal.email}" type="email" id="email"
 									class="form-control" size="30">
 							</div>
 
 							<div class="join-value">
-								<label for="bithdate">생년월일</label> 
-								<input value="${sessionScope.principal.birthday}" type="date"
+								<label for="bithdate">생년월일</label> <input
+									value="${sessionScope.principal.birthday}" type="date"
 									id="birthday" class="form-control">
 							</div>
 
 							<div class="join-value">
-								<label for="gender">성별</label> 
-								<select id="gender"  class="form-control" name="gender">
-			                        <option value="남성" 
-			                        	<c:if test="${sessionScope.principal.gender eq '남성'}">selected="selected"</c:if>>남성</option>
-			                        <option value="여성" 
-			                        	<c:if test="${sessionScope.principal.gender eq '여성'}">selected="selected"</c:if>>여성</option>
-	                    		</select>
+								<label for="gender">성별</label> <select id="gender"
+									class="form-control" name="gender">
+									<option value="남성"
+										<c:if test="${sessionScope.principal.gender eq '남성'}">selected="selected"</c:if>>남성</option>
+									<option value="여성"
+										<c:if test="${sessionScope.principal.gender eq '여성'}">selected="selected"</c:if>>여성</option>
+								</select>
 							</div>
 
 							<div class="join-value radiobox">
-								<label>피부타입</label> 
-								<input type="radio" name="skinType" value="건성"  
-									<c:if test="${sessionScope.principal.skinType eq '건성'}">checked="checked"</c:if>>건성 
-								<input type="radio" name="skinType" value="중성" 
-									<c:if test="${sessionScope.principal.skinType eq '중성'}">checked="checked"</c:if>>중성 
-								<input type="radio"name="skinType" value="지성" 
-									<c:if test="${sessionScope.principal.skinType eq '지성'}">checked="checked"</c:if>>지성 
-								<input type="radio"name="skinType" value="복합성" 
+								<label>피부타입</label> <input type="radio" name="skinType"
+									value="건성"
+									<c:if test="${sessionScope.principal.skinType eq '건성'}">checked="checked"</c:if>>건성
+								<input type="radio" name="skinType" value="중성"
+									<c:if test="${sessionScope.principal.skinType eq '중성'}">checked="checked"</c:if>>중성
+								<input type="radio" name="skinType" value="지성"
+									<c:if test="${sessionScope.principal.skinType eq '지성'}">checked="checked"</c:if>>지성
+								<input type="radio" name="skinType" value="복합성"
 									<c:if test="${sessionScope.principal.skinType eq '복합성'}">checked="checked"</c:if>>복합성
 							</div>
 
 							<div class="join-value radiobox">
-								<label>피부고민</label> 
-								<input type="radio" name="skinTrouble" value="여드름" 
-									<c:if test="${sessionScope.principal.skinTrouble eq '여드름'}">checked="checked"</c:if>>여드름 
-								<input type="radio" name="skinTrouble" value="민감성" 
-									<c:if test="${sessionScope.principal.skinTrouble eq '민감성'}">checked="checked"</c:if>>민감성 
-								<input type="radio" name="skinTrouble" value="흉터" 
-									<c:if test="${sessionScope.principal.skinTrouble eq '흉터'}">checked="checked"</c:if>>흉터 
-								<input type="radio" name="skinTrouble" value="혈관" 
-									<c:if test="${sessionScope.principal.skinTrouble eq '혈관'}">checked="checked"</c:if>>혈관 
-								<input type="radio" name="skinTrouble" value="색조" 
-									<c:if test="${sessionScope.principal.skinTrouble eq '색조'}">checked="checked"</c:if>>색조 
-								<input type="radio" name="skinTrouble" value="해당없음" 
+								<label>피부고민</label> <input type="radio" name="skinTrouble"
+									value="여드름"
+									<c:if test="${sessionScope.principal.skinTrouble eq '여드름'}">checked="checked"</c:if>>여드름
+								<input type="radio" name="skinTrouble" value="민감성"
+									<c:if test="${sessionScope.principal.skinTrouble eq '민감성'}">checked="checked"</c:if>>민감성
+								<input type="radio" name="skinTrouble" value="흉터"
+									<c:if test="${sessionScope.principal.skinTrouble eq '흉터'}">checked="checked"</c:if>>흉터
+								<input type="radio" name="skinTrouble" value="혈관"
+									<c:if test="${sessionScope.principal.skinTrouble eq '혈관'}">checked="checked"</c:if>>혈관
+								<input type="radio" name="skinTrouble" value="색조"
+									<c:if test="${sessionScope.principal.skinTrouble eq '색조'}">checked="checked"</c:if>>색조
+								<input type="radio" name="skinTrouble" value="해당없음"
 									<c:if test="${sessionScope.principal.skinTrouble eq '해당없음'}">checked="checked"</c:if>>해당없음
 							</div>
 
@@ -137,9 +138,15 @@
 								<div id="palletCon" class="color-con">
 									<div id="palletBox" class="pallet">
 										<div class="colorBox text-center">매우밝은</div>
-										<div class="colorBox text-center">밝은<br>(21호)</div>
-										<div class="colorBox text-center">중간밝은<br>(22호)</div>
-										<div class="colorBox text-center">차분한<br>(23호)</div>
+										<div class="colorBox text-center">
+											밝은<br>(21호)
+										</div>
+										<div class="colorBox text-center">
+											중간밝은<br>(22호)
+										</div>
+										<div class="colorBox text-center">
+											차분한<br>(23호)
+										</div>
 										<div class="colorBox text-center">매우차분한</div>
 									</div>
 								</div>
@@ -151,33 +158,42 @@
 			<!-- 회원정보 영역  끝 -->
 
 			<!-- 내리뷰관리 영역  시작 -->
-			<div class="tab-pane fade w-75" id="myreview" role="tabpanel"
-				aria-labelledby="myreview-tab">
+			<div class="tab-pane fade" style="width: 80%" id="myreview"
+				role="tabpanel" aria-labelledby="myreview-tab";>
 				<h2 class="text-center mb-5">내리뷰관리</h2>
-				<!-- 내리뷰목록 시작 -->
-				<c:forEach var="board" items="${boardsEntity.content}">
-					<div class="card mb-3 shadow">
-						<div class="row g-0">
-							<div class="col-md-4">
-								<img src="..." class="img-fluid rounded-start" alt="이미지자리">
-							</div>
-							<div class="col-md-8">
-								<div class="card-body  d-flex align-items-center ">
-									<div class="card-left">
-										<p class="category-rout">
-											<small class="text-muted"> <i
-												class="bi bi-house-door-fill"></i> &gt;
-												${board.category.parent} &gt; ${board.category.cname}
+				<!-- 내리뷰목록 시작 --> 
+				<c:forEach var="board" items="${sessionScope.principal.boardList }"
+					begin="0" end="3">
+					<div class="related-list container mt-3" style="width: 80%">
+
+						<div id="board-card" class="card mb-3 shadow"
+							onclick="moveBoardDetail(${board.id})" style="width: 100%;">
+							<div class="row g-0">
+								<div class="img-card col-md-3"
+									style="border-right: 1px solid rgb(219, 219, 219);">
+									<img src="${board.image}" class="img-fluid rounded-start"
+										alt="상품이미지">
+								</div>
+								<div class="col-md-8">
+									<div class="card-body">
+										<p id="category">
+											<small class="text-muted"> <svg
+													xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+													fill="currentColor" class="bi bi-house-door-fill"
+													viewBox="0 1 16 16">
+                                        <path
+														d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z" />
+                                    </svg> &gt; ${board.category.parent} &gt;
+												${board.category.cname}
 											</small>
 										</p>
-										<h4 class="myreview-title">${board.title}</h4>
-										<p class="myreview-writer">작성자 : ${board.user.nickname}</p>
-										<p class="skin-type">작성자의 피부타입 : ${board.user.skinType} /
-											${board.user.skinTrouble} / ${board.user.skinTone}</p>
-									</div>
-									<div class="card-right">
-										<button type="button" class="btn btn-secondary mt-3 mb-5">수정</button>
-										<p class="date">${board.createdAt}</p>
+										<h4 id="title">${board.title}</h4>
+										<p id="writer">작성자 : ${board.user.nickname}</p>
+										<div id="card-sub">
+											<p id="skin-type">작성자의 피부타입 : ${board.user.skinType} /
+												${board.user.skinTrouble} / ${board.user.skinTone}</p>
+											<p id="date">${board.createdAt}</p>
+										</div>
 									</div>
 								</div>
 							</div>
