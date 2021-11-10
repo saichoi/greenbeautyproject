@@ -1,9 +1,7 @@
 package com.cos.greenproject.service;
 
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -34,11 +32,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	// 게시글 카테고리 목록보기
-	public Page<Board> boardCategoryList(int categoryId, int page) {
-		Pageable pageRequest = PageRequest.of(page, 12, Sort.by(Sort.Direction.ASC, "id"));
-		Page<Board> boardsEntity = boardRepository.mBoardCategoryList(categoryId, pageRequest);
-		
-		return boardsEntity;
+	public Page<Board> boardCategoryList(int categoryId, Pageable page, String searchText){
+		return boardRepository.findBoardCategoryByTitleOrContent(categoryId, searchText, page);
 	}
 
 	// 게시글 상세보기

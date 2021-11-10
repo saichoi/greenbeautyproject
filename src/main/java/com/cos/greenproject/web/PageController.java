@@ -45,22 +45,23 @@ public class PageController {
 	public String home(Model model, 
 			@PageableDefault(page = 0, size = 3, sort = "id", direction = Sort.Direction.DESC) Pageable page,
 			@RequestParam(required = false, defaultValue = "") String searchText) {
-		Page<Board> boardsEntity = boardRepository.findBoardByTitleOrContent(searchText, page);
+		Page<Board> boardsEntity = boardService.boardList(page, searchText);
 		int startPage = Math.max(1, boardsEntity.getPageable().getPageNumber() - 4);
 		int endPage = Math.min(boardsEntity.getTotalPages(), boardsEntity.getPageable().getPageNumber() + 4);
 		int nowPage = boardsEntity.getPageable().getPageNumber() + 1;
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("nowPage", nowPage);
-		model.addAttribute("boardsEntity", boardService.boardList(page, searchText));
+		model.addAttribute("boardsEntity", boardsEntity);
 		return "board/list";
 	}
 
 	// 리뷰 카테고리 페이지 이동
 	@GetMapping("/board/category/{categoryId}")
-	public String boardCategoryList(@PathVariable int categoryId, Model model, int page) {
-		PageRequest pageRequest = PageRequest.of(page, 4, Sort.by(Direction.DESC, "id"));
-		Page<Board> boardsEntity = boardRepository.mBoardCategoryList(categoryId, pageRequest);
+	public String boardCategoryList(@PathVariable int categoryId, Model model,			
+			@PageableDefault(page = 0, size = 3, sort = "id", direction = Sort.Direction.DESC) Pageable page,
+			@RequestParam(required = false, defaultValue = "") String searchText) {
+		Page<Board> boardsEntity = boardRepository.findBoardCategoryByTitleOrContent(categoryId, searchText, page);
 		int startPage = Math.max(1, boardsEntity.getPageable().getPageNumber() - 4);
 		int endPage = Math.min(boardsEntity.getTotalPages(), boardsEntity.getPageable().getPageNumber() + 4);
 		int nowPage = boardsEntity.getPageable().getPageNumber() + 1;
@@ -68,7 +69,7 @@ public class PageController {
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("nowPage", nowPage);
 		model.addAttribute("categoryId",categoryId);
-		model.addAttribute("boardsEntity", boardService.boardCategoryList(categoryId, page));
+		model.addAttribute("boardsEntity", boardService.boardList(page, searchText));
 		return "board/category";
 	}
 
@@ -103,14 +104,14 @@ public class PageController {
 	public String itemList(Model model, 
 			@PageableDefault(page = 0, size = 12, sort = "id", direction = Sort.Direction.ASC) Pageable page,
 			@RequestParam(required = false, defaultValue = "") String searchText) {
-		Page<Item> itemsEntity = itemRepository.findItemByTitleOrContent(searchText, page);
+		Page<Item> itemsEntity =  itemService.itemList(page, searchText);
 		int startPage = Math.max(1, itemsEntity.getPageable().getPageNumber() - 4);
 		int endPage = Math.min(itemsEntity.getTotalPages(), itemsEntity.getPageable().getPageNumber() + 4);
 		int nowPage = itemsEntity.getPageable().getPageNumber() + 1;
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("nowPage", nowPage);
-		model.addAttribute("itemsEntity", itemService.itemList(page, searchText));
+		model.addAttribute("itemsEntity", itemsEntity);
 		return "item/list";
 	} 
 

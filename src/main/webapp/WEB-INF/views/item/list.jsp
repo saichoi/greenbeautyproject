@@ -65,7 +65,7 @@
 		<!-- 검색창자리 -->
 		<form class="input-group">
 			<input type="text" class="form-control"  id="serachText" name="searchText"
-			  value="${params.searchText}" style="height: 100%">
+			  value="${param.searchText}" style="height: 100%">
 			<div class="input-group-append">
 				<button class="btn btn-secondary" type="button">
 					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -133,11 +133,11 @@
 			<c:choose>
 				<c:when test="${itemsEntity.first}">
 					<li class="page-item disabled"><a class="page-link"
-						href="/item/list?page=${itemsEntity.number - 1}">&laquo;</a></li>
+						href="/item/list?page=${itemsEntity.number - 1}&searchText=${param.searchText}">&laquo;</a></li>
 				</c:when>
 				<c:otherwise>
 					<li class="page-item"><a class="page-link"
-						href="/item/list?page=${itemsEntity.number - 1}">&laquo;</a></li>
+						href="/item/list?page=${itemsEntity.number - 1}&searchText=${param.searchText}">&laquo;</a></li>
 				</c:otherwise>
 			</c:choose>
 
@@ -146,11 +146,11 @@
 					<c:when test="${idx eq nowPage}">
 						<li class="page-item disabled"><a
 							class="page-link page-active"
-							href="/item/list?page=${idx-1}">${idx}</a></li>
+							href="/item/list?page=${idx-1}&searchText=${param.searchText}">${idx}</a></li>
 					</c:when>
 					<c:otherwise>
 						<li class="page-item"><a class="page-link"
-							href="/item/list?page=${idx-1}">${idx}</a></li>
+							href="/item/list?page=${idx-1}&searchText=${param.searchText}">${idx}</a></li>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
@@ -158,11 +158,11 @@
 			<c:choose>
 				<c:when test="${itemsEntity.last}">
 					<li class="page-item disabled"><a class="page-link"
-						href="/item/list?page=${param.page + 1}">&raquo;</a></li>
+						href="/item/list?page=${param.page + 1}&searchText=${param.searchText}">&raquo;</a></li>
 				</c:when>
 				<c:otherwise>
 					<li class="page-item"><a class="page-link"
-						href="/item/list?page=${param.page + 1}">&raquo;</a></li>
+						href="/item/list?page=${param.page + 1}&searchText=${param.searchText}">&raquo;</a></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>

@@ -17,7 +17,7 @@ public interface BoardService {
 	public Page<Board> boardList(Pageable page, String searchText);
 
 	// 리뷰 카테고리 목록보기
-	public Page<Board> boardCategoryList(int categoryId, int page);
+	public Page<Board> boardCategoryList(int categoryId, Pageable page, String searchText);
 
 	// 리뷰 상세보기
 	public Board boardDetail(int boardId, Model model);
