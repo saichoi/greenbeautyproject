@@ -20,11 +20,13 @@ public class BoardUpdateDto {
 	@Size(min = 2, max = 50)
 	@NotBlank 
 	private String title;
+	private double rating;
 	private String content;
 	
 	public Board toEntity(User principal) {
 		Board board = new Board();
 		board.setTitle(title);
+		board.setRating(rating);
 		board.setContent(content);
 		board.setUser(principal);
 		return board;

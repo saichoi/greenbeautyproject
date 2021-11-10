@@ -42,7 +42,7 @@
         </div>
         <!-- 연관리스트 컨테이너 시작 -->
         <c:forEach var="board" items="${itemEntity.boards }" begin="0" end="3">
-        	<div class="related-list container mt-5" style="width:80%">
+        	<div class="related-list container mt-3" style="width:80%">
         
 			<div id="board-card" class="card mb-3 shadow" onclick="moveBoardDetail(${board.id})" style="width:100%; ">
 				<div class="row g-0">
