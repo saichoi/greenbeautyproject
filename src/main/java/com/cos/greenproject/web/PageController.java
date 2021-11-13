@@ -61,7 +61,7 @@ public class PageController {
 	public String boardCategoryList(@PathVariable int categoryId, Model model,			
 			@PageableDefault(page = 0, size = 3, sort = "id", direction = Sort.Direction.DESC) Pageable page,
 			@RequestParam(required = false, defaultValue = "") String searchText) {
-		Page<Board> boardsEntity = boardRepository.findBoardCategoryByTitleOrContent(categoryId, searchText, page);
+		Page<Board> boardsEntity =  boardService.boardCategoryList(categoryId, page, searchText);
 		int startPage = Math.max(1, boardsEntity.getPageable().getPageNumber() - 4);
 		int endPage = Math.min(boardsEntity.getTotalPages(), boardsEntity.getPageable().getPageNumber() + 4);
 		int nowPage = boardsEntity.getPageable().getPageNumber() + 1;
@@ -69,7 +69,8 @@ public class PageController {
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("nowPage", nowPage);
 		model.addAttribute("categoryId",categoryId);
-		model.addAttribute("boardsEntity", boardService.boardList(page, searchText));
+		model.addAttribute("boardsEntity", boardsEntity);
+		System.out.println(boardsEntity);
 		return "board/category";
 	}
 

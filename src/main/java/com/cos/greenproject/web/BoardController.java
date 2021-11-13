@@ -118,7 +118,7 @@ public class BoardController {
 
 		commentService.insComment(boardId, dto, principal);
 		
-		return "redirect:/board/" + boardId + "/detail";
+		return "redirect:/board/" + boardId + "/detail?page=0";
 	}
 	 
 }
