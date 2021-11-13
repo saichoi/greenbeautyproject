@@ -18,10 +18,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.cos.greenproject.domian.board.Board;
 import com.cos.greenproject.domian.user.User;
 import com.cos.greenproject.handler.ex.MyAsyncNotFoundException;
 import com.cos.greenproject.service.BoardService;
 import com.cos.greenproject.service.CommentService;
+import com.cos.greenproject.service.LikeService;
 import com.cos.greenproject.util.Script;
 import com.cos.greenproject.web.dto.BoardSaveDto;
 import com.cos.greenproject.web.dto.BoardUpdateDto;
@@ -37,6 +39,7 @@ public class BoardController {
 	// DI
 	private final BoardService boardService;
 	private final CommentService commentService;
+	private final LikeService likeService;
 	private final HttpSession session;
 
 	// 리뷰 등록하기
@@ -119,6 +122,29 @@ public class BoardController {
 		commentService.insComment(boardId, dto, principal);
 		
 		return "redirect:/board/" + boardId + "/detail?page=0";
+	}
+	
+	// <----- Like ----->
+	// 좋아요체크
+	@PostMapping("/api/board/{boardId}/like")
+	public @ResponseBody CMRespDto<Integer> likeSave(@PathVariable int boardId, Model model) {
+		User principal = (User) session.getAttribute("principal");
+
+		Board boardEntity = likeService.insLike(boardId, principal);
+		Integer LikeCnt = boardEntity.getLikeCnt();
+		// 서버에서 보드 +1, 좋아요테이블에 인서트
+		return new CMRespDto<Integer>(1, "성공", LikeCnt); 
+	}
+	
+	// 좋아요체크해제
+	@DeleteMapping("/api/board/{boardId}/like")
+	public @ResponseBody CMRespDto<Integer> likeDelete(@PathVariable int boardId, Model model) {
+		User principal = (User) session.getAttribute("principal");
+
+		Board boardEntity = likeService.delLike(boardId, principal);
+		Integer LikeCnt = boardEntity.getLikeCnt();
+		// 서버에서 보드 -1 , 좋아요테이블에 델리트
+		return new CMRespDto<Integer>(1, "성공", LikeCnt); 
 	}
 	 
 }
