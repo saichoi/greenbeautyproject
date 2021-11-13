@@ -118,9 +118,10 @@ public class PageController {
 
 	// 제품 카테고리 페이지 이동
 	@GetMapping("/item/category/{categoryId}")
-	public String itemCategoryList(@PathVariable int categoryId, Model model, int page) {
-		PageRequest pageRequest = PageRequest.of(page, 4, Sort.by(Direction.DESC, "id"));
-		Page<Item> itemsEntity = itemRepository.mItemCategoryList(categoryId, pageRequest);
+	public String itemCategoryList(@PathVariable int categoryId, Model model, 		
+			@PageableDefault(page = 0, size = 12, sort = "id", direction = Sort.Direction.DESC) Pageable page,
+			@RequestParam(required = false, defaultValue = "") String searchText) {
+		Page<Item> itemsEntity = itemService.itemCategoryList(categoryId, page, searchText);
 		int startPage = Math.max(1, itemsEntity.getPageable().getPageNumber() - 4);
 		int endPage = Math.min(itemsEntity.getTotalPages(), itemsEntity.getPageable().getPageNumber() + 4);
 		int nowPage = itemsEntity.getPageable().getPageNumber() + 1;
@@ -128,7 +129,7 @@ public class PageController {
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("nowPage", nowPage);
 		model.addAttribute("categoryId",categoryId);
-		model.addAttribute("itemsEntity", itemService.itemCategoryList(categoryId, page));
+		model.addAttribute("itemsEntity", itemsEntity);
 		System.out.println(itemsEntity);
 		return "item/category";
 	}

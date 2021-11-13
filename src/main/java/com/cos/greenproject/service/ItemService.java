@@ -13,7 +13,7 @@ public interface ItemService {
 	public Page<Item> itemList(Pageable page, String searchText);
 	
 	// 제품 카테고리 목록보기
-	public Page<Item> itemCategoryList(int categoryId, int page);
+	public Page<Item> itemCategoryList(int categoryId, Pageable page, String searchText);
 	
 	// 제품 상세페이지 보기
 	public Item itemDetail(int id);

@@ -58,11 +58,11 @@
 
 	<section class="">
 		<!-- 검색창자리 -->
-		<div class="input-group">
-			<input type="text" class="form-control" placeholder="Search"
-				style="height: 100%">
+		<form class="input-group">
+			<input type="text" class="form-control" name="searchText"
+            value="${param.searchText}" style="height: 100%">
 			<div class="input-group-append">
-				<button class="btn btn-secondary" type="button">
+				<button class="btn btn-secondary" type="submit">
 					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
 						fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                         <path
@@ -70,7 +70,8 @@
                     </svg>
 				</button>
 			</div>
-		</div>
+		</form>
+		
 		<div id="section1">
 			<div id="item-count">${itemsEntity.totalElements }개의
 				<b>${itemsEntity.content[1].category.cname }</b> 제품
@@ -131,11 +132,11 @@
 				<c:choose>
 					<c:when test="${itemsEntity.first}">
 						<li class="page-item disabled"><a class="page-link"
-							href="/item/category/${categoryId}?page=${itemsEntity.number - 1}">&laquo;</a></li>
+							href="/item/category/${categoryId}?page=${itemsEntity.number - 1}&searchText=${param.searchText}">&laquo;</a></li>
 					</c:when>
 					<c:otherwise>
 						<li class="page-item"><a class="page-link"
-							href="/item/category/${categoryId}?page=${itemsEntity.number - 1}">&laquo;</a></li>
+							href="/item/category/${categoryId}?page=${itemsEntity.number - 1}&searchText=${param.searchText}">&laquo;</a></li>
 					</c:otherwise>
 				</c:choose>
 
@@ -143,11 +144,11 @@
 					<c:choose>
 						<c:when test="${idx eq nowPage}">
 							<li class="page-item disabled"><a class="page-link page-active"
-								href="/item/category/${categoryId}?page=${idx-1}">${idx}</a></li>
+								href="/item/category/${categoryId}?page=${idx-1}&searchText=${param.searchText}">${idx}</a></li>
 						</c:when>
 						<c:otherwise>
 							<li class="page-item"><a class="page-link"
-									href="/item/category/${categoryId}?page=${idx-1}">${idx}</a></li>
+									href="/item/category/${categoryId}?page=${idx-1}&searchText=${param.searchText}">${idx}</a></li>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
@@ -156,11 +157,11 @@
 				<c:choose>
 					<c:when test="${itemsEntity.last}">
 						<li class="page-item disabled"><a class="page-link"
-							href="/item/category/${categoryId}?page=${param.page + 1}">&raquo;</a></li>
+							href="/item/category/${categoryId}?page=${param.page + 1}&searchText=${param.searchText}">&raquo;</a></li>
 					</c:when>
 					<c:otherwise>
 						<li class="page-item"><a class="page-link"
-							href="/item/category/${categoryId}?page=${param.page + 1}">&raquo;</a></li>
+							href="/item/category/${categoryId}?page=${param.page + 1}&searchText=${param.searchText}">&raquo;</a></li>
 					</c:otherwise>
 				</c:choose>
 			</ul>

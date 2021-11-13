@@ -24,10 +24,8 @@ public class ItemServiceImpl implements ItemService{
 	}
 	
 	// 제품 카테고리 목록보기
-	public Page<Item> itemCategoryList(int categoryId, int page) {
-		Pageable pageRequest = PageRequest.of(page, 12, Sort.by(Sort.Direction.ASC, "id"));
-		Page<Item> itemsEntity = itemRepository.mItemCategoryList(categoryId, pageRequest);
-		return itemsEntity;
+	public Page<Item> itemCategoryList(int categoryId, Pageable page, String searchText) {
+		return itemRepository.findItemCategoryByTitleOrContent(categoryId, searchText, page);
 	}
 
 	// 제품 상세페이지 보기

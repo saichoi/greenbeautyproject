@@ -7,10 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface BoardRepository extends JpaRepository<Board, Integer> {
 
-	// 카테고리별 리뷰 목록보기
-	@Query(value = "SELECT * FROM board WHERE categoryId=:categoryId", nativeQuery = true)
-	Page<Board> mBoardCategoryList(int categoryId, Pageable paging);
-
 	// 내리뷰리스트
 	@Query(value = "SELECT * FROM board WHERE userId=:userId", nativeQuery = true)
 	Board mMyReviewList(int userId);
