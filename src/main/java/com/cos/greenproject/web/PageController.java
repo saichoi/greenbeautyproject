@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cos.greenproject.domian.board.Board;
 import com.cos.greenproject.domian.board.BoardRepository;
+import com.cos.greenproject.domian.brand.BrandRepository;
 import com.cos.greenproject.domian.item.Item;
 import com.cos.greenproject.domian.item.ItemRepository;
 import com.cos.greenproject.service.BoardService;
@@ -37,6 +38,8 @@ public class PageController {
 	private final HttpSession session;
 	private final BoardRepository boardRepository;
 	private final ItemRepository itemRepository;
+	private final BrandRepository brandRepository;
+	
 	
 	// <----- Board ----->
 	
@@ -49,10 +52,19 @@ public class PageController {
 		int startPage = Math.max(1, boardsEntity.getPageable().getPageNumber() - 4);
 		int endPage = Math.min(boardsEntity.getTotalPages(), boardsEntity.getPageable().getPageNumber() + 4);
 		int nowPage = boardsEntity.getPageable().getPageNumber() + 1;
+		int boardTotalCnt = boardRepository.mReviewCnt();
+		int itemTotalCnt = itemRepository.mItemCnt();
+		int brandTotalCnt = brandRepository.mBrandCnt();
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("boardTotalCnt", boardTotalCnt);
+		model.addAttribute("brandTotalCnt", brandTotalCnt);
+		model.addAttribute("itemTotalCnt", itemTotalCnt);
 		model.addAttribute("boardsEntity", boardsEntity);
+		System.out.println(boardTotalCnt);
+		System.out.println(itemTotalCnt);
+		System.out.println(brandTotalCnt);
 		return "board/list";
 	}
 

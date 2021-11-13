@@ -23,7 +23,7 @@
 				</div>
 				<!-- 텍스트 -->
 				<div id="ct1">
-					<div class="number">756</div>
+					<div class="number">${boardTotalCnt}</div>
 					<div class="text">누적리뷰수</div>
 				</div>
 			</div>
@@ -35,7 +35,7 @@
 				</div>
 				<!-- 텍스트 -->
 				<div id="ct2">
-					<div class="number">1235</div>
+					<div class="number">${itemTotalCnt}</div>
 					<div class="text">등록제품수</div>
 				</div>
 			</div>
@@ -47,7 +47,7 @@
 				</div>
 				<!-- 텍스트 -->
 				<div id="ct3">
-					<div class="number">156</div>
+					<div class="number">${brandTotalCnt}</div>
 					<div class="text">브랜드수</div>
 				</div>
 			</div>
@@ -167,10 +167,7 @@
 			</c:choose>
 		</ul>
 	</section>
-
-	<aside-2> </aside-2> 
 	</body-2>
 	<%@ include file="../layout/footer.jsp"%>
 </body>
-
 </html>

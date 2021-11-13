@@ -22,6 +22,10 @@ public interface ItemRepository extends JpaRepository<Item, Integer> {
 	// 만족도평균내서 넣기
 	@Query(value = "UPDATE item SET rating = (SELECT AVG(rating) FROM board WHERE itemId = :itemId) WHERE id = :itemId", nativeQuery = true)
 	void mRating(int itemId);
+	
+	// 전체제품수
+	@Query(value = "SELECT count(id) FROM item", nativeQuery = true)
+	int mItemCnt();
 		
 	// Brand 테이블의 제품수(itemCnt)
 	@Query(value = "SELECT count(id) FROM item where brandId = :barndId", nativeQuery = true)
