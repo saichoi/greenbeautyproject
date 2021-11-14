@@ -73,7 +73,7 @@
 			<div class="card-body">
 				<h5 class="card-title">찾고 싶은 피부 타입을 선택해주세요.</h5>
 				<p class="card-text">
-					<form id="search-container" method="GET" action="/board/filter">
+				<form id="search-container" method="GET" action="/board/filter">
 					<div id="search-container-sub1">
 						<div id="select-type1">
 							<label for="select1"><input type="checkbox" id="select1" name="skinType" value="건성" >건성</label>
@@ -146,11 +146,11 @@
 			<c:choose>
 				<c:when test="${boardsEntity.first}">
 					<li class="page-item disabled"><a class="page-link"
-						href="/board?page=${boardsEntity.number - 1}&searchText=${param.searchText}">&laquo;</a></li>
+						href="/board?page=${boardsEntity.number - 1}&searchText=${param.searchText}&skinType=${param.skinType}&skinTrouble=${param.skinTrouble}">&laquo;</a></li>
 				</c:when>
 				<c:otherwise>
 					<li class="page-item"><a class="page-link"
-						href="/board?page=${boardsEntity.number - 1}&searchText=${param.searchText}">&laquo;</a></li>
+						href="/board?page=${boardsEntity.number - 1}&searchText=${param.searchText}&skinType=${param.skinType}&skinTrouble=${param.skinTrouble}">&laquo;</a></li>
 				</c:otherwise>
 			</c:choose>
 
@@ -159,11 +159,11 @@
 					<c:when test="${idx eq nowPage}">
 						<li class="page-item disabled"><a
 							class="page-link page-active"
-							href="/board?page=${idx-1}&searchText=${param.searchText}">${idx}</a></li>
+							href="/board?page=${idx-1}&searchText=${param.searchText}&skinType=${param.skinType}&skinTrouble=${param.skinTrouble}">${idx}</a></li>
 					</c:when>
 					<c:otherwise>
 						<li class="page-item"><a class="page-link"
-							href="/board?page=${idx-1}&searchText=${param.searchText}">${idx}</a></li>
+							href="/board?page=${idx-1}&searchText=${param.searchText}&skinType=${param.skinType}&skinTrouble=${param.skinTrouble}">${idx}</a></li>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
@@ -172,11 +172,11 @@
 			<c:choose>
 				<c:when test="${boardsEntity.last}">
 					<li class="page-item disabled"><a class="page-link"
-						href="/board?page=${param.page + 1}&searchText=${param.searchText}">&raquo;</a></li>
+						href="/board?page=${param.page + 1}&searchText=${param.searchText}&skinType=${param.skinType}&skinTrouble=${param.skinTrouble}">&raquo;</a></li>
 				</c:when>
 				<c:otherwise>
 					<li class="page-item"><a class="page-link"
-						href="/board?page=${param.page + 1}&searchText=${param.searchText}">&raquo;</a></li>
+						href="/board?page=${param.page + 1}&searchText=${param.searchText}&skinType=${param.skinType}&skinTrouble=${param.skinTrouble}">&raquo;</a></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>

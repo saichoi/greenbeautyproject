@@ -34,7 +34,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Controller
 public class PageController {
-	
+
 	// DI
 	private final UserService userService;
 	private final BoardService boardService;
@@ -45,40 +45,79 @@ public class PageController {
 	private final BoardRepository boardRepository;
 	private final ItemRepository itemRepository;
 	private final BrandRepository brandRepository;
-	
-	
+
 	// <----- Board ----->
 	
+	// 피부타입 검색 페이지
+	@GetMapping("/board/filter")
+    public String filter(Model model, 
+                    @PageableDefault(page = 0, size = 3, sort = "id", direction = Sort.Direction.DESC) Pageable page,
+                    @RequestParam(required = false, defaultValue = "") String skinType, String skinTrouble) {
+		
+            Page<Board> boardsEntity = boardRepository.findBoardBySkinTypeSkinTrouble(skinType, skinTrouble, page);
+            
+    		int startPage = Math.max(1, boardsEntity.getPageable().getPageNumber() - 4);
+    		int endPage = Math.min(boardsEntity.getTotalPages(), boardsEntity.getPageable().getPageNumber() + 4);
+    		int nowPage = boardsEntity.getPageable().getPageNumber() + 1;
+    		int boardTotalCnt = boardRepository.mReviewCnt();
+    		int itemTotalCnt = itemRepository.mItemCnt();
+    		int brandTotalCnt = brandRepository.mBrandCnt();
+            
+            // 리뷰 첫번째 이미지 파싱해서 리뷰목록 썸네일 만들기
+            Iterator<Board> it = boardsEntity.iterator();
+            
+            while(it.hasNext()) {
+                    Board boardEntity = it.next();
+                    Document doc = Jsoup.parse(boardEntity.getContent());
+                    if(doc.selectFirst("img") != null) {
+                            String src = doc.selectFirst("img").attr("src");
+                            boardEntity.setContent(src);
+                    }else {
+                            boardEntity.setContent("/image/default-image.png");
+                    }
+            }               
+            
+            model.addAttribute("startPage", startPage);
+            model.addAttribute("endPage", endPage);
+            model.addAttribute("nowPage", nowPage);
+            model.addAttribute("boardTotalCnt", boardTotalCnt);
+            model.addAttribute("brandTotalCnt", brandTotalCnt);
+            model.addAttribute("itemTotalCnt", itemTotalCnt);
+            model.addAttribute("boardsEntity", boardsEntity);
+            
+            return "board/filterList";
+    }
+
 	// 리뷰 목록 페이지 이동 (메인페이지)
 	@GetMapping("/board")
-	public String home(Model model, 
+	public String home(Model model,
 			@PageableDefault(page = 0, size = 3, sort = "id", direction = Sort.Direction.DESC) Pageable page,
 			@RequestParam(required = false, defaultValue = "") String searchText) {
-		
+
 		Page<Board> boardsEntity = boardService.boardList(page, searchText);
-		
+
 		int startPage = Math.max(1, boardsEntity.getPageable().getPageNumber() - 4);
 		int endPage = Math.min(boardsEntity.getTotalPages(), boardsEntity.getPageable().getPageNumber() + 4);
 		int nowPage = boardsEntity.getPageable().getPageNumber() + 1;
 		int boardTotalCnt = boardRepository.mReviewCnt();
 		int itemTotalCnt = itemRepository.mItemCnt();
 		int brandTotalCnt = brandRepository.mBrandCnt();
-		
+
 		// 리뷰 첫번째 이미지 파싱해서 리뷰목록 썸네일 만들기
 		Iterator<Board> it = boardsEntity.iterator();
-		
-		while(it.hasNext()) {
+
+		while (it.hasNext()) {
 			Board boardEntity = it.next();
 			Document doc = Jsoup.parse(boardEntity.getContent());
-			if(doc.selectFirst("img") != null) {
+			if (doc.selectFirst("img") != null) {
 				String src = doc.selectFirst("img").attr("src");
 				boardEntity.setContent(src);
-			}else {
-                boardEntity.setContent("/image/default-image.png");
+			} else {
+				boardEntity.setContent("/image/default-image.png");
 			}
 
-		}		
-		
+		}
+
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("nowPage", nowPage);
@@ -86,43 +125,43 @@ public class PageController {
 		model.addAttribute("brandTotalCnt", brandTotalCnt);
 		model.addAttribute("itemTotalCnt", itemTotalCnt);
 		model.addAttribute("boardsEntity", boardsEntity);
-		
+
 		return "board/list";
 	}
 
 	// 리뷰 카테고리 페이지 이동
 	@GetMapping("/board/category/{categoryId}")
-	public String boardCategoryList(@PathVariable int categoryId, Model model,			
+	public String boardCategoryList(@PathVariable int categoryId, Model model,
 			@PageableDefault(page = 0, size = 3, sort = "id", direction = Sort.Direction.DESC) Pageable page,
 			@RequestParam(required = false, defaultValue = "") String searchText) {
-		
-		Page<Board> boardsEntity =  boardService.boardCategoryList(categoryId, page, searchText);
-		
+
+		Page<Board> boardsEntity = boardService.boardCategoryList(categoryId, page, searchText);
+
 		int startPage = Math.max(1, boardsEntity.getPageable().getPageNumber() - 4);
 		int endPage = Math.min(boardsEntity.getTotalPages(), boardsEntity.getPageable().getPageNumber() + 4);
 		int nowPage = boardsEntity.getPageable().getPageNumber() + 1;
-		
+
 		// 리뷰 첫번째 이미지 파싱해서 리뷰목록 썸네일 만들기
 		Iterator<Board> it = boardsEntity.iterator();
-		
-		while(it.hasNext()) {
+
+		while (it.hasNext()) {
 			Board boardEntity = it.next();
 			Document doc = Jsoup.parse(boardEntity.getContent());
-			if(doc.selectFirst("img") != null) {
+			if (doc.selectFirst("img") != null) {
 				String src = doc.selectFirst("img").attr("src");
 				boardEntity.setContent(src);
-			}else {
-                boardEntity.setContent("/image/default-image.png");
+			} else {
+				boardEntity.setContent("/image/default-image.png");
 			}
 
-		}		
-		
+		}
+
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("nowPage", nowPage);
-		model.addAttribute("categoryId",categoryId);
+		model.addAttribute("categoryId", categoryId);
 		model.addAttribute("boardsEntity", boardsEntity);
-		
+
 		return "board/category";
 	}
 
@@ -130,10 +169,10 @@ public class PageController {
 	@GetMapping("/board/{boardId}/detail")
 	public String detail(@PathVariable int boardId, Model model, int page) {
 		User principal = (User) session.getAttribute("principal");
-		if(principal != null) {
-		    model.addAttribute("likeCheck", likeService.selLike(boardId, principal));
+		if (principal != null) {
+			model.addAttribute("likeCheck", likeService.selLike(boardId, principal));
 		}
-	    model.addAttribute("boardEntity", boardService.boardDetail(boardId, model));
+		model.addAttribute("boardEntity", boardService.boardDetail(boardId, model));
 		model.addAttribute("page", page);
 		return "board/detail";
 	}
@@ -141,7 +180,7 @@ public class PageController {
 	// 리뷰 작성 페이지 이동
 	@GetMapping("/api/board/saveForm")
 	public String saveForm(int itemId, Model model, int page) {
-		model.addAttribute("itemEntity",  itemService.saveForm(itemId));
+		model.addAttribute("itemEntity", itemService.saveForm(itemId));
 		model.addAttribute("page", page);
 		model.addAttribute("date", LocalDate.now());
 		return "board/saveForm";
@@ -150,18 +189,18 @@ public class PageController {
 	// 리뷰 수정하기 페이지 이동
 	@GetMapping("/api/board/{boardId}/updateForm")
 	public String boardUpdateForm(@PathVariable int boardId, Model model) {
-	    model.addAttribute("boardEntity", boardService.moveUpdateForm(boardId, model));
+		model.addAttribute("boardEntity", boardService.moveUpdateForm(boardId, model));
 		return "board/updateForm";
 	}
-	
+
 	// <----- Item ----->
-	
+
 	// 제품 목록 페이지 이동
 	@GetMapping("/item/list")
-	public String itemList(Model model, 
+	public String itemList(Model model,
 			@PageableDefault(page = 0, size = 12, sort = "id", direction = Sort.Direction.ASC) Pageable page,
 			@RequestParam(required = false, defaultValue = "") String searchText) {
-		Page<Item> itemsEntity =  itemService.itemList(page, searchText);
+		Page<Item> itemsEntity = itemService.itemList(page, searchText);
 		int startPage = Math.max(1, itemsEntity.getPageable().getPageNumber() - 4);
 		int endPage = Math.min(itemsEntity.getTotalPages(), itemsEntity.getPageable().getPageNumber() + 4);
 		int nowPage = itemsEntity.getPageable().getPageNumber() + 1;
@@ -170,11 +209,11 @@ public class PageController {
 		model.addAttribute("nowPage", nowPage);
 		model.addAttribute("itemsEntity", itemsEntity);
 		return "item/list";
-	} 
+	}
 
 	// 제품 카테고리 페이지 이동
 	@GetMapping("/item/category/{categoryId}")
-	public String itemCategoryList(@PathVariable int categoryId, Model model, 		
+	public String itemCategoryList(@PathVariable int categoryId, Model model,
 			@PageableDefault(page = 0, size = 12, sort = "id", direction = Sort.Direction.DESC) Pageable page,
 			@RequestParam(required = false, defaultValue = "") String searchText) {
 		Page<Item> itemsEntity = itemService.itemCategoryList(categoryId, page, searchText);
@@ -184,7 +223,7 @@ public class PageController {
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("nowPage", nowPage);
-		model.addAttribute("categoryId",categoryId);
+		model.addAttribute("categoryId", categoryId);
 		model.addAttribute("itemsEntity", itemsEntity);
 		return "item/category";
 	}
@@ -194,13 +233,13 @@ public class PageController {
 	public String itemDetaill(@PathVariable int id, Model model, int page) {
 		User principal = (User) session.getAttribute("principal");
 		model.addAttribute("itemEntity", itemService.itemDetail(id));
-		if(principal != null) {
-		    model.addAttribute("wishCheck", wishService.selWish(id, principal));
+		if (principal != null) {
+			model.addAttribute("wishCheck", wishService.selWish(id, principal));
 		}
 		model.addAttribute("page", page);
 		return "item/detail";
 	}
-	
+
 	// <----- User ----->
 
 	// 회원가입 페이지 이동
@@ -220,7 +259,7 @@ public class PageController {
 	public String mypage(@PathVariable int userId, String key) {
 		return "user/mypage";
 	}
-	
+
 	// 회원수정 페이지 이동
 	@GetMapping("/api/user/{userId}/updateForm")
 	public String updateForm(@PathVariable int userId) {
