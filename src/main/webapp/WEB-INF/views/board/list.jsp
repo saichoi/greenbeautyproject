@@ -77,7 +77,7 @@
 					<div id="search-container-sub1">
 						<div id="select-type1">
 							<label for="select1"><input type="checkbox" id="select1" name="skinType" value="건성" >건성</label>
-							<label for="select2"><input type="checkbox" id="select2" name="skinType" value="중성">중
+							<label for="select2"><input type="checkbox" id="select2" name="skinType" value="중성">중성
 							<label for="select3"><input type="checkbox" id="select3" name="skinType" value="지성">지성</label>
 							<label for="select4"><input type="checkbox" id="select4" name="skinType" value="복합성">복합성</label>
 						</div>
