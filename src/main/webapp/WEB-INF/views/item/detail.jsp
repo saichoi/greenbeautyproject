@@ -28,10 +28,16 @@
             </div>
         </div>
         <div class="button-con">
-            <!-- 좋아요 버튼 누르기 전 -->
-            <button type="button" class="btn btn-secondary"><i class="bi bi-heart"></i></button>
-            <!-- 좋아요 버튼 누른 후-->
-            <!-- <button type="button" class="btn btn-secondary"><i class="bi bi-heart-fill"></i></button> -->
+       		<!-- 현재 wish디비에 해당유저 제품있는지 없는지 체크후 위시 상태나타내기 -->
+        	<c:choose>
+				<c:when test="${wishCheck eq 1}">
+					<i id="wish" class="bi bi-heart-fill m_set_pointer m_set_red" onclick="wish(${itemEntity.id})"></i>
+				</c:when>
+				<c:otherwise>
+					<i id="wish" class="bi bi-heart m_set_pointer" onclick="wish(${itemEntity.id})"></i>
+				</c:otherwise>
+			</c:choose>
+        	
             <button type="button" class="btn btn-secondary" onClick="toWrite(${itemEntity.id})"  style="margin-right:0.5%">리뷰쓰기</button>
             <button type="button" onClick="toItemList(${itemEntity.category.id}, ${page })"  class="btn btn-secondary">목록으로</button>
         </div>

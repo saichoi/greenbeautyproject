@@ -112,7 +112,7 @@
 				<div class="row g-0">
 					<div class="img-card col-md-3"
 						style="border-right: 1px solid rgb(219, 219, 219);">
-						<img src="${board.content}" class="img-fluid rounded-start"
+						<img src="${board.image}" class="img-fluid rounded-start"
 							alt="상품이미지">
 					</div>
 					<div class="col-md-8">
@@ -182,24 +182,20 @@
 		</ul>
 	</div>
 </section>
-<aside-2> </aside-2>
+
 </body-2>
 
 <%@ include file="../layout/footer.jsp"%>
 
 <script>
-
 	var boardTotalCnt = "${boardTotalCnt}";
 	var itemTotalCnt = "${itemTotalCnt}";
 	var brandTotalCnt = "${brandTotalCnt}";
 	var count0 = count1 = count2 = 0;
 	
 	timeCounter();
-
 	function timeCounter() {
-
 		id0 = setInterval(count0Fn, 1); //
-
 		function count0Fn() {
 			count0++;
 			if (count0 > boardTotalCnt) {
@@ -207,11 +203,8 @@
 			} else {
 				$(".number").eq(0).text(count0);
 			}
-
 		}
-
 		id1 = setInterval(count1Fn, 1);
-
 		function count1Fn() {
 			count1++;
 			if (count1 > itemTotalCnt) {
@@ -220,9 +213,7 @@
 				$(".number").eq(1).text(count1);
 			}
 		}
-
 		id2 = setInterval(count2Fn, 1);
-
 		function count2Fn() {
 			count2++;
 			if (count2 > brandTotalCnt) {

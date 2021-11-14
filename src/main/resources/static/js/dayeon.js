@@ -34,6 +34,67 @@ const drawStar = (target) => {
 	}
 }
 
+async function wish(itemId){
+	if(globalUserId == ""){
+		alert("로그인을 먼저 진행해주세요");
+		location.href = "/loginForm";
+		return;
+		}
+
+	let response;
+	$("#wish").toggleClass("bi-heart bi-heart-fill m_set_red");
+ 	 if($("#wish").attr("class") == "bi m_set_pointer bi-heart-fill m_set_red"){
+		response = await fetch("http://localhost:8080/api/item/" + itemId + "/wish", {
+			method: "post"
+		});
+	}
+	else{
+		response = await fetch("http://localhost:8080/api/item/" + itemId + "/wish", {
+			method: "delete"
+		});
+	}
+ 	let parseResponse = await response.json();
+ 	
+ 	if(parseResponse.code == 1){
+ 		if(parseResponse.body == 1){
+ 			alert("위시리스트에 담겼습니다.")
+ 		}else{
+ 			alert("위시리스트에서 삭제되었습니다.")
+ 		}
+	}else{
+		alert(parseResponse.msg);
+		location.href = "/";
+	}
+}
+	
+async function like(boardId){
+	if(globalUserId == ""){
+		alert("로그인을 먼저 진행해주세요");
+		location.href = "/loginForm";
+		return;
+		}
+
+	let response
+	$("#like").toggleClass("bi-hand-thumbs-up bi-hand-thumbs-up-fill");
+	if($("#like").attr("class") == "bi m_set_pointer bi-hand-thumbs-up-fill"){
+		response = await fetch("http://localhost:8080/api/board/" + boardId + "/like", {
+			method: "post"
+		});
+	}
+	else{
+		response = await fetch("http://localhost:8080/api/board/" + boardId + "/like", {
+			method: "delete"
+		});
+	
+	}
+	let parseResponse = await response.json();
+	
+	if(parseResponse.code == 1){
+		$("#like").empty();
+ 		$("#like").text(parseResponse.body);
+	}
+}
+
 function moveItemDetail(id){
 	location.href = "/item/" + id + "/detail?page=0";
 }

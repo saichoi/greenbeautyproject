@@ -74,38 +74,7 @@
 						</c:otherwise>
 					</c:choose>
 
-					<!--<i class="bi bi-hand-thumbs-up-fill"></i>-->
-				
 				</div>
-				<script>
-					async function like(boardId){
-						if(globalUserId == ""){
-							alert("로그인을 먼저 진행해주세요");
-							location.href = "/loginForm";
-							return;
-							}
-
-						let response
-						$("#like").toggleClass("bi-hand-thumbs-up bi-hand-thumbs-up-fill");
-						if($("#like").attr("class") == "bi m_set_pointer bi-hand-thumbs-up-fill"){
-							response = await fetch("http://localhost:8080/api/board/" + boardId + "/like", {
-								method: "post"
-							});
-						}
-						else{
-							response = await fetch("http://localhost:8080/api/board/" + boardId + "/like", {
-								method: "delete"
-							});
-						
-						}
-						let parseResponse = await response.json();
-						
-						if(parseResponse.code == 1){
-							$("#like").empty();
-					 		$("#like").text(parseResponse.body);
-						}
-					}
-					</script>
 
 				<div id="button">
 					<button type="button"
