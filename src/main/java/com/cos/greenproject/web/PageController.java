@@ -21,8 +21,10 @@ import com.cos.greenproject.domian.board.BoardRepository;
 import com.cos.greenproject.domian.brand.BrandRepository;
 import com.cos.greenproject.domian.item.Item;
 import com.cos.greenproject.domian.item.ItemRepository;
+import com.cos.greenproject.domian.user.User;
 import com.cos.greenproject.service.BoardService;
 import com.cos.greenproject.service.ItemService;
+import com.cos.greenproject.service.LikeService;
 import com.cos.greenproject.service.UserService;
 
 import lombok.RequiredArgsConstructor;
@@ -35,6 +37,7 @@ public class PageController {
 	private final UserService userService;
 	private final BoardService boardService;
 	private final ItemService itemService;
+	private final LikeService likeService;
 	private final HttpSession session;
 	private final BoardRepository boardRepository;
 	private final ItemRepository itemRepository;
@@ -89,6 +92,10 @@ public class PageController {
 	// 리뷰 상세 페이지 이동
 	@GetMapping("/board/{boardId}/detail")
 	public String detail(@PathVariable int boardId, Model model, int page) {
+		User principal = (User) session.getAttribute("principal");
+		if(principal != null) {
+		    model.addAttribute("likeCheck", likeService.selLike(boardId, principal));
+		}
 	    model.addAttribute("boardEntity", boardService.boardDetail(boardId, model));
 		model.addAttribute("page", page);
 		return "board/detail";

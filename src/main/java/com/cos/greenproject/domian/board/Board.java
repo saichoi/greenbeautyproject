@@ -21,6 +21,7 @@ import com.cos.greenproject.domian.brand.Brand;
 import com.cos.greenproject.domian.category.Category;
 import com.cos.greenproject.domian.comment.Comment;
 import com.cos.greenproject.domian.item.Item;
+import com.cos.greenproject.domian.liked.Liked;
 import com.cos.greenproject.domian.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

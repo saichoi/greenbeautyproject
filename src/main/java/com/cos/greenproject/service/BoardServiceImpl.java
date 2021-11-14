@@ -116,5 +116,5 @@ public class BoardServiceImpl implements BoardService {
 	public void comboBoardList() {
 
 	}
-
+	
 }
