@@ -51,7 +51,7 @@ public class PageController {
 	// 피부타입 검색 페이지
 	@GetMapping("/board/filter")
     public String filter(Model model, 
-                    @PageableDefault(page = 0, size = 3, sort = "id", direction = Sort.Direction.DESC) Pageable page,
+                    @PageableDefault(page = 0, size = 4, sort = "id", direction = Sort.Direction.DESC) Pageable page,
                     @RequestParam(required = false, defaultValue = "") String skinType, String skinTrouble) {
 		
             Page<Board> boardsEntity = boardRepository.findBoardBySkinTypeSkinTrouble(skinType, skinTrouble, page);
@@ -91,7 +91,7 @@ public class PageController {
 	// 리뷰 목록 페이지 이동 (메인페이지)
 	@GetMapping("/board")
 	public String home(Model model,
-			@PageableDefault(page = 0, size = 3, sort = "id", direction = Sort.Direction.DESC) Pageable page,
+			@PageableDefault(page = 0, size = 4, sort = "id", direction = Sort.Direction.DESC) Pageable page,
 			@RequestParam(required = false, defaultValue = "") String searchText) {
 
 		Page<Board> boardsEntity = boardService.boardList(page, searchText);
@@ -132,7 +132,7 @@ public class PageController {
 	// 리뷰 카테고리 페이지 이동
 	@GetMapping("/board/category/{categoryId}")
 	public String boardCategoryList(@PathVariable int categoryId, Model model,
-			@PageableDefault(page = 0, size = 3, sort = "id", direction = Sort.Direction.DESC) Pageable page,
+			@PageableDefault(page = 0, size = 4, sort = "id", direction = Sort.Direction.DESC) Pageable page,
 			@RequestParam(required = false, defaultValue = "") String searchText) {
 
 		Page<Board> boardsEntity = boardService.boardCategoryList(categoryId, page, searchText);
@@ -207,6 +207,12 @@ public class PageController {
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("nowPage", nowPage);
+		int boardTotalCnt = boardRepository.mReviewCnt();
+		int itemTotalCnt = itemRepository.mItemCnt();
+		int brandTotalCnt = brandRepository.mBrandCnt();
+        model.addAttribute("boardTotalCnt", boardTotalCnt);
+        model.addAttribute("brandTotalCnt", brandTotalCnt);
+        model.addAttribute("itemTotalCnt", itemTotalCnt);
 		model.addAttribute("itemsEntity", itemsEntity);
 		return "item/list";
 	}
