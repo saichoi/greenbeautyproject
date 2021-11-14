@@ -73,7 +73,10 @@ public class PageController {
 			if(doc.selectFirst("img") != null) {
 				String src = doc.selectFirst("img").attr("src");
 				boardEntity.setContent(src);
+			}else {
+                boardEntity.setContent("/image/default-image.png");
 			}
+
 		}		
 		
 		model.addAttribute("startPage", startPage);
@@ -108,7 +111,10 @@ public class PageController {
 			if(doc.selectFirst("img") != null) {
 				String src = doc.selectFirst("img").attr("src");
 				boardEntity.setContent(src);
+			}else {
+                boardEntity.setContent("/image/default-image.png");
 			}
+
 		}		
 		
 		model.addAttribute("startPage", startPage);

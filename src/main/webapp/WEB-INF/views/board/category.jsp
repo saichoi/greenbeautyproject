@@ -122,7 +122,9 @@
 			<div id="board-card" class="card mb-3 shadow" onclick="moveBoardDetail(${board.id})" style="width:100%; ">
 				<div class="row g-0">
 					<div class="img-card col-md-3" style="border-right: 1px solid rgb(219, 219, 219);">
-						<img src="${board.content}" class="img-fluid rounded-start" alt="상품이미지">
+						<img src="${board.content}" class="img-fluid rounded-start h-100" 
+						onerror="this.src='/image/default-image.png'" alt="리뷰이미지" >
+
 					</div>
 					<div class="col-md-8">
 						<div class="card-body">
