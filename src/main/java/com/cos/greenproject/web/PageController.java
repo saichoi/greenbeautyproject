@@ -47,6 +47,46 @@ public class PageController {
 	
 	// <----- Board ----->
 	
+	// 피부타입 검색 페이지
+	@GetMapping("/board/filter")
+	public String filter(Model model, 
+			@PageableDefault(page = 0, size = 3, sort = "id", direction = Sort.Direction.DESC) Pageable page,
+			@RequestParam(required = false, defaultValue = "") String skinType, String skinTrouble) {
+		System.out.println("컨트롤러왔다!");
+		Page<Board> boardsEntity = boardRepository.findBoardBySkinTypeSkinTrouble(skinType, skinTrouble, page);
+		System.out.println("여기기기기기기기기기기기기"+boardsEntity);
+		int startPage = Math.max(1, boardsEntity.getPageable().getPageNumber() - 4);
+		int endPage = Math.min(boardsEntity.getTotalPages(), boardsEntity.getPageable().getPageNumber() + 4);
+		int nowPage = boardsEntity.getPageable().getPageNumber() + 1;
+		int boardTotalCnt = boardRepository.mReviewCnt();
+		int itemTotalCnt = itemRepository.mItemCnt();
+		int brandTotalCnt = brandRepository.mBrandCnt();
+		
+		// 리뷰 첫번째 이미지 파싱해서 리뷰목록 썸네일 만들기
+		Iterator<Board> it = boardsEntity.iterator();
+		
+		while(it.hasNext()) {
+			Board boardEntity = it.next();
+			Document doc = Jsoup.parse(boardEntity.getContent());
+			if(doc.selectFirst("img") != null) {
+				String src = doc.selectFirst("img").attr("src");
+				boardEntity.setContent(src);
+			}else {
+				boardEntity.setContent("/image/default-image.png");
+			}
+		}		
+		
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("boardTotalCnt", boardTotalCnt);
+		model.addAttribute("brandTotalCnt", brandTotalCnt);
+		model.addAttribute("itemTotalCnt", itemTotalCnt);
+		model.addAttribute("boardsEntity", boardsEntity);
+		
+		return "board/filterList";
+	}
+	
 	// 리뷰 목록 페이지 이동 (메인페이지)
 	@GetMapping("/board")
 	public String home(Model model, 
