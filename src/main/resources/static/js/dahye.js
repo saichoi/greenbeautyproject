@@ -119,7 +119,7 @@ $(document).ready(function () {
       return false;
     }
   }
-
+  
     //회원가입 피부톤 팔레트
   	var pallet = ["#f3e077", "#dfc899", "#d8b17e", "#cca77b", "#bd9c8d"];
   	
@@ -138,5 +138,5 @@ $(document).ready(function () {
 			$('input[name=skinTone]').eq(0).remove();
 			$('#palletCon').append(tag);
 	});
-	
+
 }); // end of document ready

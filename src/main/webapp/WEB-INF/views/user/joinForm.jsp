@@ -54,21 +54,21 @@
                 </div>
 
                 <div class="join-value radiobox">
-                    <label >피부타입</label>
-                    <input type="radio" name="skinType" value="건성" checked>건성
-                    <input type="radio" name="skinType" value="중성">중성
-                    <input type="radio" name="skinType" value="지성">지성
-                    <input type="radio" name="skinType" value="복합성">복합성
+                    <label>피부타입</label>
+                    <label><input type="radio" name="skinType" value="건성" checked>건성</label>
+                    <label><input type="radio" name="skinType" value="중성">중성</label>
+                    <label><input type="radio" name="skinType" value="지성">지성</label>
+                    <label><input type="radio" name="skinType" value="복합성">복합성</label>
                 </div>
 
                 <div class="join-value radiobox">
                     <label>피부고민</label>
-                    <input type="radio" name="skinTrouble" value="여드름" checked>여드름
-                    <input type="radio" name="skinTrouble" value="민감성">민감성
-                    <input type="radio" name="skinTrouble" value="흉터">흉터
-                    <input type="radio" name="skinTrouble" value="혈관">혈관
-                    <input type="radio" name="skinTrouble" value="색조">색조
-                    <input type="radio" name="skinTrouble" value="해당없음">해당없음
+                    <label><input type="radio" name="skinTrouble" value="여드름" checked>여드름</label>
+                    <label><input type="radio" name="skinTrouble" value="민감성">민감성</label>
+                    <label><input type="radio" name="skinTrouble" value="흉터">흉터</label>
+                    <label><input type="radio" name="skinTrouble" value="혈관">혈관</label>
+                    <label><input type="radio" name="skinTrouble" value="색조">색조</label>
+                    <label><input type="radio" name="skinTrouble" value="해당없음">해당없음</label>
                 </div>
                 
                 <div class="join-value">

@@ -76,6 +76,10 @@ public class UserController {
 	      }
 	      return Script.back(errorMap.toString());
 	    }
+	    
+	    if(dto.getSkinTone()==null) {
+	    	dto.setSkinTone("밝은(21호)");
+	    }
 	    userService.join(dto);
 	    return Script.href("/loginForm");
 	}
