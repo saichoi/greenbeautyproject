@@ -1,14 +1,15 @@
 package com.cos.greenproject.web;
 
 import java.time.LocalDate;
+import java.util.Iterator;
 
 import javax.servlet.http.HttpSession;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,13 +52,28 @@ public class PageController {
 	public String home(Model model, 
 			@PageableDefault(page = 0, size = 3, sort = "id", direction = Sort.Direction.DESC) Pageable page,
 			@RequestParam(required = false, defaultValue = "") String searchText) {
+		
 		Page<Board> boardsEntity = boardService.boardList(page, searchText);
+		
 		int startPage = Math.max(1, boardsEntity.getPageable().getPageNumber() - 4);
 		int endPage = Math.min(boardsEntity.getTotalPages(), boardsEntity.getPageable().getPageNumber() + 4);
 		int nowPage = boardsEntity.getPageable().getPageNumber() + 1;
 		int boardTotalCnt = boardRepository.mReviewCnt();
 		int itemTotalCnt = itemRepository.mItemCnt();
 		int brandTotalCnt = brandRepository.mBrandCnt();
+		
+		// 리뷰 첫번째 이미지 파싱해서 리뷰목록 썸네일 만들기
+		Iterator<Board> it = boardsEntity.iterator();
+		
+		while(it.hasNext()) {
+			Board boardEntity = it.next();
+			Document doc = Jsoup.parse(boardEntity.getContent());
+			if(doc.selectFirst("img") != null) {
+				String src = doc.selectFirst("img").attr("src");
+				boardEntity.setContent(src);
+			}
+		}		
+		
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("nowPage", nowPage);
@@ -65,9 +81,7 @@ public class PageController {
 		model.addAttribute("brandTotalCnt", brandTotalCnt);
 		model.addAttribute("itemTotalCnt", itemTotalCnt);
 		model.addAttribute("boardsEntity", boardsEntity);
-		System.out.println(boardTotalCnt);
-		System.out.println(itemTotalCnt);
-		System.out.println(brandTotalCnt);
+		
 		return "board/list";
 	}
 
@@ -76,16 +90,31 @@ public class PageController {
 	public String boardCategoryList(@PathVariable int categoryId, Model model,			
 			@PageableDefault(page = 0, size = 3, sort = "id", direction = Sort.Direction.DESC) Pageable page,
 			@RequestParam(required = false, defaultValue = "") String searchText) {
+		
 		Page<Board> boardsEntity =  boardService.boardCategoryList(categoryId, page, searchText);
+		
 		int startPage = Math.max(1, boardsEntity.getPageable().getPageNumber() - 4);
 		int endPage = Math.min(boardsEntity.getTotalPages(), boardsEntity.getPageable().getPageNumber() + 4);
 		int nowPage = boardsEntity.getPageable().getPageNumber() + 1;
+		
+		// 리뷰 첫번째 이미지 파싱해서 리뷰목록 썸네일 만들기
+		Iterator<Board> it = boardsEntity.iterator();
+		
+		while(it.hasNext()) {
+			Board boardEntity = it.next();
+			Document doc = Jsoup.parse(boardEntity.getContent());
+			if(doc.selectFirst("img") != null) {
+				String src = doc.selectFirst("img").attr("src");
+				boardEntity.setContent(src);
+			}
+		}		
+		
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("nowPage", nowPage);
 		model.addAttribute("categoryId",categoryId);
 		model.addAttribute("boardsEntity", boardsEntity);
-		System.out.println(boardsEntity);
+		
 		return "board/category";
 	}
 
@@ -149,7 +178,6 @@ public class PageController {
 		model.addAttribute("nowPage", nowPage);
 		model.addAttribute("categoryId",categoryId);
 		model.addAttribute("itemsEntity", itemsEntity);
-		System.out.println(itemsEntity);
 		return "item/category";
 	}
 
