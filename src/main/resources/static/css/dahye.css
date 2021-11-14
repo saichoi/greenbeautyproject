@@ -394,7 +394,7 @@ header .bi-person-fill:hover, header .bi-heart-fill:hover{
   margin: 0 auto;
 }
 
-.join-con label{
+.join-con .label{
    width: 30%;
    font-weight: 700;
 }

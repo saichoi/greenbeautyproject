@@ -11,42 +11,42 @@
             <form action="/join" method="post">
             
                 <div class="join-value">
-                    <label for="username">ID</label>
+                    <label for="username" class="label">ID</label>
                     <input placeholder="ID를 입력하세요" type="text" id="username"  
                     class="form-control" name="username" value="sai" size="30" >
                 </div>
 
                 <div class="join-value">
-                    <label for="password">비밀번호</label>
+                    <label for="password" class="label">비밀번호</label>
                     <input placeholder="비밀번호를 입력하세요" type="password" id="password" 
                      class="form-control" name="password"  value="1234" size="30" >
                 </div>
 
                 <div class="join-value">
-                    <label for="name">이름</label>
+                    <label for="name" class="label">이름</label>
                     <input placeholder="이름을 입력하세요"  type="text" id="name"  
                     class="form-control" name="name" value="최다혜"  size="30" >
                 </div>
 
                 <div class="join-value">
-                    <label for="nickname">닉네임</label>
+                    <label for="nickname" class="label">닉네임</label>
                     <input placeholder="닉네임을 입력하세요" type="text" id="nickname"  
                     class="form-control" name="nickname" value="파란머리연어" size="30" >
                 </div>
 
                 <div class="join-value">
-                    <label for="email">이메일</label>
+                    <label for="email" class="label">이메일</label>
                     <input placeholder="이메일을 입력하세요" type="email" id="email"  
                     class="form-control" name="email" size="30"  value="sai@naver.com">
                 </div>
 
                 <div class="join-value">
-                    <label for="bithday">생년월일</label>
+                    <label for="bithday" class="label">생년월일</label>
                     <input type="date" id="birthday" class="form-control" name="birthday"  value="1993-04-24">
                 </div>
 
                 <div class="join-value">
-                    <label for="gender">성별</label>
+                    <label for="gender" class="label">성별</label>
                     <select id="gender"  class="form-control" name="gender">
                         <option value="남성">남성</option>
                         <option value="여성" selected>여성</option>
@@ -54,25 +54,26 @@
                 </div>
 
                 <div class="join-value radiobox">
-                    <label >피부타입</label>
-                    <input type="radio" name="skinType" value="건성" checked>건성
-                    <input type="radio" name="skinType" value="중성">중성
-                    <input type="radio" name="skinType" value="지성">지성
-                    <input type="radio" name="skinType" value="복합성">복합성
+                    <label class="label">피부타입</label>
+                    <label><input type="radio" name="skinType" value="건성" checked>건성</label>
+                    <label><input type="radio" name="skinType" value="중성">중성</label>
+                    <label><input type="radio" name="skinType" value="지성">지성</label>
+                    <label><input type="radio" name="skinType" value="복합성">복합성</label>
                 </div>
 
                 <div class="join-value radiobox">
-                    <label>피부고민</label>
-                    <input type="radio" name="skinTrouble" value="여드름" checked>여드름
-                    <input type="radio" name="skinTrouble" value="민감성">민감성
-                    <input type="radio" name="skinTrouble" value="흉터">흉터
-                    <input type="radio" name="skinTrouble" value="혈관">혈관
-                    <input type="radio" name="skinTrouble" value="색조">색조
-                    <input type="radio" name="skinTrouble" value="해당없음">해당없음
+                	<label class="label">피부고민</label>
+					<label><input type="radio" name="skinTrouble" value="여드름" checked>여드름</label>
+                    <label><input type="radio" name="skinTrouble" value="민감성">민감성</label>
+                    <label><input type="radio" name="skinTrouble" value="흉터">흉터</label>
+                    <label><input type="radio" name="skinTrouble" value="혈관">혈관</label>
+                    <label><input type="radio" name="skinTrouble" value="색조">색조</label>
+                    <label><input type="radio" name="skinTrouble" value="해당없음">해당없음</label>
+
                 </div>
                 
                 <div class="join-value">
-                    <label>피부톤</label>
+                    <label class="label">피부톤</label>
                     <div id="palletCon" class="color-con" >
                         <div id="palletBox" class="pallet">
                         	<div class="colorBox text-center">매우밝은</div>
