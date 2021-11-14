@@ -5,10 +5,8 @@ import java.time.LocalDate;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +24,7 @@ import com.cos.greenproject.service.BoardService;
 import com.cos.greenproject.service.ItemService;
 import com.cos.greenproject.service.LikeService;
 import com.cos.greenproject.service.UserService;
+import com.cos.greenproject.service.WishService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -38,6 +37,7 @@ public class PageController {
 	private final BoardService boardService;
 	private final ItemService itemService;
 	private final LikeService likeService;
+	private final WishService wishService;
 	private final HttpSession session;
 	private final BoardRepository boardRepository;
 	private final ItemRepository itemRepository;
@@ -156,7 +156,11 @@ public class PageController {
 	// 제품 상세페이지 이동
 	@GetMapping("/item/{id}/detail")
 	public String itemDetaill(@PathVariable int id, Model model, int page) {
+		User principal = (User) session.getAttribute("principal");
 		model.addAttribute("itemEntity", itemService.itemDetail(id));
+		if(principal != null) {
+		    model.addAttribute("wishCheck", wishService.selWish(id, principal));
+		}
 		model.addAttribute("page", page);
 		return "item/detail";
 	}

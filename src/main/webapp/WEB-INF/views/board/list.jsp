@@ -183,6 +183,7 @@
 	</div>
 </section>
 
+<aside-2> </aside-2>
 </body-2>
 
 <%@ include file="../layout/footer.jsp"%>

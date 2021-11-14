@@ -39,7 +39,7 @@
 }
 
 /* 헤더 아이콘 스타일 */
-.bi-heart-fill{
+header .bi-heart-fill{
   font-size: 25px;
   line-height: 25px;
   transition-duration: 0.5s;
@@ -51,7 +51,7 @@
   transition-duration: 0.5s;
 }
 
-.bi-person-fill:hover, .bi-heart-fill:hover{
+header .bi-person-fill:hover, header .bi-heart-fill:hover{
 	color:#444;
 }
 
