@@ -13,7 +13,7 @@ import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import com.cos.greenproject.domian.board.Board;
-import com.cos.greenproject.domian.item.Item;
+import com.cos.greenproject.domian.wish.Wish;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -84,11 +84,11 @@ public class User {
 	@JsonIgnoreProperties({"user"})
 	@OneToMany(mappedBy =  "user", fetch = FetchType.LAZY)
 	@OrderBy("id desc")
-	private List<Item> wishList;
+	private List<Wish> wishList;
 	
 	// 좋아요 리스트(리뷰)
 	@JsonIgnoreProperties({"user"})
-	@OneToMany(mappedBy =  "user", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy =  "user", fetch = FetchType.LAZY)
 	@OrderBy("id desc")
 	private List<Board> boardList;
 	

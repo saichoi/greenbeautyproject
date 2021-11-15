@@ -262,7 +262,8 @@ public class PageController {
 
 	// 마이페이지 이동
 	@GetMapping("/api/user/{userId}/mypage")
-	public String mypage(@PathVariable int userId, String key) {
+	public String mypage(@PathVariable int userId, String key, Model model) {
+		model.addAttribute("userEntity", userService.selectInfo(userId));
 		return "user/mypage";
 	}
 
