@@ -76,33 +76,26 @@
                 <div class="card-body">
                     <h5 class="card-title">찾고 싶은 피부 타입을 선택해주세요.</h5>
                     <p class="card-text">
-                    <form id="search-container">
-                        <div id="search-container-sub1">
-                            <div id="select-type1">
-                                <input type="checkbox" id="select1">
-                                <label for="select1">건성</label>
-                                <input type="checkbox" id="select2">
-                                <label for="select2">중성</label>
-                                <input type="checkbox" id="select3">
-                                <label for="select3">지성</label>
-                                <input type="checkbox" id="select4">
-                                <label for="select4">복합성</label>
-                            </div>
-                            <div id="select-type2">
-                                <input type="checkbox" id="select5">
-                                <label for="select5">여드름</label>
-                                <input type="checkbox" id="select6">
-                                <label for="select6">민감성</label>
-                                <input type="checkbox" id="select7">
-                                <label for="select7">흉터</label>
-                                <input type="checkbox" id="select8">
-                                <label for="select8">혈관</label>
-                                <input type="checkbox" id="select9">
-                                <label for="select9">색조</label>
-                            </div>
-                        </div>
-                        <button id="search-container-sub2" type="submit" class="btn btn-secondary">검색</button>
-                    </form>
+                    <form id="search-container" method="GET" action="/board/filter">
+					<div id="search-container-sub1">
+						<div id="select-type1">
+							<label for="select1"><input type="radio" id="select1" name="skinType" value="건성" >건성</label>
+							<label for="select2"><input type="radio" id="select2" name="skinType" value="중성">중성
+							<label for="select3"><input type="radio" id="select3" name="skinType" value="지성">지성</label>
+							<label for="select4"><input type="radio" id="select4" name="skinType" value="복합성">복합성</label>
+						</div>
+						<div id="select-type2">
+							<label for="select5"><input type="radio" id="select5" name="skinTrouble" value="여드름">여드름</label>
+							<label for="select6"><input type="radio" id="select6" name="skinTrouble" value="민감성">민감성</label>
+							<label for="select7"><input type="radio" id="select7" name="skinTrouble" value="흉터">흉터</label>
+							<label for="select8"><input type="radio" id="select8" name="skinTrouble" value="혈관">혈관</label>
+							<label for="select9"><input type="radio" id="select9" name="skinTrouble" value="색조">색조</label>
+						</div>
+					</div>
+					<button id="search-container-sub2" type="submit"
+						class="btn btn-secondary"
+						style="margin-bottom: 2%; margin-top: 3%">검색</button>
+				</form>
                     </p>
                 </div>
             </div>
