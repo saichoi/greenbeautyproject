@@ -8,11 +8,11 @@ import org.springframework.data.jpa.repository.Query;
 public interface BoardRepository extends JpaRepository<Board, Integer> {
 
 	// 해당유저의 리뷰수
-	@Query(value = "SELECT NVL(SUM(likeCnt),0) FROM board WHERE userId = :userId", nativeQuery = true)
+	@Query(value = "SELECT COUNT(*) FROM board WHERE userId = :userId", nativeQuery = true)
 	int selectReview(int userId);
 	
 	// 해당유저의 좋아요수
-	@Query(value = "SELECT COUNT(*) FROM board WHERE userId = :userId", nativeQuery = true)
+	@Query(value = "SELECT NVL(SUM(likeCnt),0) FROM board WHERE userId = :userId", nativeQuery = true)
 	int selectLike(int userId);
 	
 	// 내리뷰리스트
