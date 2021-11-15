@@ -23,7 +23,6 @@ public interface BoardRepository extends JpaRepository<Board, Integer> {
 	@Query(value = "SELECT * FROM (SELECT * FROM board WHERE title LIKE %:searchText% OR content LIKE %:searchText%) b WHERE categoryId =:categoryId", nativeQuery = true)
 	Page<Board> findBoardCategoryByTitleOrContent(int categoryId, String searchText, Pageable page);
 	
-
 	// 전체리뷰수
 	@Query(value = "SELECT count(id) FROM board", nativeQuery = true)
 	int mReviewCnt();
