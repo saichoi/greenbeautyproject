@@ -1,7 +1,7 @@
 
 // 리뷰 상세보기 페이지 이동
-function moveBoardDetail(boardId){
-	location.href = "/board/" + boardId + "/detail?page=0";
+function moveBoardDetail(boardId, page){
+	location.href = "/board/" + boardId + "/detail?page="+page;
 }
 
 // 리뷰 수정하기 페이지 이동

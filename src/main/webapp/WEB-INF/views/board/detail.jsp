@@ -77,9 +77,7 @@
 				</div>
 
 				<div id="button">
-					<button type="button"
-						onClick="toBoardList(${boardEntity.category.id}, ${page })"
-						class="btn btn-secondary">목록으로</button>
+					<a type="button" href="/board?page=${param.page}" class="btn btn-secondary">목록으로</a>
 					<c:if test="${sessionScope.principal.id == boardEntity.user.id }">
 						<button id="cancel" type="button" class="btn btn-danger"
 							onclick="deleteBoardById(${boardEntity.id})">삭제</button>
