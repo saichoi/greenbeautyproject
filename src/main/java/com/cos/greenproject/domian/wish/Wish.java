@@ -31,7 +31,7 @@ public class Wish {
 	
 	// 사용자 정보
 	@JoinColumn(name = "userId") 
-	@ManyToOne(fetch = FetchType.EAGER)    
+	@ManyToOne
 	private User user; 
 	
 	// 제품 정보

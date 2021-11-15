@@ -34,6 +34,20 @@ const drawStar = (target) => {
 	}
 }
 
+async function deleteWishlistById(event, itemId){
+	event.stopImmediatePropagation()
+	response = await fetch("http://localhost:8080/api/item/" + itemId + "/wish", {
+		method: "delete"
+	});
+	let parseResponse = await response.json();
+	if(parseResponse.code == 1){
+		alert("위시리스트에서 삭제되었습니다.");
+	 	location.reload();
+	}else{
+		alert("삭제에 실패하였습니다" + parseResponse.msg);
+	}
+}
+
 async function wish(itemId){
 	if(globalUserId == ""){
 		alert("로그인을 먼저 진행해주세요");
@@ -62,8 +76,7 @@ async function wish(itemId){
  			alert("위시리스트에서 삭제되었습니다.")
  		}
 	}else{
-		alert(parseResponse.msg);
-		location.href = "/";
+		alert("삭제에 실패하였습니다" + parseResponse.msg);
 	}
 }
 	

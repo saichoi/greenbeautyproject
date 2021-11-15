@@ -12,7 +12,8 @@ import com.cos.greenproject.web.dto.LoginReqDto;
 import com.cos.greenproject.web.dto.UserUpdateDto;
 
 public interface UserService {
-	
+	// 회원정보가져오기
+	public User selectInfo(int userId);
 	// <----- UserController ----->
 	
 	// 회원수정

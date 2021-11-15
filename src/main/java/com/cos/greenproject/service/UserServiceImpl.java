@@ -21,6 +21,13 @@ public class UserServiceImpl implements UserService {
 	
 	private final UserRepository userRepository;
 	
+	// 회원정보가져오기
+	public User selectInfo(int userId) {
+		User userEntity = userRepository.findById(userId)
+		        .orElseThrow(()-> new MyAsyncNotFoundException("회원정보를 찾을 수 없습니다."));
+		return userEntity;
+	}
+	
 	// 회원수정
 	@Transactional(rollbackFor = MyAsyncNotFoundException.class) 
 	public void updateInfo(User principal, UserUpdateDto dto) {

@@ -13,16 +13,16 @@
 			<div class="right-info-con">
 				<ul class="nickname-box d-flex justify-content-center">
 					<li>
-						<h3>${sessionScope.principal.nickname}</h3>
+						<h3>${userEntity.nickname}</h3>
 					</li>
 					<li><a
-						href="/api/user/${sessionScope.principal.id}/updateForm"><i
+						href="/api/user/${userEntity.id}/updateForm"><i
 							class="bi bi-gear-fill"></i></a></li>
 				</ul>
 				<ul class="cnt-box d-flex justify-content-center">
 					<li class="review-cnt-box">리뷰수
-						${sessionScope.principal.reviewCnt}</li>
-					<li class="like-cnt-box">좋아요 ${sessionScope.principal.likeCnt}</li>
+						${userEntity.reviewCnt}</li>
+					<li class="like-cnt-box">좋아요 ${userEntity.likeCnt}</li>
 				</ul>
 			</div>
 		</div>
@@ -67,31 +67,31 @@
 						<form class="form-signin">
 							<div class="join-value">
 								<label for="username">ID</label> <input
-									value="${sessionScope.principal.username}" type="text"
+									value="${userEntity.username}" type="text"
 									id="username" class="form-control" size="30" readonly>
 							</div>
 
 							<div class="join-value">
 								<label for="name">이름</label> <input
-									value="${sessionScope.principal.name}" type="text" id="name"
+									value="${userEntity.name}" type="text" id="name"
 									class="form-control" size="30">
 							</div>
 
 							<div class="join-value">
 								<label for="nikcname">닉네임</label> <input
-									value="${sessionScope.principal.nickname}" type="text"
+									value="${userEntity.nickname}" type="text"
 									id="nickname" class="form-control" size="30">
 							</div>
 
 							<div class="join-value">
 								<label for="email">이메일</label> <input
-									value="${sessionScope.principal.email}" type="email" id="email"
+									value="${userEntity.email}" type="email" id="email"
 									class="form-control" size="30">
 							</div>
 
 							<div class="join-value">
 								<label for="bithdate">생년월일</label> <input
-									value="${sessionScope.principal.birthday}" type="date"
+									value="${userEntity.birthday}" type="date"
 									id="birthday" class="form-control">
 							</div>
 
@@ -99,38 +99,38 @@
 								<label for="gender">성별</label> <select id="gender"
 									class="form-control" name="gender">
 									<option value="남성"
-										<c:if test="${sessionScope.principal.gender eq '남성'}">selected="selected"</c:if>>남성</option>
+										<c:if test="${userEntity.gender eq '남성'}">selected="selected"</c:if>>남성</option>
 									<option value="여성"
-										<c:if test="${sessionScope.principal.gender eq '여성'}">selected="selected"</c:if>>여성</option>
+										<c:if test="${userEntity.gender eq '여성'}">selected="selected"</c:if>>여성</option>
 								</select>
 							</div>
 
 							<div class="join-value radiobox">
 								<label>피부타입</label> <input type="radio" name="skinType"
 									value="건성"
-									<c:if test="${sessionScope.principal.skinType eq '건성'}">checked="checked"</c:if>>건성
+									<c:if test="${userEntity.skinType eq '건성'}">checked="checked"</c:if>>건성
 								<input type="radio" name="skinType" value="중성"
-									<c:if test="${sessionScope.principal.skinType eq '중성'}">checked="checked"</c:if>>중성
+									<c:if test="${userEntity.skinType eq '중성'}">checked="checked"</c:if>>중성
 								<input type="radio" name="skinType" value="지성"
-									<c:if test="${sessionScope.principal.skinType eq '지성'}">checked="checked"</c:if>>지성
+									<c:if test="${userEntity.skinType eq '지성'}">checked="checked"</c:if>>지성
 								<input type="radio" name="skinType" value="복합성"
-									<c:if test="${sessionScope.principal.skinType eq '복합성'}">checked="checked"</c:if>>복합성
+									<c:if test="${userEntity.skinType eq '복합성'}">checked="checked"</c:if>>복합성
 							</div>
 
 							<div class="join-value radiobox">
 								<label>피부고민</label> <input type="radio" name="skinTrouble"
 									value="여드름"
-									<c:if test="${sessionScope.principal.skinTrouble eq '여드름'}">checked="checked"</c:if>>여드름
+									<c:if test="${userEntity.skinTrouble eq '여드름'}">checked="checked"</c:if>>여드름
 								<input type="radio" name="skinTrouble" value="민감성"
-									<c:if test="${sessionScope.principal.skinTrouble eq '민감성'}">checked="checked"</c:if>>민감성
+									<c:if test="${userEntity.skinTrouble eq '민감성'}">checked="checked"</c:if>>민감성
 								<input type="radio" name="skinTrouble" value="흉터"
-									<c:if test="${sessionScope.principal.skinTrouble eq '흉터'}">checked="checked"</c:if>>흉터
+									<c:if test="${userEntity.skinTrouble eq '흉터'}">checked="checked"</c:if>>흉터
 								<input type="radio" name="skinTrouble" value="혈관"
-									<c:if test="${sessionScope.principal.skinTrouble eq '혈관'}">checked="checked"</c:if>>혈관
+									<c:if test="${userEntity.skinTrouble eq '혈관'}">checked="checked"</c:if>>혈관
 								<input type="radio" name="skinTrouble" value="색조"
-									<c:if test="${sessionScope.principal.skinTrouble eq '색조'}">checked="checked"</c:if>>색조
+									<c:if test="${userEntity.skinTrouble eq '색조'}">checked="checked"</c:if>>색조
 								<input type="radio" name="skinTrouble" value="해당없음"
-									<c:if test="${sessionScope.principal.skinTrouble eq '해당없음'}">checked="checked"</c:if>>해당없음
+									<c:if test="${userEntity.skinTrouble eq '해당없음'}">checked="checked"</c:if>>해당없음
 							</div>
 
 							<div class="join-value">
@@ -161,8 +161,8 @@
 			<div class="tab-pane fade" style="width: 80%" id="myreview"
 				role="tabpanel" aria-labelledby="myreview-tab";>
 				<h2 class="text-center mb-5">내리뷰관리</h2>
-				<!-- 내리뷰목록 시작 --> 
-				<c:forEach var="board" items="${sessionScope.principal.boardList }"
+				<!-- 내리뷰목록 시작 -->
+				<c:forEach var="board" items="${userEntity.boardList }"
 					begin="0" end="3">
 					<div class="related-list container mt-3" style="width: 80%">
 
@@ -223,109 +223,45 @@
 			<!-- 내리뷰관리 영역  끝 -->
 
 			<!-- 위시리스트 영역  시작 -->
-			<div class="tab-pane fade  w-75" id="wishlist" role="tabpanel"
-				aria-labelledby="wishlist-tab">
+			<div class="tab-pane fade" style="width: 80%" id="wishlist"
+				role="tabpanel" aria-labelledby="wishlist-tab">
 				<h2 class="text-center mb-5">위시리스트</h2>
 				<!-- 위시리스트 목록 시작 -->
-				<div class="card mb-3 shadow">
-					<div class="row g-0">
-						<div class="col-md-4">
-							<img src="..." class="img-fluid rounded-start" alt="이미지자리">
-						</div>
-						<div class="col-md-8">
-							<div class="card-body  d-flex align-items-center ">
-								<div class="card-left">
-									<p class="category-rout">
-										<small class="text-muted"> <i
-											class="bi bi-house-door-fill"></i> 카테고리
-										</small>
-									</p>
-									<p class="wishlist-brand">브랜드</p>
-									<h4 class="whilist-item-title">제품명</h4>
-								</div>
-								<div class="card-right">
-									<button type="button" class="btn btn-secondary mt-3 mb-5">삭제</button>
-									<p class="price">9,000원</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+				<c:forEach var="wish" items="${userEntity.wishList }"
+					begin="0" end="3">
+					<div class="related-list container mt-3" style="width: 80%">
 
-				<div class="card mb-3 shadow">
-					<div class="row g-0">
-						<div class="col-md-4">
-							<img src="..." class="img-fluid rounded-start" alt="이미지자리">
-						</div>
-						<div class="col-md-8">
-							<div class="card-body  d-flex align-items-center ">
-								<div class="card-left">
-									<p class="category-rout">
-										<small class="text-muted"> <i
-											class="bi bi-house-door-fill"></i> 카테고리
-										</small>
-									</p>
-									<p class="wishlist-brand">브랜드</p>
-									<h4 class="whilist-item-title">제품명</h4>
+						<div id="board-card" class="card mb-3 shadow"
+							onclick="moveItemDetail(${wish.item.id})" style="width: 100%;">
+							<div class="row g-0">
+								<div class="img-card col-md-3"
+									style="border-right: 1px solid rgb(219, 219, 219);">
+									<img src="${wish.item.image}" class="img-fluid rounded-start"
+										alt="상품이미지">
 								</div>
-								<div class="card-right">
-									<button type="button" class="btn btn-secondary mt-3 mb-5">삭제</button>
-									<p class="price">9,000원</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="card mb-3 shadow">
-					<div class="row g-0">
-						<div class="col-md-4">
-							<img src="..." class="img-fluid rounded-start" alt="이미지자리">
-						</div>
-						<div class="col-md-8">
-							<div class="card-body  d-flex align-items-center ">
-								<div class="card-left">
-									<p class="category-rout">
-										<small class="text-muted"> <i
-											class="bi bi-house-door-fill"></i> 카테고리
-										</small>
-									</p>
-									<p class="wishlist-brand">브랜드</p>
-									<h4 class="whilist-item-title">제품명</h4>
-								</div>
-								<div class="card-right">
-									<button type="button" class="btn btn-secondary mt-3 mb-5">삭제</button>
-									<p class="price">9,000원</p>
+								<div class="col-md-8">
+									<div class="card-body  d-flex align-items-center">
+										<div class="card-left" >
+											<p class="category-rout">
+												<small class="text-muted"> <i
+													class="bi bi-house-door-fill"></i> &gt;
+													${wish.item.category.parent} &gt; ${wish.item.category.cname}
+												</small>
+											</p>
+											<p class="wishlist-brand">${wish.item.brand.bname}</p>
+											<h4 class="whilist-item-title">${wish.item.iname}</h4>
+										</div>
+										<div class="card-right" style="text-align: right;" >
+											<button type="button" class="btn btn-secondary mt-3 mb-5"
+											onClick="deleteWishlistById(event, ${wish.item.id})">삭제</button>
+											<p class="price" style="font-size:20px;">${wish.item.price}</p>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-
-				<div class="card mb-3 shadow">
-					<div class="row g-0">
-						<div class="col-md-4">
-							<img src="..." class="img-fluid rounded-start" alt="이미지자리">
-						</div>
-						<div class="col-md-8">
-							<div class="card-body  d-flex align-items-center ">
-								<div class="card-left">
-									<p class="category-rout">
-										<small class="text-muted"> <i
-											class="bi bi-house-door-fill"></i> 카테고리
-										</small>
-									</p>
-									<p class="wishlist-brand">브랜드</p>
-									<h4 class="whilist-item-title">제품명</h4>
-								</div>
-								<div class="card-right">
-									<button type="button" class="btn btn-secondary mt-3 mb-5">삭제</button>
-									<p class="price">9,000원</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+				</c:forEach>
 				<!-- 위시리스트 목록 끝 -->
 
 				<!-- 페이징 시작 -->
@@ -419,7 +355,7 @@
 	} */
 	
 	// 마이페이지 피부톤 팔레트 데이터 바인딩
-	var pSkinTone ="${sessionScope.principal.skinTone}";
+	var pSkinTone ="${userEntity.skinTone}";
 	if(pSkinTone=="매우밝은"){
 		$(".colorBox").removeClass("pallet-action");
 		$(".colorBox").eq(0).addClass("pallet-action")
