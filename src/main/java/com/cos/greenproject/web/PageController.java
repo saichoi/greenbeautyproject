@@ -264,6 +264,8 @@ public class PageController {
 	@GetMapping("/api/user/{userId}/mypage")
 	public String mypage(@PathVariable int userId, String key, Model model) {
 		model.addAttribute("userEntity", userService.selectInfo(userId));
+		model.addAttribute("reviewCnt", boardService.countReview(userId));
+		model.addAttribute("likeCnt", boardService.countLike(userId));
 		return "user/mypage";
 	}
 

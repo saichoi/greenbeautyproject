@@ -10,6 +10,7 @@ import com.cos.greenproject.domian.board.Board;
 import com.cos.greenproject.domian.board.BoardRepository;
 import com.cos.greenproject.domian.item.ItemRepository;
 import com.cos.greenproject.domian.user.User;
+import com.cos.greenproject.domian.user.UserRepository;
 import com.cos.greenproject.handler.ex.MyAsyncNotFoundException;
 import com.cos.greenproject.handler.ex.MyNotFoundException;
 import com.cos.greenproject.web.dto.BoardSaveDto;
@@ -22,9 +23,23 @@ import lombok.RequiredArgsConstructor;
 public class BoardServiceImpl implements BoardService {
 
 	private final BoardRepository boardRepository;
+	private final UserRepository userRepository;
 	private final ItemRepository itemRepository;
 
 	// <----- PageController ----->
+	// 해당유저의 리뷰수
+	public int countReview(int userId) {
+		int reviewCnt = boardRepository.selectReview(userId);
+		
+		return reviewCnt;
+	}
+	
+	// 해당유저의 좋아요수
+	public int countLike(int userId) {
+		int likeCnt = boardRepository.selectLike(userId);
+		
+		return likeCnt;
+	}
 	
 	// 게시글 목록 보기
 	public Page<Board> boardList(Pageable page, String searchText) {
