@@ -12,7 +12,12 @@ import com.cos.greenproject.web.dto.BoardUpdateDto;
 public interface BoardService {
 
 	// <----- PageController ----->
-
+	// 해당유저의 리뷰수
+	public int countReview(int userId);
+	
+	// 해당유저의 좋아요수
+	public int countLike(int userId);
+	
 	// 리뷰 목록 보기
 	public Page<Board> boardList(Pageable page, String searchText);
 

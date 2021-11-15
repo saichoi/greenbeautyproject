@@ -21,8 +21,8 @@
 				</ul>
 				<ul class="cnt-box d-flex justify-content-center">
 					<li class="review-cnt-box">리뷰수
-						${userEntity.reviewCnt}</li>
-					<li class="like-cnt-box">좋아요 ${userEntity.likeCnt}</li>
+						${reviewCnt}</li>
+					<li class="like-cnt-box">좋아요 ${likeCnt}</li>
 				</ul>
 			</div>
 		</div>
