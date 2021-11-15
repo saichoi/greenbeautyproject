@@ -54,7 +54,7 @@
 		<%@ include file="../layout/boardSidebar.jsp"%>
     </aside-1>
 
-    <section class="mb-3">
+    <section class="mb-3" style="height:1200px;">
         <!-- 검색창자리 -->
         <form class="input-group">
             <input type="text" class="form-control" name="searchText"

@@ -55,11 +55,11 @@
 				<h2>${boardEntity.title}</h2>
 			</div>
 
-			<div id="section-texteditor">
-				<div class="card shadow" style="width: 100%; height: 100%">${boardEntity.content}</div>
+			<div id="section-texteditor" >
+				<div class="card shadow" style="width: 100%; min-height: 550px;">${boardEntity.content}</div>
 			</div>
 
-			<div id="writer">${boardEntity.user.nickname}</div>
+			<div id="writer" >${boardEntity.user.nickname}</div>
 			<!-- 현재 like디비에 해당유저 보드있는지 없는지 체크후 좋아요 상태나타내기 -->
 			<div id="section-button-like">
 				<div id="section-button-sub">
