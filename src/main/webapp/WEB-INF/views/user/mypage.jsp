@@ -2,9 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 <script>
+  AOS.init();
+</script>
+<script>
 
 $(document).ready(function () {
-	
+	  
+	  
 	// 마이페이지 탭 조작
 	let key = "${param.key}";
 	if (key === "userinfo") {
@@ -224,12 +228,14 @@ $(document).ready(function () {
 				<c:forEach var="board" items="${boardsEntity.content }">
 					<div class="related-list container mt-3" style="width: 80%">
 
-						<div id="board-card" class="card mb-3 shadow"
-							onclick="moveBoardDetail(${board.id},${param.page})" style="width: 100%;">
+						<div id="board-card" class="card mb-3 shadow" 
+							onclick="moveBoardDetail(${board.id},${param.page})"
+							style="width: 100%;">
 							<div class="row g-0">
 								<div class="img-card col-md-3"
 									style="border-right: 1px solid rgb(219, 219, 219);">
-									<img src="${board.content}" class="img-fluid rounded-start h-100"
+									<img src="${board.content}"
+										class="img-fluid rounded-start h-100"
 										onerror="this.src='/image/default-image.png'" alt="상품이미지">
 								</div>
 								<div class="col-md-8">
@@ -307,11 +313,10 @@ $(document).ready(function () {
 				role="tabpanel" aria-labelledby="wishlist-tab">
 				<h2 class="text-center mb-5">위시리스트</h2>
 				<!-- 위시리스트 목록 시작 -->
-				<c:forEach var="wish" items="${userEntity.wishList }"
-					begin="0" end="3">
+				<c:forEach var="wish" items="${userEntity.wishList }">
 					<div class="related-list container mt-3" style="width: 80%">
-
-						<div id="board-card" class="card mb-3 shadow"
+						<div id="board-card" class="card mb-3 shadow" data-aos="fade-up"
+							data-aos-anchor-placement="top-bottom" 
 							onclick="moveItemDetail(${wish.item.id})" style="width: 100%;">
 							<div class="row g-0">
 								<div class="img-card col-md-3"
@@ -343,24 +348,6 @@ $(document).ready(function () {
 					</div>
 				</c:forEach>
 				<!-- 위시리스트 목록 끝 -->
-
-				<!-- 페이징 시작 -->
-				<nav aria-label="Page navigation example">
-					<ul class="pagination d-flex justify-content-center mt-5 mb-5">
-						<li class="page-item"><a class="page-link" href="#"
-							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-								<span class="sr-only">Previous</span>
-						</a></li>
-						<li class="page-item"><a class="page-link" href="#">1</a></li>
-						<li class="page-item"><a class="page-link" href="#">2</a></li>
-						<li class="page-item"><a class="page-link" href="#">3</a></li>
-						<li class="page-item"><a class="page-link" href="#"
-							aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
-								class="sr-only">Next</span>
-						</a></li>
-					</ul>
-				</nav>
-				<!-- 페이징 끝 -->
 			</div>
 			<!-- 위시리스트 영역  끝 -->
 		</div>
@@ -370,5 +357,6 @@ $(document).ready(function () {
 <!-- 마이페이지 영역 끝 -->
 
 <%@ include file="../layout/footer.jsp"%>
+
 
 
