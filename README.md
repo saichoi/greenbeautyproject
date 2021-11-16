@@ -1,13 +1,12 @@
 # GreenBeautyProject
 
 ### 팀원
-- 최다혜, 송다연, 류고운
+- 최다혜, 송다연
 
 ### 개발환경
 - Spring Boot 
 - JPA
 - MariaDB
-- MongoDB
 - JSP Template
 
 ### DB연결방법
