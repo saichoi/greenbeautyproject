@@ -26,7 +26,7 @@ public class BoardServiceImpl implements BoardService {
 	private final UserRepository userRepository;
 	private final ItemRepository itemRepository;
 
-	// <----- PageController ----->
+	// <----- PageController ----->	
 	// 해당유저의 리뷰수
 	public int countReview(int userId) {
 		int reviewCnt = boardRepository.selectReview(userId);
@@ -72,6 +72,8 @@ public class BoardServiceImpl implements BoardService {
 		boardRepository.save(dto.toEntity(principal));
 		// 제품 평점 동기화
 		itemRepository.mRating(dto.getItemId().getId());   
+		// 제품 리뷰수 동기화
+		itemRepository.mReview(dto.getItemId().getId());
 	}
 	
 	// 게시글 수정
