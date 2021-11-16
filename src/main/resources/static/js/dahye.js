@@ -1,3 +1,7 @@
+// 리뷰 상세보기 페이지 목록으로 이동
+function backList(page){
+	location.href = "/board?page="+page;
+}
 
 // 리뷰 상세보기 페이지 이동
 function moveBoardDetail(boardId, page){

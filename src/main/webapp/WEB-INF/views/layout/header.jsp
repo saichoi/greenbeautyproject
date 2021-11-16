@@ -72,7 +72,7 @@
 	                    </a>	                    
                     </c:when>
                     <c:otherwise>
-	                    <a class="nav-link" href="/api/user/${sessionScope.principal.id}/mypage?key=wishlist">
+	                    <a class="nav-link" href="/api/user/${sessionScope.principal.id}/mypage?key=wishlist&page=0">
 	                        <i class="bi bi-heart-fill"></i>
 	                    </a>
                      </c:otherwise>
@@ -86,7 +86,7 @@
 		                    </a>
 	                    </c:when>
 	                    <c:otherwise>
-		                    <a class="nav-link" href="/api/user/${sessionScope.principal.id}/mypage?key=userinfo">
+		                    <a class="nav-link" href="/api/user/${sessionScope.principal.id}/mypage?key=userinfo&page=0">
 		                        <i class="bi bi-person-fill"></i>
 		                    </a>
 	                    </c:otherwise>

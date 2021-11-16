@@ -42,7 +42,7 @@ public interface BoardService {
 	public void deleteBoard(int id, User principal);
 
 	// 내리뷰리스트
-	public Board myBoardList(int userId);
+	public Page<Board> myBoardList(int userId, Pageable page);
 
 	// 리뷰 검색하기
 	public void searchBoardList();

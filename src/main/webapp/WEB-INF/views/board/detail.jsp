@@ -77,7 +77,15 @@
 				</div>
 
 				<div id="button">
-					<a type="button" href="/board?page=${param.page}" class="btn btn-secondary">목록으로</a>
+					<c:choose>
+						<c:when test="${header.referer eq 'http://localhost:8080/api/user/1/mypage?key=userinfo&page=0'}">
+							<button type="button" onClick="history.back()" class="btn btn-secondary">목록으로</button>
+						</c:when>
+						<c:otherwise>
+							<button type="button" onClick="backList(${param.page})" class="btn btn-secondary">목록으로</button>
+						</c:otherwise>
+					</c:choose>
+					
 					<c:if test="${sessionScope.principal.id == boardEntity.user.id }">
 						<button id="cancel" type="button" class="btn btn-danger"
 							onclick="deleteBoardById(${boardEntity.id})">삭제</button>

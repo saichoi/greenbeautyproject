@@ -262,7 +262,33 @@ public class PageController {
 
 	// 마이페이지 이동
 	@GetMapping("/api/user/{userId}/mypage")
-	public String mypage(@PathVariable int userId, String key, Model model) {
+	public String mypage(@PathVariable int userId, String key, Model model,
+			@PageableDefault(page = 0, size = 4, sort = "id", direction = Sort.Direction.DESC) Pageable page) {
+		Page<Board> boardsEntity = boardService.myBoardList(userId, page);
+		
+		int startPage = Math.max(1, boardsEntity.getPageable().getPageNumber() - 4);
+		int endPage = Math.min(boardsEntity.getTotalPages(), boardsEntity.getPageable().getPageNumber() + 4);
+		int nowPage = boardsEntity.getPageable().getPageNumber() + 1;
+
+		// 리뷰 첫번째 이미지 파싱해서 리뷰목록 썸네일 만들기
+		Iterator<Board> it = boardsEntity.iterator();
+
+		while (it.hasNext()) {
+			Board boardEntity = it.next();
+			Document doc = Jsoup.parse(boardEntity.getContent());
+			if (doc.selectFirst("img") != null) {
+				String src = doc.selectFirst("img").attr("src");
+				boardEntity.setContent(src);
+			} else {
+				boardEntity.setContent("/image/default-image.png");
+			}
+
+		}
+
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("boardsEntity",boardsEntity);
 		model.addAttribute("userEntity", userService.selectInfo(userId));
 		model.addAttribute("reviewCnt", boardService.countReview(userId));
 		model.addAttribute("likeCnt", boardService.countLike(userId));

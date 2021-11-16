@@ -1,7 +1,66 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
+<script>
 
+$(document).ready(function () {
+	
+	// 마이페이지 탭 조작
+	let key = "${param.key}";
+	if (key === "userinfo") {
+
+		$("#myreview-tab").removeClass("active");
+		$("#wishlist-tab").removeClass("active");
+		$("#userinfo-tab").addClass("active");
+
+		$("#myreview").removeClass("show active");
+		$("#wishlist").removeClass("show active");
+		$("#userinfo").addClass("show active");
+
+	} else if (key === "myreview") {
+
+		$("#wishlist-tab").removeClass("active");
+		$("#userinfo-tab").removeClass("active");
+		$("#myreview-tab").addClass("active");
+
+		$("#userinfo").removeClass("show active");
+		$("#wishlist").removeClass("show active");
+		$("#myreview").addClass("show active");
+
+	} else if (key === "wishlist") {
+
+		$("#userinfo-tab").removeClass("active");
+		$("#myreview-tab").removeClass("active");
+		$("#wishlist-tab").addClass("active");
+
+		$("#myreview").removeClass("show active");
+		$("#userinfo").removeClass("show active");
+		$("#wishlist").addClass("show active");
+
+	}
+
+	// 마이페이지 피부톤 팔레트 데이터 바인딩
+	var pSkinTone ="${sessionScope.principal.skinTone}";
+	if(pSkinTone=="매우밝은"){
+		$(".colorBox").removeClass("pallet-action");
+		$(".colorBox").eq(0).addClass("pallet-action")
+	}else if(pSkinTone=="밝은(21호)"){
+		$(".colorBox").removeClass("pallet-action");
+		$(".colorBox").eq(1).addClass("pallet-action")
+	}else if(pSkinTone=="중간밝은(22호)"){
+		$(".colorBox").removeClass("pallet-action");
+		$(".colorBox").eq(2).addClass("pallet-action")
+	}else if(pSkinTone=="차분한(23호)"){
+		$(".colorBox").removeClass("pallet-action");
+		$(".colorBox").eq(3).addClass("pallet-action")
+	}else if(pSkinTone=="매우차분한"){
+		$(".colorBox").removeClass("pallet-action");
+		$(".colorBox").eq(4).addClass("pallet-action")
+	}
+	
+});
+	
+</script>
 <!-- 마이페이지 영역 시작 -->
 <section>
 	<div
@@ -13,10 +72,10 @@
 			<div class="right-info-con">
 				<ul class="nickname-box d-flex justify-content-center">
 					<li>
-						<h3>${userEntity.nickname}</h3>
+						<h3>${sessionScope.principal.nickname}</h3>
 					</li>
 					<li><a
-						href="/api/user/${userEntity.id}/updateForm"><i
+						href="/api/user/${sessionScope.principal.id}/updateForm"><i
 							class="bi bi-gear-fill"></i></a></li>
 				</ul>
 				<ul class="cnt-box d-flex justify-content-center">
@@ -58,7 +117,7 @@
 			id="myTabContent">
 
 			<!-- 회원정보 영역  시작 -->
-			<div class="tab-pane fade show active w-75 " id="userinfo"
+			<div class="tab-pane fade show active" style="width: 80%" id="userinfo"
 				role="tabpanel" aria-labelledby="userinfo-tab">
 
 				<div class="join-con container ">
@@ -67,31 +126,31 @@
 						<form class="form-signin">
 							<div class="join-value">
 								<label for="username">ID</label> <input
-									value="${userEntity.username}" type="text"
+									value="${sessionScope.principal.username}" type="text"
 									id="username" class="form-control" size="30" readonly>
 							</div>
 
 							<div class="join-value">
 								<label for="name">이름</label> <input
-									value="${userEntity.name}" type="text" id="name"
+									value="${sessionScope.principal.name}" type="text" id="name"
 									class="form-control" size="30">
 							</div>
 
 							<div class="join-value">
 								<label for="nikcname">닉네임</label> <input
-									value="${userEntity.nickname}" type="text"
+									value="${sessionScope.principal.nickname}" type="text"
 									id="nickname" class="form-control" size="30">
 							</div>
 
 							<div class="join-value">
 								<label for="email">이메일</label> <input
-									value="${userEntity.email}" type="email" id="email"
+									value="${sessionScope.principal.email}" type="email" id="email"
 									class="form-control" size="30">
 							</div>
 
 							<div class="join-value">
 								<label for="bithdate">생년월일</label> <input
-									value="${userEntity.birthday}" type="date"
+									value="${sessionScope.principal.birthday}" type="date"
 									id="birthday" class="form-control">
 							</div>
 
@@ -99,38 +158,38 @@
 								<label for="gender">성별</label> <select id="gender"
 									class="form-control" name="gender">
 									<option value="남성"
-										<c:if test="${userEntity.gender eq '남성'}">selected="selected"</c:if>>남성</option>
+										<c:if test="${sessionScope.principal.gender eq '남성'}">selected="selected"</c:if>>남성</option>
 									<option value="여성"
-										<c:if test="${userEntity.gender eq '여성'}">selected="selected"</c:if>>여성</option>
+										<c:if test="${sessionScope.principal.gender eq '여성'}">selected="selected"</c:if>>여성</option>
 								</select>
 							</div>
 
 							<div class="join-value radiobox">
 								<label>피부타입</label> <input type="radio" name="skinType"
 									value="건성"
-									<c:if test="${userEntity.skinType eq '건성'}">checked="checked"</c:if>>건성
+									<c:if test="${sessionScope.principal.skinType eq '건성'}">checked="checked"</c:if>>건성
 								<input type="radio" name="skinType" value="중성"
-									<c:if test="${userEntity.skinType eq '중성'}">checked="checked"</c:if>>중성
+									<c:if test="${sessionScope.principal.skinType eq '중성'}">checked="checked"</c:if>>중성
 								<input type="radio" name="skinType" value="지성"
-									<c:if test="${userEntity.skinType eq '지성'}">checked="checked"</c:if>>지성
+									<c:if test="${sessionScope.principal.skinType eq '지성'}">checked="checked"</c:if>>지성
 								<input type="radio" name="skinType" value="복합성"
-									<c:if test="${userEntity.skinType eq '복합성'}">checked="checked"</c:if>>복합성
+									<c:if test="${sessionScope.principal.skinType eq '복합성'}">checked="checked"</c:if>>복합성
 							</div>
 
 							<div class="join-value radiobox">
 								<label>피부고민</label> <input type="radio" name="skinTrouble"
 									value="여드름"
-									<c:if test="${userEntity.skinTrouble eq '여드름'}">checked="checked"</c:if>>여드름
+									<c:if test="${sessionScope.principal.skinTrouble eq '여드름'}">checked="checked"</c:if>>여드름
 								<input type="radio" name="skinTrouble" value="민감성"
-									<c:if test="${userEntity.skinTrouble eq '민감성'}">checked="checked"</c:if>>민감성
+									<c:if test="${sessionScope.principal.skinTrouble eq '민감성'}">checked="checked"</c:if>>민감성
 								<input type="radio" name="skinTrouble" value="흉터"
-									<c:if test="${userEntity.skinTrouble eq '흉터'}">checked="checked"</c:if>>흉터
+									<c:if test="${sessionScope.principal.skinTrouble eq '흉터'}">checked="checked"</c:if>>흉터
 								<input type="radio" name="skinTrouble" value="혈관"
-									<c:if test="${userEntity.skinTrouble eq '혈관'}">checked="checked"</c:if>>혈관
+									<c:if test="${sessionScope.principal.skinTrouble eq '혈관'}">checked="checked"</c:if>>혈관
 								<input type="radio" name="skinTrouble" value="색조"
-									<c:if test="${userEntity.skinTrouble eq '색조'}">checked="checked"</c:if>>색조
+									<c:if test="${sessionScope.principal.skinTrouble eq '색조'}">checked="checked"</c:if>>색조
 								<input type="radio" name="skinTrouble" value="해당없음"
-									<c:if test="${userEntity.skinTrouble eq '해당없음'}">checked="checked"</c:if>>해당없음
+									<c:if test="${sessionScope.principal.skinTrouble eq '해당없음'}">checked="checked"</c:if>>해당없음
 							</div>
 
 							<div class="join-value">
@@ -158,21 +217,20 @@
 			<!-- 회원정보 영역  끝 -->
 
 			<!-- 내리뷰관리 영역  시작 -->
-			<div class="tab-pane fade" style="width: 80%" id="myreview"
+			<div class="tab-pane fade" id="myreview" style="width: 80%"
 				role="tabpanel" aria-labelledby="myreview-tab";>
 				<h2 class="text-center mb-5">내리뷰관리</h2>
 				<!-- 내리뷰목록 시작 -->
-				<c:forEach var="board" items="${userEntity.boardList }"
-					begin="0" end="3">
+				<c:forEach var="board" items="${boardsEntity.content }">
 					<div class="related-list container mt-3" style="width: 80%">
 
 						<div id="board-card" class="card mb-3 shadow"
-							onclick="moveBoardDetail(${board.id})" style="width: 100%;">
+							onclick="moveBoardDetail(${board.id},${param.page})" style="width: 100%;">
 							<div class="row g-0">
 								<div class="img-card col-md-3"
 									style="border-right: 1px solid rgb(219, 219, 219);">
-									<img src="${board.image}" class="img-fluid rounded-start"
-										alt="상품이미지">
+									<img src="${board.content}" class="img-fluid rounded-start h-100"
+										onerror="this.src='/image/default-image.png'" alt="상품이미지">
 								</div>
 								<div class="col-md-8">
 									<div class="card-body">
@@ -203,21 +261,43 @@
 				<!-- 내리뷰목록 끝 -->
 
 				<!-- 페이징 시작 -->
-				<nav aria-label="Page navigation example">
-					<ul class="pagination d-flex justify-content-center mt-5 mb-5">
-						<li class="page-item"><a class="page-link" href="#"
-							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-								<span class="sr-only">Previous</span>
-						</a></li>
-						<li class="page-item"><a class="page-link" href="#">1</a></li>
-						<li class="page-item"><a class="page-link" href="#">2</a></li>
-						<li class="page-item"><a class="page-link" href="#">3</a></li>
-						<li class="page-item"><a class="page-link" href="#"
-							aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
-								class="sr-only">Next</span>
-						</a></li>
-					</ul>
-				</nav>
+				<ul class="pagination d-flex justify-content-center mt-5">
+					<c:choose>
+						<c:when test="${boardsEntity.first}">
+							<li class="page-item disabled"><a class="page-link"
+								href="//api/user/${sessionScope.principal.id}/mypage?key=myreview&page=${boardsEntity.number - 1}">&laquo;</a></li>
+						</c:when>
+						<c:otherwise>
+							<li class="page-item"><a class="page-link"
+								href="/api/user/${sessionScope.principal.id}/mypage?key=myreview&page=${boardsEntity.number - 1}">&laquo;</a></li>
+						</c:otherwise>
+					</c:choose>
+
+					<c:forEach begin="${startPage}" end="${endPage}" var="idx">
+						<c:choose>
+							<c:when test="${idx eq nowPage}">
+								<li class="page-item disabled"><a
+									class="page-link page-active" 
+									href="/api/user/${sessionScope.principal.id}/mypage?key=myreview&page=${idx-1}">${idx}</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="page-item"><a class="page-link"
+									href="/api/user/${sessionScope.principal.id}/mypage?key=myreview&page=${idx-1}">${idx}</a></li>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+
+					<c:choose>
+						<c:when test="${boardsEntity.last}">
+							<li class="page-item disabled"><a class="page-link"
+								href="/api/user/${sessionScope.principal.id}/mypage?key=myreview&page=${boardsEntity.number + 1}">&raquo;</a></li>
+						</c:when>
+						<c:otherwise>
+							<li class="page-item"><a class="page-link"
+								href="/api/user/${sessionScope.principal.id}/mypage?key=myreview&page=${boardsEntity.number + 1}">&raquo;</a></li>
+						</c:otherwise>
+					</c:choose>
+				</ul>
 				<!-- 페이징 끝 -->
 			</div>
 			<!-- 내리뷰관리 영역  끝 -->
@@ -290,88 +370,5 @@
 <!-- 마이페이지 영역 끝 -->
 
 <%@ include file="../layout/footer.jsp"%>
-<script>
-	
-	// 마이페이지 탭 조작
-	let key = "${param.key}";
-	if (key === "userinfo") {
 
-		$("#myreview-tab").removeClass("active");
-		$("#wishlist-tab").removeClass("active");
-		$("#userinfo-tab").addClass("active");
-
-		$("#myreview").removeClass("show active");
-		$("#wishlist").removeClass("show active");
-		$("#userinfo").addClass("show active");
-
-	} else if (key === "myreview") {
-
-		$("#wishlist-tab").removeClass("active");
-		$("#userinfo-tab").removeClass("active");
-		$("#myreview-tab").addClass("active");
-
-		$("#userinfo").removeClass("show active");
-		$("#wishlist").removeClass("show active");
-		$("#myreview").addClass("show active");
-
-	} else if (key === "wishlist") {
-
-		$("#userinfo-tab").removeClass("active");
-		$("#myreview-tab").removeClass("active");
-		$("#wishlist-tab").addClass("active");
-
-		$("#myreview").removeClass("show active");
-		$("#userinfo").removeClass("show active");
-		$("#wishlist").addClass("show active");
-
-	}
-	
-	// 마이페이지 피부타입 데이터 바인딩
-	/* var pSkinType ="${sessionScope.principal.skinType}";
-	if(pSkinType=="건성"){
-		$("input:radio[name='skinType']:radio[value='건성']").prop('checked', true); 
-	}else if(pSkinType=="중성"){
-		$("input:radio[name='skinType']:radio[value='중성']").prop('checked', true); 
-	}else if(pSkinType=="지성"){
-		$("input:radio[name='skinType']:radio[value='지성']").prop('checked', true); 
-	}else if(pSkinType=="복합성"){
-		$("input:radio[name='skinType']:radio[value='복합성']").prop('checked', true); 
-	} */
-	
-	// 마이페이지 피부고민 데이터 바인딩
-/* 	var pSkinTrouble ="${sessionScope.principal.skinTrouble}";
-	if(pSkinTrouble=="여드름"){
-		$("input:radio[name='skinTrouble']:radio[value='여드름']").prop('checked', true); 
-	}else if(pSkinTrouble=="민감성"){
-		$("input:radio[name='skinTrouble']:radio[value='민감성']").prop('checked', true); 
-	}else if(pSkinTrouble=="흉터"){
-		$("input:radio[name='skinTrouble']:radio[value='흉터']").prop('checked', true); 
-	}else if(pSkinTrouble=="혈관"){
-		$("input:radio[name='skinTrouble']:radio[value='혈관']").prop('checked', true); 
-	}else if(pSkinTrouble=="색조"){
-		$("input:radio[name='skinTrouble']:radio[value='색조']").prop('checked', true); 
-	}else if(pSkinTrouble=="해당없음"){
-		$("input:radio[name='skinTrouble']:radio[value='해당없음']").prop('checked', true); 
-	} */
-	
-	// 마이페이지 피부톤 팔레트 데이터 바인딩
-	var pSkinTone ="${userEntity.skinTone}";
-	if(pSkinTone=="매우밝은"){
-		$(".colorBox").removeClass("pallet-action");
-		$(".colorBox").eq(0).addClass("pallet-action")
-	}else if(pSkinTone=="밝은(21호)"){
-		$(".colorBox").removeClass("pallet-action");
-		$(".colorBox").eq(1).addClass("pallet-action")
-	}else if(pSkinTone=="중간밝은(22호)"){
-		$(".colorBox").removeClass("pallet-action");
-		$(".colorBox").eq(2).addClass("pallet-action")
-	}else if(pSkinTone=="차분한(23호)"){
-		$(".colorBox").removeClass("pallet-action");
-		$(".colorBox").eq(3).addClass("pallet-action")
-	}else if(pSkinTone=="매우차분한"){
-		$(".colorBox").removeClass("pallet-action");
-		$(".colorBox").eq(4).addClass("pallet-action")
-	}
-	
-</script>
 
