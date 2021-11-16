@@ -23,6 +23,10 @@ public interface ItemRepository extends JpaRepository<Item, Integer> {
 	@Query(value = "UPDATE item SET rating = (SELECT AVG(rating) FROM board WHERE itemId = :itemId) WHERE id = :itemId", nativeQuery = true)
 	void mRating(int itemId);
 	
+	// 리뷰수 넣기
+	@Query(value = "UPDATE item SET reviewCnt = (SELECT COUNT(*) FROM board WHERE itemId = :itemId) WHERE id = :itemId", nativeQuery = true)
+	void mReview(int itemId);
+	
 	// 전체제품수
 	@Query(value = "SELECT count(id) FROM item", nativeQuery = true)
 	int mItemCnt();
