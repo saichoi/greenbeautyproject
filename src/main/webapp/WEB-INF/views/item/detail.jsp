@@ -20,7 +20,7 @@
                     </div>
                     <div>
                         <span class="star-2"> ★★★★★ <span style="width:calc(18.9%*${itemEntity.rating })">★★★★★</span></span>
-                        <fmt:formatNumber value="${itemEntity.rating }" pattern="0.00"/> (62건)
+                        <fmt:formatNumber value="${itemEntity.rating }" pattern="0.00"/> (${itemEntity.reviewCnt}건)
                     </div>
                     <div class="detail-price mb-2">${itemEntity.price }원</div>
                 </div>
