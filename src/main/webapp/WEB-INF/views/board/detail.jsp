@@ -56,7 +56,7 @@
 			</div>
 
 			<div id="section-texteditor" >
-				<div class="card shadow" style="width: 100%; min-height: 550px;">${boardEntity.content}</div>
+				<div class="card shadow" style="width: 100%; min-height: 550px; padding:20px;">${boardEntity.content}</div>
 			</div>
 
 			<div id="writer" >${boardEntity.user.nickname}</div>
