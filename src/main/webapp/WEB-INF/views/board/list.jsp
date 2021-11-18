@@ -108,11 +108,11 @@
 		<!-- 리뷰리스트자리 -->
 		<c:forEach var="board" items="${boardsEntity.content}">
 			<div id="board-card" class="card mb-3 shadow"
-				onclick="moveBoardDetail(${board.id}, ${param.page})" style="width: 100%;">
-				<div class="row g-0">
-					<div class="img-card col-md-3"
-						style="border-right: 1px solid rgb(219, 219, 219);">
-						<img src="${board.content}" class="img-fluid rounded-start h-100" 
+				onclick="moveBoardDetail(${board.id}, ${param.page})" >
+				<div class="row g-0" style="height:180px">
+					<div class="img-card col-md-3 overflow-hidden h-100"
+						style="border-right: 1px solid rgb(219, 219, 219); ">
+						<img src="${board.content}" class="img-fluid rounded-start h-auto" 
 						onerror="this.src='/image/default-image.png'" alt="리뷰이미지" >
 					</div>
 					<div class="col-md-8">
