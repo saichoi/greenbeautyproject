@@ -236,11 +236,27 @@ public class PageController {
 	// 제품 상세페이지 이동
 	@GetMapping("/item/{id}/detail")
 	public String itemDetaill(@PathVariable int id, Model model, int page) {
+	
 		User principal = (User) session.getAttribute("principal");
-		model.addAttribute("itemEntity", itemService.itemDetail(id));
+		Item itemEntity = itemService.itemDetail(id);
+		Iterator<Board> it = itemEntity.getBoards().iterator();
+
+		while (it.hasNext()) {
+			Board boardEntity = it.next();
+			Document doc = Jsoup.parse(boardEntity.getContent());
+			if (doc.selectFirst("img") != null) {
+				String src = doc.selectFirst("img").attr("src");
+				boardEntity.setContent(src);
+			} else {
+				boardEntity.setContent("/image/default-image.png");
+			}
+
+		}
+		model.addAttribute("itemEntity", itemEntity);
 		if (principal != null) {
 			model.addAttribute("wishCheck", wishService.selWish(id, principal));
 		}
+		
 		model.addAttribute("page", page);
 		return "item/detail";
 	}

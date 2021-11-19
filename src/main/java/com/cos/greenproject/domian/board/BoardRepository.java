@@ -34,5 +34,9 @@ public interface BoardRepository extends JpaRepository<Board, Integer> {
 	// 전체리뷰수
 	@Query(value = "SELECT count(id) FROM board", nativeQuery = true)
 	int mReviewCnt();
+	
+	// 관련리뷰
+	@Query(value = "SELECT * From board WHERE itemId =: itemId ", nativeQuery = true)
+	Board relatedBoardList(int itemId);
 
 }
