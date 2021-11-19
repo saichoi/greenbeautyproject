@@ -112,7 +112,7 @@
             <!-- 리뷰리스트자리 -->
           <!-- 리뷰리스트자리 -->
 			<c:forEach var="board" items="${boardsEntity.content}">
-			<div id="board-card" class="card mb-3 shadow" onclick="moveBoardDetail(${board.id})" style="width: 100%;" >
+			<div id="board-card" class="card mb-3 shadow" onclick="moveBoardDetail(${board.id}, ${param.page})" style="width: 100%;" >
 				<div class="row g-0 overflow-hidden" style="height:200px">
 					<div class="img-card col-md-3" style="border-right: 1px solid rgb(219, 219, 219);">
 						<img src="${board.content}" class="img-fluid rounded-start h-100" 
