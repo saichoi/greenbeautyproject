@@ -47,8 +47,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	// 게시글 카테고리 목록보기
-	public Page<Board> boardCategoryList(int categoryId, Pageable page, String searchText){
-		return boardRepository.findBoardCategoryByTitleOrContent(categoryId, searchText, page);
+	public Page<Board> boardCategoryList(int categoryId, Pageable page){
+		return boardRepository.findBoardCategoryByTitleOrContent(categoryId, page);
 	}
 
 	// 게시글 상세보기

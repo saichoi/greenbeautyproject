@@ -132,10 +132,9 @@ public class PageController {
 	// 리뷰 카테고리 페이지 이동
 	@GetMapping("/board/category/{categoryId}")
 	public String boardCategoryList(@PathVariable int categoryId, Model model,
-			@PageableDefault(page = 0, size = 4, sort = "id", direction = Sort.Direction.DESC) Pageable page,
-			@RequestParam(required = false, defaultValue = "") String searchText) {
+			@PageableDefault(page = 0, size = 4, sort = "id", direction = Sort.Direction.DESC) Pageable page) {
 
-		Page<Board> boardsEntity = boardService.boardCategoryList(categoryId, page, searchText);
+		Page<Board> boardsEntity = boardService.boardCategoryList(categoryId, page);
 
 		int startPage = Math.max(1, boardsEntity.getPageable().getPageNumber() - 4);
 		int endPage = Math.min(boardsEntity.getTotalPages(), boardsEntity.getPageable().getPageNumber() + 4);

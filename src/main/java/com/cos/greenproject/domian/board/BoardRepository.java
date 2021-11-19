@@ -28,8 +28,8 @@ public interface BoardRepository extends JpaRepository<Board, Integer> {
 	Page<Board> findBoardByTitleOrContent(String searchText, Pageable page);
 
 	// 카테고리별 리뷰 검색 기능
-	@Query(value = "SELECT * FROM (SELECT * FROM board WHERE title LIKE %:searchText% OR content LIKE %:searchText%) b WHERE categoryId =:categoryId", nativeQuery = true)
-	Page<Board> findBoardCategoryByTitleOrContent(int categoryId, String searchText, Pageable page);
+	@Query(value = "SELECT * FROM board WHERE categoryId =:categoryId", nativeQuery = true)
+	Page<Board> findBoardCategoryByTitleOrContent(int categoryId, Pageable page);
 	
 	// 전체리뷰수
 	@Query(value = "SELECT count(id) FROM board", nativeQuery = true)
