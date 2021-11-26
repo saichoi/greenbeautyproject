@@ -26,17 +26,5 @@ public interface UserService {
 	
 	// 로그인
 	public User login(LoginReqDto dto);
-	
-	// 내리뷰리스트에 등록
-	public void addReviewList();
-	
-	// 내리뷰리스트에서 삭제
-	public void removeReviewList();
-	
-	// 위시리스트에 등록
-	public void addWishist();
-	
-	// 위시리스트에서 삭제
-	public void removeWishlist();
 
 }

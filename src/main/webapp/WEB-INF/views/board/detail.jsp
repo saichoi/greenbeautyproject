@@ -78,7 +78,7 @@
 
 				<div id="button">
 					<c:choose>
-						<c:when test="${header.referer eq 'http://localhost:8080/api/user/1/mypage?key=userinfo&page=0'}">
+						<c:when test="${header.referer eq 'http://localhost:8080/api/user/1/mypage?key=myreview&page=0'}">
 							<button type="button" onClick="history.back()" class="btn btn-secondary">목록으로</button>
 						</c:when>
 						<c:otherwise>

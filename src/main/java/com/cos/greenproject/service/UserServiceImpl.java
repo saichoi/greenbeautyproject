@@ -60,25 +60,6 @@ public class UserServiceImpl implements UserService {
 	public User login(LoginReqDto dto) {
 		 return userRepository.mLogin(dto.getUsername(), SHA.encrypt(dto.getPassword(), MyAlgorithm.SHA256));
 	}
-	
-	// 내리뷰리스트에 등록
-	public void addReviewList() {
-		
-	}
-	
-	// 내리뷰리스트에서 삭제
-	public void removeReviewList() {
-		
-	}
-	
-	// 위시리스트에 등록
-	public void addWishist() {
-		
-	}
-	
-	// 위시리스트에서 삭제
-	public void removeWishlist() {
-		
-	}
+
 }
 

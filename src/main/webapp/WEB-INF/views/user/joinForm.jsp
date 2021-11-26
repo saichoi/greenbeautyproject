@@ -13,7 +13,7 @@
                 <div class="join-value">
                     <label for="username" class="label">ID</label>
                     <input placeholder="ID를 입력하세요" type="text" id="username"  
-                    class="form-control" name="username" value="sai" size="30" >
+                    class="form-control" name="username" value="admin" size="30" >
                 </div>
 
                 <div class="join-value">
@@ -25,19 +25,19 @@
                 <div class="join-value">
                     <label for="name" class="label">이름</label>
                     <input placeholder="이름을 입력하세요"  type="text" id="name"  
-                    class="form-control" name="name" value="최다혜"  size="30" >
+                    class="form-control" name="name" value="관리자"  size="30" >
                 </div>
 
                 <div class="join-value">
                     <label for="nickname" class="label">닉네임</label>
                     <input placeholder="닉네임을 입력하세요" type="text" id="nickname"  
-                    class="form-control" name="nickname" value="파란머리연어" size="30" >
+                    class="form-control" name="nickname" value="관리자" size="30" >
                 </div>
 
                 <div class="join-value">
                     <label for="email" class="label">이메일</label>
                     <input placeholder="이메일을 입력하세요" type="email" id="email"  
-                    class="form-control" name="email" size="30"  value="sai@naver.com">
+                    class="form-control" name="email" size="30"  value="admin@naver.com">
                 </div>
 
                 <div class="join-value">

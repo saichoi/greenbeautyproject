@@ -731,6 +731,7 @@ header .bi-person-fill:hover, header .bi-heart-fill:hover{
 
 /***************** 리뷰 목록 스타일 *****************/
 #board-card:hover, #related-card:hover{
+	transition:transform 0.3s;
 	transform:translate(0,-5px);
 	cursor:pointer;
 }
